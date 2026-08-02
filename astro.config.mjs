@@ -2,8 +2,13 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
-/* Mapa starých URL → nové. Starý web běžel s příponou .html, brief navíc
- * uvádí i varianty bez ní, takže se generují obě podoby. */
+/* Mapa starých URL → nové.
+ *
+ * Starý web servíruje adresy BEZ přípony (`/opravy`); varianta s `.html` na něm
+ * vrací 404. Přípona v našich podkladech pochází z `wget --adjust-extension`,
+ * které ji při ukládání přidává — na skutečné URL to nevypovídá nic.
+ * Obě podoby se přesto generují: `.html` verze nic nestojí a pokryje případné
+ * staré odkazy odjinud. */
 const staryWeb = {
   '/opravy': '/sluzby/',
   '/specialni-sluzby': '/sluzby/',
@@ -36,7 +41,12 @@ export default defineConfig({
   output: 'static',
   adapter: vercel(),
   integrations: [sitemap()],
-  trailingSlash: 'always',
+  // Záměrně 'ignore', ne 'always'. Při 'always' hostitel nejdřív znormalizuje
+  // adresu (308 na verzi s lomítkem) a teprve pak hledá redirect pravidlo —
+  // staré adresy bez lomítka jako /opravy by tak vždy skončily na 404.
+  // Zachování starých URL má přednost před přísnou normalizací; jednotný tvar
+  // hlídá kanonický odkaz v BaseLayout a sitemapa.
+  trailingSlash: 'ignore',
   redirects,
   // CSS inline do HTML — žádné render-blocking requesty (LCP).
   build: { inlineStylesheets: 'always', format: 'directory' },
