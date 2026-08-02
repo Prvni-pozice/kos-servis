@@ -7,12 +7,28 @@ Stav k 2. 8. 2026.
 
 | Co | Proč |
 |---|---|
-| Fonty přes `@fontsource`, ne `@import` z Google Fonts | Design systém načítal fonty z fonts.googleapis.com. Na produkci to znamená render-blocking request na cizí doménu a GDPR problém. Úvodní strana teď nedělá jediný externí request. |
+| Vlastní subset fontů, ne `@import` z Google Fonts ani `@fontsource` | Design systém načítal fonty z fonts.googleapis.com. Na produkci to znamená render-blocking request na cizí doménu a GDPR problém. Úvodní strana teď nedělá jediný externí request. `@fontsource` byl mezikrok — dodává latin a latin-ext jako dva soubory, takže 9 řezů stálo 16 požadavků a 260 kB. Viz `scripts/subset-fonts.mjs`. |
 | `.timeline` povýšena na třídy | Na `/o-firme/` byla původně inline styly. Před pushem do Designu se musela formalizovat, jinak by se obě strany rozešly. |
 | Výplňová buňka v mřížce strojů | Šest strojů, z toho jeden přes dva řádky = 7 buněk ve třech sloupcích → dvě prázdná šedá pole. Doplněno CTA blokem, počet se dopočítává. |
 | Teplý akcent i u letopočtu a chybové hlášky | Formálně porušuje pravidlo „akcent jen pro Příjem oprav". U chyby obhajitelné (stejná naléhavost), u letopočtu ke zvážení — poznámka je i v pushnuté komponentě. |
 
 ## Záludnosti, na kterých se dá ztratit čas
+
+**`aspect-ratio` + `min-height` na stejném prvku přeteče stránku do boku.**
+Minimum se podle specifikace přenese přes poměr i do druhé osy, takže
+`aspect-ratio: 21/9; min-height: 400px` znamená i `min-width: 933px`. Hero měl
+proto pevnou šířku a mezi ~700 a ~1000 px viewportu se stránka posouvala vodorovně
+(na desktopu to nebylo vidět, protože 933 px zhruba odpovídá obsahové šířce).
+Výška se teď počítá ručně — `.hero` v `site.css`, proměnné `--hero-ratio`
+a `--hero-min`. Kontrolní skript na přetečení je v poznámkách k revizi.
+
+**Fonty se vkládají až po `load`, ne v kritickém CSS.** Jinak si je prohlížeč
+vyžádá dřív než poster v hero (LCP prvek) a mobilní Lighthouse spadne ze 100 na 86.
+Detaily v `CLAUDE.md`, sekce Fonty.
+
+**Poster videa se bere z hotového `mp4`, ne ze zdrojového souboru.** Je pak přesně
+tím snímkem, který divák uvidí (přechod neblikne) a je menší — detail, který kodek
+zahodil, není potřeba ukládat znovu.
 
 **`trailingSlash: 'always'` rozbije API route.** Formulář musí posílat na
 `/api/poptavka/` s lomítkem, jinak 404. Je to okomentované v `InquiryForm.astro`.

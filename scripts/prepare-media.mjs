@@ -67,12 +67,14 @@ for (const job of JOBS) {
     mp4,
   ]);
 
-  // Poster: první použitelný snímek, ve WebP a ve stejném poměru jako video.
+  // Poster: první použitelný snímek. Bere se z hotového `mp4`, ne ze zdroje —
+  // pak je to přesně ten snímek, který divák uvidí, takže přechod z posteru na
+  // video neblikne. Navíc je soubor menší (detail, který kodek zahodil, se
+  // nemusí znovu ukládat) a poster je LCP prvek stránky.
   const rawPoster = join(IMG_OUT, `${job.name}-poster.png`);
   execFileSync(ffmpeg, [
     '-y', '-hide_banner', '-loglevel', 'error',
-    '-ss', job.posterAt, '-i', src, '-frames:v', '1',
-    '-vf', `scale=-2:${job.height}`,
+    '-ss', job.posterAt, '-i', mp4, '-frames:v', '1',
     rawPoster,
   ]);
   await sharp(rawPoster).webp({ quality: 72 }).toFile(join(IMG_OUT, `${job.name}-poster.webp`));

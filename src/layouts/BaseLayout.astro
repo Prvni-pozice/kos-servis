@@ -1,19 +1,25 @@
 ---
-import '@fontsource/archivo/400.css';
-import '@fontsource/archivo/700.css';
-import '@fontsource/archivo/800.css';
-import '@fontsource/ibm-plex-sans/400.css';
-import '@fontsource/ibm-plex-sans/500.css';
-import '@fontsource/ibm-plex-sans/600.css';
-import '@fontsource/ibm-plex-mono/400.css';
-import '@fontsource/ibm-plex-mono/500.css';
-import '@fontsource/ibm-plex-mono/600.css';
 import '../styles/design-system.css';
 import '../styles/site.css';
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { company } from '../data/site';
+import { faces } from '../styles/fonts.js';
+
+/**
+ * @font-face schválně není v kritickém CSS. Prohlížeč si fonty vyžádá hned, jak
+ * je uvidí, a ještě před prvním vykreslením tím sebere pásmo posteru v hero,
+ * což je LCP prvek. Pravidla se proto vkládají až po `load` — text je od
+ * začátku čitelný náhradním fontem (`swap`) a pak se dosadí ostrý řez.
+ */
+const fontCss = faces
+  .map(
+    (f) =>
+      `@font-face{font-family:"${f.family}";font-style:normal;font-weight:${f.weight};` +
+      `font-display:swap;src:url("${f.url}") format("woff2")}`,
+  )
+  .join('');
 
 interface Props {
   title: string;
@@ -72,6 +78,25 @@ const orgSchema = {
       <slot />
     </main>
     <Footer />
+
+    <script is:inline define:vars={{ fontCss }}>
+      (() => {
+        const inject = () => {
+          const el = document.createElement('style');
+          el.textContent = fontCss;
+          document.head.appendChild(el);
+        };
+        // Nečinná chvíle po `load`, ne `load` samotný: na rychlé lince stihne
+        // `load` padnout ještě před prvním vykreslením a fonty by se zase
+        // protlačily před obrázek v hero.
+        const idle = () =>
+          'requestIdleCallback' in window
+            ? requestIdleCallback(inject, { timeout: 1500 })
+            : setTimeout(inject, 200);
+        if (document.readyState === 'complete') idle();
+        else window.addEventListener('load', idle, { once: true });
+      })();
+    </script>
 
     <script>
       // Scroll-reveal: sekce se objeví při vstupu do viewportu.

@@ -10,7 +10,13 @@ const isActive = (href: string) =>
 <header class="header">
   <div class="nav wrap" style="padding-inline: var(--gutter)">
     <a class="nav-brand" href="/">
-      <img src="/img/brand/logo-kos.png" alt={company.name} width="130" height="40" />
+      <img
+        src="/img/brand/logo-kos.webp"
+        alt={company.name}
+        width="130"
+        height="40"
+        fetchpriority="high"
+      />
     </a>
 
     <button

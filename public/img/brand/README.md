@@ -11,3 +11,17 @@ poškozený. Je potřeba ho stáhnout ručně z webového rozhraní a nahradit t
 
 `logo-kos-simple.png` (zjednodušená varianta) je v design projektu připravená
 jako budoucí nástupce — nasadit, až to klient odsouhlasí.
+
+## Co používá web
+
+Hlavička sází **`logo-kos.webp`** (390×120, zobrazuje se ve 130×40 — tedy 3× pro
+retinu). `logo-kos.png` je jen zdroj, ze kterého se WebP generuje; sám na web
+nechodí, protože má 181 kB proti 5,5 kB u WebP a je nad ohybem na každé stránce.
+
+Po výměně za ostré logo vygeneruj WebP znovu:
+
+```bash
+node -e "require('sharp')('public/img/brand/logo-kos.png').resize({width:390}).webp({quality:88}).toFile('public/img/brand/logo-kos.webp')"
+```
+
+Pokud dorazí SVG, použij rovnou to a WebP zahoď.

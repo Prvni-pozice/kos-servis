@@ -17,9 +17,10 @@ npm run build
 - **Astro 7**, statický build s Vercel adaptérem (`output: 'static'`).
   Server běží jen kvůli jediné route `/api/poptavka` (`prerender = false`) —
   poptávkový formulář přijímá přílohy (výkresy, fotky) do 10 MB, což staticky nejde.
-- **Fonty self-hostované** přes `@fontsource` (Archivo, IBM Plex Sans, IBM Plex Mono).
-  Design systém je importoval z fonts.googleapis.com — na produkci to nechceme
-  kvůli render-blocking requestu a GDPR.
+- **Fonty self-hostované a osekané na češtinu** (Archivo, IBM Plex Sans, IBM Plex Mono),
+  generuje `scripts/subset-fonts.mjs`. Design systém je importoval
+  z fonts.googleapis.com — na produkci to nechceme kvůli render-blocking requestu
+  a GDPR. Podrobnosti níže.
 - **CSS inline do HTML** (`inlineStylesheets: 'always'`) — žádný render-blocking request.
 - **`trailingSlash: 'always'`** — kanonické URL i sitemapa musí sedět na jeden tvar.
 
@@ -51,6 +52,27 @@ Klíčová pravidla systému:
 - Nulové zaoblení, vlásková linka místo stínů, `.linegrid` jako hlavní layout.
 - Data (parametry strojů, telefony, ceny) se sázejí v IBM Plex Mono.
 - Žádné tmavé „industrial“ téma, žádné gradienty a stock fotky.
+
+## Fonty
+
+Generuje `scripts/subset-fonts.mjs` — stáhne plné TTF z Google Fonts, ořízne je na
+znaky, které web potřebuje, a uloží po jednom souboru na řez do `src/styles/fonts/`
+(9 souborů, ~110 kB; přes `@fontsource` to bylo 16 souborů a 260 kB, protože latin
+a latin-ext jsou tam zvlášť). Vedle toho vypíše `src/styles/fonts.js` se seznamem
+řezů — soubory jsou v `src/`, aby jim Vite dal hash a trvalou cache.
+
+```bash
+node scripts/subset-fonts.mjs           # přegeneruje fonty
+node scripts/subset-fonts.mjs --check   # ověří, že dist/ nesází znak mimo subset
+```
+
+**`--check` pouštěj po každé větší změně textů.** Znak mimo subset se vykreslí
+náhradním fontem, což je vidět, ale build to nenahlásí.
+
+`@font-face` se **záměrně nevkládá do kritického CSS** — vkládá ho skript
+v `BaseLayout.astro` až po `load`. Jinak si prohlížeč fonty vyžádá dřív než
+poster v hero (to je LCP prvek) a mobilní Lighthouse spadne z 100 na 86.
+Text je od začátku čitelný náhradním fontem (`font-display: swap`).
 
 ## Média
 

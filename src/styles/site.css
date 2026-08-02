@@ -76,11 +76,26 @@
 .crumbs [aria-current='page'] { color: var(--color-navy); }
 
 /* — hero — */
+/* Výška se počítá z šířky ručně, ne přes `aspect-ratio`. Kombinace
+   `aspect-ratio` + `min-height` totiž podle specifikace přenese minimum i do
+   druhé osy: 400px × 21/9 = min-width 933px. Hero pak měl pevnou šířku bez
+   ohledu na viewport a mezi ~700 a ~1000 px se stránka posouvala do boku.
+   Poměr a minimum se dají přenastavit proměnnými (viz `.hero-band`). */
 .hero {
-  position: relative; aspect-ratio: 21 / 9; min-height: 400px;
-  background: var(--color-navy); overflow: hidden;
+  --hero-ratio: 21 / 9;
+  --hero-min: 400px;
+  position: relative; overflow: hidden;
+  background: var(--color-navy);
+  height: max(
+    var(--hero-min),
+    calc((min(100vw, var(--maxw)) - 2 * var(--gutter)) / (var(--hero-ratio)))
+  );
 }
-@media (max-width: 700px) { .hero { aspect-ratio: 4 / 3; min-height: 340px; } }
+@media (max-width: 700px) { .hero { --hero-ratio: 4 / 3; --hero-min: 340px; } }
+
+/* Pruh na kontaktu — nižší než hero na úvodu. */
+.hero-band { --hero-ratio: 21 / 7; --hero-min: 300px; }
+@media (max-width: 700px) { .hero-band { --hero-ratio: 4 / 3; --hero-min: 300px; } }
 .hero video, .hero .hero-poster {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; opacity: 0; transition: opacity 1.2s ease;
