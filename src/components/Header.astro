@@ -2,7 +2,7 @@
 import { nav, intake, company } from '../data/site';
 
 const here = Astro.url.pathname;
-/** Aktivní je i podstránka — /sluzby/paleni-3d-plazmou/ zvýrazní „Služby“. */
+/** Aktivní je i podstránka – /sluzby/paleni-3d-plazmou/ zvýrazní „Služby“. */
 const isActive = (href: string) =>
   href === '/' ? here === '/' : here.startsWith(href);
 ---

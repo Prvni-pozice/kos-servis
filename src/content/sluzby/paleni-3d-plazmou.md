@@ -3,11 +3,13 @@ title: 3D pálení plazmou
 order: 9
 eyebrow: Pálení plechů
 excerpt: Výpalky dle výkresové dokumentace, 3D úkosy pro přípravu svarových spojů.
+metaDescription: >-
+  Výpalky z konstrukčních, vysokopevnostních i otěruvzdorných plechů. Pálicí stůl 2 500 × 6 500 mm, tloušťka do 200 mm, 3D úkosy. Kusově i sériově.
 intro: >-
   Výpalky na míru z konstrukčních, vysokopevnostních i otěruvzdorných plechů
   (HARDOX). Kusová i sériová výroba, 3D úkosy pro přípravu svarových spojů.
   Pálicí stůl 2 500 × 6 500 mm, materiál do tloušťky 200 mm.
-seoTitle: 3D pálení plazmou — výpalky na míru, HARDOX, úkosy
+seoTitle: 3D pálení plazmou – výpalky na míru, HARDOX, úkosy
 tags: [HARDOX, 3D úkosy, Kusová i sériová výroba]
 scope:
   - Pálení plechů dle výkresové dokumentace
@@ -56,9 +58,9 @@ specs:
         value: max. 130 mm
   - title: CNC vrtací jednotka
     rows:
-      - label: Průměr vrtáků — běžná ocel
+      - label: Průměr vrtáků – běžná ocel
         value: 5 – 32 mm
-      - label: Průměr vrtáků — nerezová ocel
+      - label: Průměr vrtáků – nerezová ocel
         value: 6 – 18 mm
       - label: Maximální otáčky
         value: 4 000 ot/min
@@ -82,7 +84,7 @@ opotřebitelné břity a segmenty exponovaných ploch.
 ## Proč 3D úkosy šetří čas
 
 Úkosová hlava připraví svarovou hranu rovnou při pálení. Díl přijde na svařovnu
-hotový — bez ručního broušení hran, které u větších sérií zabere víc času než
+hotový – bez ručního broušení hran, které u větších sérií zabere víc času než
 samotné pálení.
 
 ## Návaznost výroby
@@ -92,6 +94,6 @@ Dodáváme proto nejen výpalky, ale i polotovary a připravené svařence.
 
 ## Co od vás potřebujeme
 
-Podklady stačí ve formě výkresu (**DWG, DXF nebo PDF**) nebo i fyzického vzoru —
+Podklady stačí ve formě výkresu (**DWG, DXF nebo PDF**) nebo i fyzického vzoru –
 dokumentaci umí připravit náš konstruktér. Vrtací hlava umožňuje umístit až 5 kusů
 nástrojů, takže otvory, zahloubení i závity vzniknou v jedné operaci.

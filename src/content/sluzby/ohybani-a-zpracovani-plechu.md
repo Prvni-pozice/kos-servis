@@ -3,6 +3,8 @@ title: Ohýbání, rovnání a zpracování plechů
 order: 8
 eyebrow: Zpracování plechů
 excerpt: CNC ohraňovací lis 500 t, rovnací lis 180 t. Konstrukční i otěruvzdorné plechy.
+metaDescription: >-
+  Ohýbáme konstrukční plechy do 20 mm a otěruvzdorné do 15 mm. CNC ohraňovací lis 3 600 mm a 500 tun, rovnací lis 180 tun srovná, co se zkroutilo.
 intro: >-
   CNC ohraňovací lis Rico PRCB 35500 s pracovní délkou 3 600 mm a lisovací silou
   500 tun ohýbá konstrukční plechy do 20 mm a otěruvzdorné a pevnostní plechy
@@ -44,17 +46,17 @@ related: [paleni-3d-plazmou, oteruvzdorne-materialy-a-navarovani, svarovani-a-re
 inquirySubject: Výroba
 ---
 
-Ohraňovací lis o síle 500 tun jsme pořizovali kvůli otěruvzdorným plechům — ty
+Ohraňovací lis o síle 500 tun jsme pořizovali kvůli otěruvzdorným plechům – ty
 kladou při ohybu mnohem větší odpor než běžná konstrukční ocel a na slabším stroji
 je ohnout nelze. Díky tomu dodáváme HARDOX díly ohnuté, ne jen vypálené.
 
 ## Od výpalku po hotový svařenec
 
 Pálení, ohýbání a svařování na sebe navazují v jedné dílně. Objednáte-li výpalky,
-můžeme je rovnou ohnout a svařit — dostanete hotový díl, ne polotovar k dalšímu
+můžeme je rovnou ohnout a svařit – dostanete hotový díl, ne polotovar k dalšímu
 zpracování jinde.
 
 ## Rovnání
 
 Rovnací lis využíváme hlavně u konstrukcí zdeformovaných provozem nebo teplem ze
-svařování — nosníky, rámy, hřídele a dlouhé díly.
+svařování – nosníky, rámy, hřídele a dlouhé díly.

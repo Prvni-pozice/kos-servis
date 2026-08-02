@@ -3,9 +3,11 @@ title: Opravy strojních zařízení
 order: 1
 eyebrow: Servis strojů a technologií
 excerpt: Velké strojní celky, výrobní technologie, diagnostika závad a servis provozních částí.
+metaDescription: >-
+  Opravy velkých strojních celků i jednotlivých uzlů výrobních technologií. Najdeme příčinu závady, díl opravíme nebo vyrobíme a stroj vrátíme do provozu.
 intro: >-
   Opravujeme velké strojní celky i jednotlivé uzly výrobních technologií. Najdeme
-  příčinu závady, opravíme nebo vyrobíme poškozený díl a stroj vrátíme do provozu —
+  příčinu závady, opravíme nebo vyrobíme poškozený díl a stroj vrátíme do provozu –
   včetně svařování, obrábění a renovace přímo u nás v dílně.
 seoTitle: Opravy strojních zařízení a velkých strojních celků
 tags: [Diagnostika závad, Renovace dílů, Průmysl a zemědělství]
@@ -20,7 +22,7 @@ related: [opravy-hydraulickych-valcu, svarovani-a-renovace, strojni-obrabeni]
 inquirySubject: Oprava
 ---
 
-Stroj se nejčastěji zastaví kvůli jedinému dílu — a ten se buď dá opravit, nebo je
+Stroj se nejčastěji zastaví kvůli jedinému dílu – a ten se buď dá opravit, nebo je
 rychlejší vyrobit nový. Obojí zvládneme na místě: máme svařovnu, obrábění i pálení
 plechů pod jednou střechou, takže mezi jednotlivými operacemi nikam nevozíte materiál.
 
@@ -35,5 +37,5 @@ plechů pod jednou střechou, takže mezi jednotlivými operacemi nikam nevozít
 
 Výrobní technologie v průmyslových provozech, stroje v zemědělských podnicích,
 lesnickou a dřevozpracující techniku a mobilní stroje ve stavebnictví. Pokud si
-nejste jistí, jestli je oprava v našich možnostech, ozvěte se — poradíme rovnou
+nejste jistí, jestli je oprava v našich možnostech, ozvěte se – poradíme rovnou
 po telefonu.

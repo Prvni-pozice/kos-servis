@@ -3,6 +3,8 @@ title: Opravy zdvihacích zařízení a ocelových konstrukcí
 order: 4
 eyebrow: Zdvihací zařízení
 excerpt: Zdvihací zařízení, ocelové konstrukce, kontroly a opravy nosných částí.
+metaDescription: >-
+  Oprávnění na opravy i výrobu zdvihacích zařízení a ocelových konstrukcí. Sloupové jeřáby na míru, opravy výsuvníků a hydraulických ruk.
 intro: >-
   Firma vlastní oprávnění na opravy i výrobu zdvihacích zařízení a ocelových
   konstrukcí. Vyrábíme sloupové jeřáby podle potřeb zákazníka, opravujeme
@@ -21,7 +23,7 @@ related: [svarovani-a-renovace, opravy-hydraulickych-valcu, ohybani-a-zpracovani
 inquirySubject: Oprava
 ---
 
-Zdvihací zařízení jsou vyhrazená technická zařízení — opravovat je smí jen ten, kdo
+Zdvihací zařízení jsou vyhrazená technická zařízení – opravovat je smí jen ten, kdo
 na to má oprávnění. My ho máme, včetně vyškolených svářečů na nosné konstrukce.
 
 ## Co pro zákazníky děláme

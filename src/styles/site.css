@@ -180,7 +180,7 @@
 }
 .timeline .year {
   font-family: var(--font-mono); font-weight: 600;
-  font-size: 18px; color: var(--color-emergency);
+  font-size: 18px; color: var(--color-navy);  /* akcent zustava jen pro CTA */
 }
 .timeline .text { font-size: 16px; color: #37475b; }
 @media (max-width: 640px) {
@@ -245,8 +245,41 @@
 .prose p, .prose li { font-size: 16px; color: #37475b; }
 .prose ul { padding-left: 1.1em; }
 .prose li { margin-bottom: 6px; }
-.prose li::marker { color: var(--color-emergency-bright); }
+.prose li::marker { color: var(--color-steel); }  /* akcent zustava jen pro CTA */
 .prose strong { color: var(--color-navy); }
 
 /* — mapa — */
 .map-frame { width: 100%; aspect-ratio: 16 / 10; border: 1px solid var(--color-line); }
+/* Plocha místo mapy, dokud si ji návštěvník nevyžádá — viz komentář v kontakt.astro. */
+.map-load {
+  width: 100%; aspect-ratio: 16 / 10; border: 1px solid var(--color-line);
+  background: var(--color-mist); cursor: pointer; display: flex;
+  flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  font: inherit; color: var(--color-navy); transition: background .2s;
+}
+.map-load:hover { background: var(--color-neutral-200); }
+.map-load .map-pin { color: var(--color-steel); }
+.map-load .map-load-label { font-family: var(--font-heading); font-weight: 700; font-size: 18px; }
+.map-load .map-load-note {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--color-steel);
+}
+.map-alt { font-size: 14px; color: var(--color-steel); margin-top: 10px; }
+
+/* Skryté jen vizuálně. `display: none` vyřadí prvek z pořadí tabulátoru —
+   input[type=file] u přílohy pak nešel ovládat klávesnicí vůbec. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.sr-only:focus-visible + .file-drop {
+  outline: 2px solid var(--color-emergency-bright); outline-offset: 2px;
+}
+
+/* Na úzkých telefonech nesmí dlouhé CTA roztáhnout mřížku. Telefonní číslo drží
+   pohromadě nezlomitelnými mezerami (viz scripts/typo-cz.mjs), takže se tlačítko
+   nesmí zúžit pod jeho šířku — místo toho se zalomí text před číslem. */
+@media (max-width: 420px) {
+  .split > *, .linegrid > * { min-width: 0; }
+  .btn { max-width: 100%; white-space: normal; text-align: center; }
+}

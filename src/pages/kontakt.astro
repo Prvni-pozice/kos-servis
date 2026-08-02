@@ -8,6 +8,7 @@ import SectionHead from '../components/SectionHead.astro';
 import { company, people, intake } from '../data/site';
 
 const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${company.geo.lng - 0.02}%2C${company.geo.lat - 0.012}%2C${company.geo.lng + 0.02}%2C${company.geo.lat + 0.012}&layer=mapnik&marker=${company.geo.lat}%2C${company.geo.lng}`;
+const mapLink = `https://www.openstreetmap.org/?mlat=${company.geo.lat}&mlon=${company.geo.lng}#map=15/${company.geo.lat}/${company.geo.lng}`;
 ---
 
 <BaseLayout
@@ -21,7 +22,7 @@ const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${company.g
         video="/video/kontakt.mp4"
         poster="/img/video/kontakt-poster.webp"
         slogans={[
-          { kicker: 'Chyšná 52 · 395 01 Pacov · sjezd z D1, 66. km', line: 'Kde nás najdete' },
+          { kicker: 'Chyšná 52 · 395 01 Chyšná · sjezd z D1, 66. km', line: 'Kde nás najdete' },
         ]}
       />
     </div>
@@ -34,7 +35,7 @@ const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${company.g
       <h1 style="max-width: 24ch">Ozvěte se přímo tomu, kdo řeší váš problém</h1>
       <p style="font-size: 18px; color: #37475b; max-width: 62ch; margin-top: 18px">
         Kontakty jsou seřazené podle toho, s čím voláte. Když si nejste jistí, zavolejte
-        na příjem oprav — tam vás nasměrují dál.
+        na příjem oprav – tam vás nasměrují dál.
       </p>
     </div>
   </section>
@@ -57,26 +58,59 @@ const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${company.g
             <li><span class="lbl">Adresa</span><span class="val">{company.street}, {company.city}</span></li>
             <li><span class="lbl">IČ</span><span class="val">{company.ico}</span></li>
             <li><span class="lbl">DIČ</span><span class="val">{company.dic}</span></li>
-            <li><span class="lbl">Telefon / fax</span><span class="val">{company.phone}</span></li>
+            <li><span class="lbl">Obchodní rejstřík</span><span class="val">{company.registration}</span></li>
+            <li>
+              <span class="lbl">Telefon</span>
+              <span class="val"><a href={`tel:${company.phoneHref}`}>{company.phone}</a></span>
+            </li>
             <li><span class="lbl">E-mail</span><span class="val">{company.email}</span></li>
-            <li><span class="lbl">Servisní dojezd</span><span class="val">cca 100 km</span></li>
+            <li><span class="lbl">Servisní dojezd</span><span class="val">do 100 km</span></li>
           </ul>
           <p style="font-size: 15px; color: #37475b; margin-top: 22px; max-width: 52ch">
-            Areál leží těsně u dálnice D1 na 66. kilometru — z Prahy i z Brna jste
+            Areál leží těsně u dálnice D1 na 66. kilometru – z Prahy i z Brna jste
             u nás bez zajížděk. Zásilky a materiál přijímáme v pracovní dny.
           </p>
         </div>
-        <iframe
-          class="map-frame"
-          src={mapSrc}
-          title="Mapa — KOS servis s.r.o., Chyšná 52"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+        {/*
+          Mapa se načítá až na kliknutí. Vložený rám z OpenStreetMap stáhne
+          přes 290 kB cizího JS – sráželo to výkon stránky o osm bodů a hlavně
+          to znamenalo požadavek na cizí server dřív, než o něj kdokoliv požádal.
+          Zbytek webu nedělá jediný externí request a mapa v tom nemá dělat výjimku.
+        */}
+        <div class="map-box">
+          <button type="button" class="map-load" data-map-src={mapSrc}>
+            <svg class="map-pin" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"
+              />
+            </svg>
+            <span class="map-load-label">Zobrazit mapu</span>
+            <span class="map-load-note">Načte se z OpenStreetMap</span>
+          </button>
+          <p class="map-alt">
+            Nebo rovnou <a href={mapLink} target="_blank" rel="noopener">otevřít v mapách</a>.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  // Mapa na kliknutí – teprve tady se sáhne na cizí doménu.
+  const mapBtn = document.querySelector<HTMLButtonElement>('.map-load');
+  mapBtn?.addEventListener('click', () => {
+    const src = mapBtn.dataset.mapSrc;
+    if (!src) return;
+    const frame = document.createElement('iframe');
+    frame.className = 'map-frame';
+    frame.src = src;
+    frame.title = 'Mapa – KOS servis s.r.o., Chyšná 52';
+    frame.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+    mapBtn.replaceWith(frame);
+  });
+</script>
 
 <script>
   // Odkaz s ?typ=… ze stránky služby předvyplní typ poptávky.

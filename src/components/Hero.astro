@@ -8,9 +8,9 @@ interface Props {
   video: string;
   poster: string;
   slogans: Slogan[];
-  /** Modrý tón sjednotí záběry s brandem — na kontaktu se nechává vypnutý. */
+  /** Modrý tón sjednotí záběry s brandem – na kontaktu se nechává vypnutý. */
   tone?: boolean;
-  /** Nižší pruh místo plného hero — používá kontakt. */
+  /** Nižší pruh místo plného hero – používá kontakt. */
   band?: boolean;
   intervalSeconds?: number;
 }
@@ -29,7 +29,7 @@ const { video, poster, slogans, tone = true, band = false, intervalSeconds = 6 }
     decoding="async"
     data-hero-poster
   />
-  {/* `src` se doplňuje až ze skriptu — jinak si video ukousne pásmo ještě před LCP. */}
+  {/* `src` se doplňuje až ze skriptu – jinak si video ukousne pásmo ještě před LCP. */}
   <video
     poster={poster}
     muted
@@ -71,7 +71,7 @@ const { video, poster, slogans, tone = true, band = false, intervalSeconds = 6 }
     const dashes = [...hero.querySelectorAll('[data-hero-dash]')];
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Video je ozdoba, ne obsah — poster nese sdělení sám. Proto se stahuje až
+    // Video je ozdoba, ne obsah – poster nese sdělení sám. Proto se stahuje až
     // po `load` a v nečinné chvíli: dřív by soupeřilo o pásmo s posterem, který
     // je LCP prvek stránky. Na úsporném režimu a pomalé lince se nepouští vůbec.
     const conn = navigator.connection;

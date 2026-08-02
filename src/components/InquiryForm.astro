@@ -5,20 +5,29 @@ interface Props {
   /** Předvyplněný typ poptávky podle stránky, ze které formulář vychází. */
   subject?: string;
   title?: string;
+  /** Kariera sbira zivotopisy, ne vykresy. */
+  fileLabel?: string;
+  accept?: string;
 }
 
-const { subject, title = 'Poptávkový formulář' } = Astro.props;
+const {
+  subject,
+  title = 'Poptávkový formulář',
+  /** Kariéra sbírá životopisy, ne výkresy – popisek i povolené přípony se liší. */
+  fileLabel = '+ Přiložit výkres nebo fotku (do 10 MB)',
+  accept = '.pdf,.dwg,.dxf,.jpg,.jpeg,.png,.heic,.zip',
+} = Astro.props;
 const selected = subject && inquiryTypes.includes(subject as never) ? subject : inquiryTypes[0];
 ---
 
 <div style="border: 1px solid var(--color-line); padding: 30px; background: var(--color-paper)">
-  <h3 style="margin-bottom: 18px">{title}</h3>
+  <h2 class="h3" style="margin-bottom: 18px">{title}</h2>
 
   <!-- Koncové lomítko je povinné: web běží s trailingSlash: 'always',
        bez něj by POST skončil na 404. -->
   <form id="poptavka" method="POST" action="/api/poptavka/" enctype="multipart/form-data" novalidate>
-    <div class="form-msg ok" data-ok hidden></div>
-    <div class="form-msg err" data-err hidden></div>
+    <div class="form-msg ok" data-ok hidden role="status" aria-live="polite" tabindex="-1"></div>
+    <div class="form-msg err" data-err hidden role="alert" aria-live="assertive" tabindex="-1"></div>
 
     <div class="field">
       <label for="typ">Typ poptávky</label>
@@ -49,10 +58,10 @@ const selected = subject && inquiryTypes.includes(subject as never) ? subject : 
         name="priloha"
         type="file"
         multiple
-        accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png,.heic,.zip"
-        style="display: none"
+        accept={accept}
+        class="sr-only"
       />
-      <label class="file-drop" for="priloha">+ Přiložit výkres nebo fotku (do 10 MB)</label>
+      <label class="file-drop" for="priloha">{fileLabel}</label>
       <div class="file-list" data-files></div>
     </div>
 
@@ -63,7 +72,7 @@ const selected = subject && inquiryTypes.includes(subject as never) ? subject : 
     </div>
 
     <p class="form-note">
-      Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky.
+      Údaje z formuláře použijeme jen k vyřízení vaší poptávky.
       Podrobnosti v <a href="/ochrana-osobnich-udaju/">zásadách zpracování osobních údajů</a>.
     </p>
 
@@ -122,15 +131,23 @@ const selected = subject && inquiryTypes.includes(subject as never) ? subject : 
     try {
       const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data.error ?? 'Odeslání se nezdařilo.');
+      // Nestačí `res.ok`: když SSR route neběží, vrátí se statická 404 stránka
+      // se stavem 200 a formulář by ohlásil úspěch, ačkoliv nic neodešlo.
+      if (!res.ok || data?.ok !== true) throw new Error(data?.error ?? 'Odeslání se nezdařilo.');
       form.reset();
       if (fileList) fileList.textContent = '';
       ok.textContent = 'Děkujeme, poptávku máme. Ozveme se obvykle do jednoho pracovního dne.';
       ok.hidden = false;
+      // Hláška je nad poli, tlačítko dole – bez posunu si jí uživatel nevšimne.
+      ok.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      ok.focus();
     } catch (e2) {
-      err.textContent =
-        (e2 as Error).message +
-        ' Zkuste to prosím znovu, nebo nám zavolejte — kontakty jsou vedle formuláře.';
+      // Hlášky z prohlížeče jsou anglicky (typicky „Failed to fetch“) –
+      // uživateli je neukazujeme.
+      const msg = (e2 as Error).message;
+      err.textContent = /[ěščřžýáíéúůťďňó]/i.test(msg)
+        ? msg + ' Zkuste to prosím znovu, nebo nám zavolejte – kontakty jsou vedle formuláře.'
+        : 'Poptávku se nepodařilo odeslat, nejspíš vypadlo spojení. Zkuste to prosím znovu, nebo nám zavolejte.';
       err.hidden = false;
     } finally {
       if (button) {

@@ -11,17 +11,17 @@ const sluzby = (await getCollection('sluzby')).sort((a, b) => a.data.order - b.d
 
 <BaseLayout
   title="Služby"
-  description="Servis strojních zařízení, hydrauliky a mobilní techniky, svařování a renovace, strojní obrábění, zpracování plechů a 3D pálení plazmou. Jedna dílna, devět řemesel."
+  description="Servis strojních zařízení a hydrauliky, svařování a renovace, strojní obrábění, zpracování plechů a 3D pálení plazmou. Jedna dílna, devět řemesel."
 >
   <section class="section" style="padding-bottom: clamp(40px, 5vw, 64px)">
     <div class="wrap">
       <Breadcrumbs items={[{ label: 'Služby' }]} />
       <div class="eyebrow"><span class="idx">01</span> Služby</div>
-      <h1 style="max-width: 20ch">Opravíme cokoliv — a co je potřeba, vyrobíme</h1>
+      <h1 style="max-width: 20ch">Opravíme cokoliv – a co je potřeba, vyrobíme</h1>
       <p style="font-size: 18px; color: #37475b; max-width: 62ch; margin-top: 18px">
         Servis strojních zařízení, hydrauliky a mobilní techniky, svařování a renovace,
         strojní obrábění, zpracování plechů a 3D pálení plazmou. Jedna dílna, devět
-        řemesel — od diagnostiky závady po dodávku hotového svařence.
+        řemesel – od diagnostiky závady po dodávku hotového svařence.
       </p>
     </div>
   </section>
@@ -47,7 +47,7 @@ const sluzby = (await getCollection('sluzby')).sort((a, b) => a.data.order - b.d
         <div class="eyebrow"><span class="idx">02</span> Od opravy k výrobě</div>
         <h2 style="max-width: 22ch">Oprava často končí výrobou lepšího dílu</h2>
         <p style="font-size: 17px; color: #37475b; max-width: 58ch">
-          Když se díl nevyplatí opravovat, vyrobíme nový — vypálíme, ohneme, svaříme
+          Když se díl nevyplatí opravovat, vyrobíme nový – vypálíme, ohneme, svaříme
           a obrobíme pod jednou střechou. U exponovaných dílů rovnou z otěruvzdorného
           materiálu, aby příště vydržel déle.
         </p>
@@ -62,5 +62,5 @@ const sluzby = (await getCollection('sluzby')).sort((a, b) => a.data.order - b.d
     </div>
   </section>
 
-  <CtaBand kicker="Stojí vám stroj?" title="Zavolejte Příjem oprav — domluvíme postup hned" />
+  <CtaBand kicker="Stojí vám stroj?" title="Zavolejte Příjem oprav – domluvíme postup hned" />
 </BaseLayout>

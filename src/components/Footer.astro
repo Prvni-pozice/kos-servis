@@ -2,7 +2,7 @@
 import { company, nav, footerDocs, intake } from '../data/site';
 
 const year = new Date().getFullYear();
-/** V patičce nechceme Úvod ani Kontakt — ten má vlastní sloupec. */
+/** V patičce nechceme Úvod ani Kontakt – ten má vlastní sloupec. */
 const links = nav.filter((n) => n.href !== '/' && n.href !== '/kontakt/');
 ---
 
@@ -14,30 +14,31 @@ const links = nav.filter((n) => n.href !== '/' && n.href !== '/kontakt/');
       </div>
       <p style="font-size: 14px; margin-top: 12px; max-width: 34ch; color: #9fb6cd">
         Strojní opravy, zakázková výroba a 3D pálení plazmou. Chyšná u Pacova,
-        Vysočina — dobrá dostupnost z D1.
+        Vysočina – dobrá dostupnost z D1.
       </p>
     </div>
 
     <div>
-      <h4>Web</h4>
+      <h2 class="h4">Web</h2>
       <ul>
         {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
       </ul>
     </div>
 
     <div>
-      <h4>Dokumenty</h4>
+      <h2 class="h4">Dokumenty</h2>
       <ul>
         {footerDocs.map((d) => <li><a href={d.href}>{d.label}</a></li>)}
       </ul>
     </div>
 
     <div>
-      <h4>Sídlo</h4>
+      <h2 class="h4">Sídlo</h2>
       <ul>
         <li>{company.name}</li>
         <li>{company.street}, {company.city}</li>
         <li>IČ {company.ico} · DIČ {company.dic}</li>
+        <li>{company.registration}</li>
         <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
         <li>
           <a href={`tel:${intake.phoneHref}`}>{intake.label}: {intake.phone}</a>

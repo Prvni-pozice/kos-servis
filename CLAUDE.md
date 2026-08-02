@@ -114,6 +114,26 @@ rozejdou. Zdroje jsou v `design-sync/components/`, postup a pravidla v
 
 Zatím pushnuto: `gallery`, `timeline`, `breadcrumbs`, `navigation-mobile`, `form-states`.
 
+## Předávací kontrola
+
+Před odesláním webu klientovi spusť skill `pre-launch-review` (katalog je
+v `/data/bot/vps-setup/skills/`). Poslední běh: 2. 8. 2026, výsledky v `review/`.
+
+Dvě věci z něj platí trvale:
+
+- `node scripts/subset-fonts.mjs --check` po každé změně textů — ohlásí znak,
+  který v subsetu fontu chybí.
+- Kontrola vodorovného přetečení na šířkách 375–1920 px. Hero mělo pevnou šířku
+  933 px a na běžném monitoru to nebylo vidět; chyby se schovávají mezi breakpointy.
+
+## Česká typografie
+
+Nezlomitelné mezery a pomlčky řeší `scripts/typo-cz.mjs` jako krok po buildu —
+sahá jen na textové uzly hotového HTML, ne na značky, atributy ani skripty.
+**Do zdrojů `&nbsp;` nepiš**, rozsypané po třiceti souborech to nikdo neudrží.
+Pravidla: předložky k s v z o u a i, číslo + jednotka, tisíce, telefony, zkratky,
+rozsahy bez mezer a em dash → pomlčka.
+
 ## Dokumentace
 
 Než začneš cokoliv odvozovat, přečti si tohle:

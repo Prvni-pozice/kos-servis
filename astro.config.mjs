@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
+import typografieCz from './scripts/typo-cz.mjs';
 
 /* Mapa starých URL → nové.
  *
@@ -40,7 +41,12 @@ export default defineConfig({
   site: 'https://www.kos-servis.cz',
   output: 'static',
   adapter: vercel(),
-  integrations: [sitemap()],
+  integrations: [
+    // Právní stránky mají `noindex` — v sitemapě by to byl protichůdný signál.
+    sitemap({ filter: (page) => !/(obchodni-podminky|ochrana-osobnich-udaju)/.test(page) }),
+    // České typografické mezery a pomlčky nad hotovým HTML — viz scripts/typo-cz.mjs.
+    typografieCz(),
+  ],
   // Záměrně 'ignore', ne 'always'. Při 'always' hostitel nejdřív znormalizuje
   // adresu (308 na verzi s lomítkem) a teprve pak hledá redirect pravidlo —
   // staré adresy bez lomítka jako /opravy by tak vždy skončily na 404.

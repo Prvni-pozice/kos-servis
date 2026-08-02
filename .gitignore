@@ -24,3 +24,6 @@ credentials.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Strojový výstup předávací kontroly — reporty v review/*.md stačí
+review/phase0.json

@@ -22,9 +22,9 @@ const fill = (3 - (used % 3)) % 3;
     <div class={`machine${m.feature ? ' feature dark' : ''}`}>
       <div class="h6">{m.group}</div>
       {m.feature ? (
-        <h3 style="font-size: 26px; margin-bottom: 16px">{m.name}</h3>
+        <h2 style="font-size: 26px; margin-bottom: 16px">{m.name}</h2>
       ) : (
-        <h4 style="margin-bottom: 14px">{m.name}</h4>
+        <h3 class="h4" style="margin-bottom: 14px">{m.name}</h3>
       )}
       <ul class="spec">
         {m.specs.map((s) => (
@@ -42,7 +42,7 @@ const fill = (3 - (used % 3)) % 3;
     <div class="machine" style={`grid-column: span ${fill}; display: flex; flex-direction: column; justify-content: center`}>
       <div class="h6">Nevíte, jestli se váš díl vejde?</div>
       <p style="font-size: 15px; color: #42566b; margin: 0 0 16px; max-width: 44ch">
-        Řekněte nám rozměry a materiál — hned vám povíme, na kterém stroji to uděláme
+        Řekněte nám rozměry a materiál – hned vám povíme, na kterém stroji to uděláme
         a jestli navazuje ohýbání nebo svařování.
       </p>
       <div>

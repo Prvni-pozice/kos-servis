@@ -43,12 +43,12 @@ const dalsi = [
         eyebrow="Plazmové středisko"
         idx="02"
         title="Messer OmniMat L 5600 v detailu"
-        lead="Kompletní parametry pálicího stolu, hořáků a vrtací jednotky — podle nich poznáte, jestli váš díl vypálíme."
+        lead="Kompletní parametry pálicího stolu, hořáků a vrtací jednotky – podle nich poznáte, jestli váš díl vypálíme."
       />
       <div class="linegrid cols-2">
         {plasmaSpecs.map((g) => (
           <div style="padding: 26px 24px">
-            <h4 style="margin-bottom: 14px">{g.title}</h4>
+            <h3 class="h4" style="margin-bottom: 14px">{g.title}</h3>
             <ul class="spec">
               {g.rows.map((r) => (
                 <li><span class="lbl">{r.label}</span><span class="val">{r.value}</span></li>
@@ -69,7 +69,7 @@ const dalsi = [
       <div class="linegrid cols-2">
         {dalsi.map((b) => (
           <div style="padding: 26px 24px">
-            <h4 style="margin-bottom: 14px">{b.title}</h4>
+            <h3 class="h4" style="margin-bottom: 14px">{b.title}</h3>
             <ul class="spec">
               {b.items.map((i) => <li><span class="lbl">{i}</span></li>)}
             </ul>

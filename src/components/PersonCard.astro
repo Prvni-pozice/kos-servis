@@ -23,6 +23,7 @@ const telHref = person.phone?.replace(/\s/g, '');
         <a href={`mailto:${person.email}`}>{person.email}</a>
       </>
     )}
-    {person.todo && <span class="todo">{person.todo}</span>}
+    {/* `todo` je interní poznámka pro nás, ne pro návštěvníka – jen ve vývoji. */}
+    {import.meta.env.DEV && person.todo && <span class="todo">{person.todo}</span>}
   </div>
 </div>

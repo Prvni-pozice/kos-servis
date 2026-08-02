@@ -32,4 +32,4 @@ const schema = {
     </>
   ))}
 </nav>
-<set:html value={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

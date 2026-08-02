@@ -7,15 +7,18 @@ interface Props {
   title: string;
   body: string;
   cta?: string;
+  /** Úroveň nadpisu – karta musí sedět do osnovy stránky, kde stojí. */
+  level?: 2 | 3;
 }
 
-const { href, index, kicker, title, body, cta = 'Detail →' } = Astro.props;
+const { href, index, kicker, title, body, cta = 'Detail →', level = 2 } = Astro.props;
+const Title = `h${level}` as 'h2' | 'h3';
 const label = kicker ?? (index !== undefined ? `/ ${String(index).padStart(2, '0')}` : undefined);
 ---
 
 <a class="card" href={href}>
   {label && <span class="card-kicker">{label}</span>}
-  <span class="card-title">{title}</span>
+  <Title class="card-title">{title}</Title>
   <p class="card-body">{body}</p>
   <span class="card-meta">{cta}</span>
 </a>

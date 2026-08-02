@@ -61,9 +61,9 @@ const pozice = [
       <div class="linegrid cols-2">
         {pozice.map((p) => (
           <div style="padding: 30px 28px">
-            <h3 style="margin-bottom: 18px">{p.title}</h3>
+            <h2 class="h3" style="margin-bottom: 18px">{p.title}</h2>
 
-            <h4 class="h6">Náplň práce</h4>
+            <h3 class="h6">Náplň práce</h3>
             <ul style="list-style: none; margin: 0 0 22px; padding: 0">
               {p.napln.map((i) => (
                 <li style="display: flex; gap: 12px; padding: 6px 0; font-size: 15px">
@@ -73,7 +73,7 @@ const pozice = [
               ))}
             </ul>
 
-            <h4 class="h6">Co očekáváme</h4>
+            <h3 class="h6">Co očekáváme</h3>
             <ul class="spec">
               {p.pozadavky.map((i) => <li><span class="lbl">{i}</span></li>)}
             </ul>
@@ -94,10 +94,15 @@ const pozice = [
         eyebrow="Ozvěte se"
         idx="02"
         title="Pošlete životopis rovnou odsud"
-        lead="Nevidíte mezi pozicemi tu svou? Napište nám i tak — strojaře hledáme průběžně."
+        lead="Nevidíte mezi pozicemi tu svou? Napište nám i tak – strojaře hledáme průběžně."
       />
       <div style="max-width: 620px">
-        <InquiryForm subject="Kariéra" title="Reakce na nabídku práce" />
+        <InquiryForm
+          subject="Kariéra"
+          title="Reakce na nabídku práce"
+          fileLabel="+ Přiložit životopis (PDF, DOC, do 10 MB)"
+          accept=".pdf,.doc,.docx,.odt,.rtf,.jpg,.jpeg,.png"
+        />
       </div>
       <p class="mono" style="font-size: 12px; color: var(--color-steel); margin-top: 18px">
         Nebo pište na {company.email}.

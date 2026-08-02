@@ -6,7 +6,7 @@ import { company } from '../data/site';
 
 <BaseLayout
   title="Zpracování osobních údajů"
-  description={`Jak společnost ${company.name} nakládá s údaji odeslanými přes poptávkový formulář.`}
+  description={`Jak ${company.name} nakládá s osobními údaji z poptávkového formuláře – jaké údaje sbíráme, proč, jak dlouho je držíme a jaká máte práva.`}
   noindex
 >
   <section class="section">
@@ -16,14 +16,6 @@ import { company } from '../data/site';
       <h1 style="max-width: 24ch">Zpracování osobních údajů</h1>
 
       <div class="prose" style="margin-top: 28px">
-        <div style="border-left: 3px solid var(--color-emergency); background: var(--color-accent-2-100); padding: 16px 20px">
-          <p style="margin: 0; font-size: 15px; color: var(--color-accent-2-700)">
-            <strong>Návrh k právní kontrole.</strong> Text popisuje, co web skutečně
-            dělá, ale finální znění má schválit klient. Soubor:
-            <code>src/pages/ochrana-osobnich-udaju.astro</code>.
-          </p>
-        </div>
-
         <h2>Kdo údaje zpracovává</h2>
         <p>
           {company.name}, {company.street}, {company.city}, IČ {company.ico}.
@@ -34,7 +26,7 @@ import { company } from '../data/site';
         <p>
           Přes poptávkový formulář nám odesíláte jméno a firmu, telefon nebo e-mail,
           popis poptávky a případné přílohy (výkresy, fotografie). Používáme je
-          výhradně k vyřízení vaší poptávky a k následné komunikaci o zakázce —
+          výhradně k vyřízení vaší poptávky a k následné komunikaci o zakázce –
           tedy na základě oprávněného zájmu a plnění smlouvy.
         </p>
 
@@ -42,6 +34,15 @@ import { company } from '../data/site';
         <p>
           Obsah formuláře přijde e-mailem na naši firemní adresu. Údaje nepředáváme
           třetím stranám pro marketingové účely a neprodáváme je.
+        </p>
+
+        <h2>Životopisy a reakce na nabídku práce</h2>
+        <p>
+          Formulář na stránce Kariéra sbírá i&nbsp;životopisy. Zaslané údaje
+          použijeme výhradně k&nbsp;posouzení vaší reakce na konkrétní pozici.
+          Životopisy neúspěšných uchazečů mažeme nejpozději šest měsíců po
+          ukončení výběru, déle je držíme jen s&nbsp;vaším výslovným souhlasem.
+          O&nbsp;výmaz můžete kdykoliv požádat na <a href={`mailto:${company.email}`}>{company.email}</a>.
         </p>
 
         <h2>Jak dlouho je uchováváme</h2>
@@ -56,6 +57,13 @@ import { company } from '../data/site';
           Web nepoužívá reklamní ani sledovací cookies. Fonty jsou hostované přímo
           na tomto webu, takže se při prohlížení nenačítá nic z cizích serverů.
           Výjimkou je mapa na stránce Kontakt, která se načítá z OpenStreetMap.
+        </p>
+
+        <h2>Mapa na stránce Kontakt</h2>
+        <p>
+          Mapu z&nbsp;OpenStreetMap načítáme až poté, co na ni kliknete. Do té doby
+          neodchází na cizí server žádný požadavek ani vaše IP adresa. Zbytek webu
+          se načítá výhradně z&nbsp;našich serverů.
         </p>
 
         <h2>Vaše práva</h2>

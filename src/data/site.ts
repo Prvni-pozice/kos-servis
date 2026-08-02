@@ -1,11 +1,15 @@
-/* Firemní údaje na jednom místě — telefony, lidé, čísla, navigace.
+/* Firemní údaje na jednom místě – telefony, lidé, čísla, navigace.
  * Kontakty jsou převzaté ze starého webu kos-servis.cz (ověřeno 2. 8. 2026),
  * čísla o firmě z design briefu schváleného klientem. */
 
 export const company = {
   name: 'KOS servis s.r.o.',
   street: 'Chyšná 52',
-  city: '395 01 Pacov',
+  // Zapsané sídlo je Chyšná, ne Pacov – Pacov je jen dodací pošta (ověřeno
+  // v ARES 2. 8. 2026). Na obchodních listinách se uvádí sídlo tak, jak je zapsané.
+  city: '395 01 Chyšná',
+  postalCode: '395 01',
+  locality: 'Chyšná',
   region: 'Vysočina',
   ico: '26112736',
   dic: 'CZ26112736',
@@ -13,14 +17,16 @@ export const company = {
   phoneHref: '+420565447823',
   email: 'info@kos-servis.cz',
   founded: 1997,
-  // Chyšná 52 — orientační souřadnice sídla pro mapu a strukturovaná data.
+  /** § 435 NOZ vyžaduje zápis v OR i na webu. Ověřeno v ARES 2. 8. 2026. */
+  registration: 'Krajský soud v Českých Budějovicích, oddíl C, vložka 14718',
+  // Chyšná 52 – orientační souřadnice sídla pro mapu a strukturovaná data.
   geo: { lat: 49.4506, lng: 15.0847 },
 } as const;
 
 /** Roky praxe se počítají, ať se číslo na webu nezasekne v čase. */
 export const yearsInBusiness = new Date().getFullYear() - company.founded;
 
-/** „Příjem oprav“ — vyhrazené CTA, jediné místo s teplým akcentem. */
+/** „Příjem oprav“ – vyhrazené CTA, jediné místo s teplým akcentem. */
 export const intake = {
   label: 'Příjem oprav',
   person: 'Rostislav Vymazal',
@@ -49,7 +55,7 @@ export type Person = {
   name: string;
   phone?: string;
   email?: string;
-  /** Co ten člověk reálně řeší — kontakt řadíme podle problému, ne podle titulu. */
+  /** Co ten člověk reálně řeší – kontakt řadíme podle problému, ne podle titulu. */
   solves: string;
   /** Chybějící údaj, který má doplnit klient. */
   todo?: string;
@@ -62,7 +68,7 @@ export const people: Person[] = [
     name: 'Rostislav Vymazal',
     phone: '+420 602 125 699',
     email: 'rosta.vymazal@kos-servis.cz',
-    solves: 'Stojí vám stroj nebo potřebujete opravu — sem volejte první.',
+    solves: 'Stojí vám stroj nebo potřebujete opravu – sem volejte první.',
   },
   {
     role: 'Středisko plazma',
@@ -88,8 +94,7 @@ export const people: Person[] = [
   {
     role: 'Obchod · prodej a nákup',
     name: 'Ing. Viktor Knopp',
-    solves: 'Nabídky, termíny a obchodní podmínky zakázek.',
-    todo: 'Telefon a e-mail doplní klient',
+    solves: 'Nabídky, termíny a obchodní podmínky zakázek. Volejte na ústřednu, přepojí vás.',
   },
   {
     role: 'Jednatel',
@@ -111,7 +116,7 @@ export const stats = [
   { value: String(company.founded), label: 'Od roku' },
   { value: '9 000 m²', label: 'Areál' },
   { value: '20', label: 'Zaměstnanců' },
-  { value: '100 km', label: 'Servisní dojezd' },
+  { value: 'do 100 km', label: 'Servisní dojezd' },
 ] as const;
 
 export type Machine = {
@@ -184,7 +189,7 @@ export const machines: Machine[] = [
   },
 ];
 
-/** Parametry plazmového střediska — detailní tabulky ze starého webu. */
+/** Parametry plazmového střediska – detailní tabulky ze starého webu. */
 export const plasmaSpecs = [
   {
     title: 'Pálicí stůl Messer OmniMat L 5600',
@@ -213,8 +218,8 @@ export const plasmaSpecs = [
   {
     title: 'CNC vrtací jednotka',
     rows: [
-      { label: 'Průměr vrtáků — běžná ocel', value: '5 – 32 mm' },
-      { label: 'Průměr vrtáků — nerez', value: '6 – 18 mm' },
+      { label: 'Průměr vrtáků – běžná ocel', value: '5 – 32 mm' },
+      { label: 'Průměr vrtáků – nerez', value: '6 – 18 mm' },
       { label: 'Maximální otáčky', value: '4 000 ot/min' },
       { label: 'Pracovní zdvih', value: '490 mm' },
     ],
@@ -241,7 +246,7 @@ export const references = [
   { name: 'E.H.P., s.r.o.', city: '' },
 ] as const;
 
-/** Typy poptávky ve formuláři — hodnota jde i do předmětu e-mailu. */
+/** Typy poptávky ve formuláři – hodnota jde i do předmětu e-mailu. */
 export const inquiryTypes = [
   'Oprava',
   'Výroba',

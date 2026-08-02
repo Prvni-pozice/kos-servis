@@ -1,6 +1,6 @@
 # Fonty
 
-Soubory `*.woff2` v této složce **generuje `scripts/subset-fonts.mjs`** — jsou to
+Soubory `*.woff2` v této složce **generuje `scripts/subset-fonts.mjs`** – jsou to
 subsety plných TTF z Google Fonts, oříznuté na znaky, které web sází.
 Needitovat ručně, přegenerovat skriptem.
 
@@ -12,7 +12,7 @@ Needitovat ručně, přegenerovat skriptem.
 
 ## Licence
 
-Obě rodiny jsou pod **SIL Open Font License 1.1** — plné znění je v `OFL.txt`.
+Obě rodiny jsou pod **SIL Open Font License 1.1** – plné znění je v `OFL.txt`.
 Licence self-hosting i subsetting výslovně povoluje; podmínkou je přiložit
 licenci (proto tady je) a neprodávat samotné fonty.
 

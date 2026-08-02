@@ -10,7 +10,7 @@ import { faces } from '../styles/fonts.js';
 /**
  * @font-face schválně není v kritickém CSS. Prohlížeč si fonty vyžádá hned, jak
  * je uvidí, a ještě před prvním vykreslením tím sebere pásmo posteru v hero,
- * což je LCP prvek. Pravidla se proto vkládají až po `load` — text je od
+ * což je LCP prvek. Pravidla se proto vkládají až po `load` – text je od
  * začátku čitelný náhradním fontem (`swap`) a pak se dosadí ostrý řez.
  */
 const fontCss = faces
@@ -32,6 +32,8 @@ interface Props {
 const { title, description, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const fullTitle = title === company.name ? title : `${title} | ${company.name}`;
+/* og:image musí být absolutní URL – relativní cestu sdílecí náhledy ignorují. */
+const ogImage = new URL('/img/og-default.jpg', Astro.site).href;
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -43,7 +45,9 @@ const orgSchema = {
   address: {
     '@type': 'PostalAddress',
     streetAddress: company.street,
-    addressLocality: company.city,
+    postalCode: company.postalCode,
+    addressRegion: 'Kraj Vysočina',
+    addressLocality: company.locality,
     addressCountry: 'CZ',
   },
   geo: { '@type': 'GeoCoordinates', latitude: company.geo.lat, longitude: company.geo.lng },
@@ -67,9 +71,14 @@ const orgSchema = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical.href} />
     <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Areál KOS servis v Chyšné z ptačí perspektivy" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#0f2b52" />
-    <set:html value={`<script type="application/ld+json">${JSON.stringify(orgSchema)}</script>`} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
   </head>
   <body>
     <a class="skip-link" href="#obsah">Přeskočit na obsah</a>

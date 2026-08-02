@@ -3,11 +3,13 @@ title: Strojní obrábění
 order: 7
 eyebrow: Obrobna
 excerpt: Soustružení, frézování, vyvrtávání, broušení a obrážení. Kusové zakázky i série.
+metaDescription: >-
+  Soustružíme do průměru 800 mm a délky 5 000 mm, frézujeme, vyvrtáváme, brousíme a obrážíme. Kusově i v malých sériích, často navazujeme na opravu.
 intro: >-
   Soustružíme do průměru 800 mm a délky 5 000 mm, frézujeme, vyvrtáváme, brousíme
-  a obrážíme. Zakázkové opracování dílů děláme kusově i v malých sériích — často
+  a obrážíme. Zakázkové opracování dílů děláme kusově i v malých sériích – často
   jako navazující operaci k opravě, svařování nebo pálení.
-seoTitle: Strojní obrábění — soustružení, frézování, vyvrtávání
+seoTitle: Strojní obrábění – soustružení, frézování, vyvrtávání
 tags: [Soustružení do 5 m, Horizontální vyvrtávačka, Kusová i sériová výroba]
 scope:
   - Soustružení
@@ -40,11 +42,11 @@ related: [opravy-hydraulickych-valcu, svarovani-a-renovace, ohybani-a-zpracovani
 inquirySubject: Výroba
 ---
 
-Obrábění u nás málokdy stojí samo — obvykle navazuje na opravu nebo předchází
+Obrábění u nás málokdy stojí samo – obvykle navazuje na opravu nebo předchází
 svařování. Díky tomu se díl nemusí vozit mezi dílnami a termín se počítá na dny,
 ne na týdny.
 
 ## Podklady stačí jednoduché
 
 Ideální je výkres v DWG, DXF nebo PDF. Když ho nemáte, stačí fyzický vzor nebo
-poškozený díl — dokumentaci připraví náš konstruktér.
+poškozený díl – dokumentaci připraví náš konstruktér.

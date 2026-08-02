@@ -3,10 +3,12 @@ title: Opravy hydraulických válců
 order: 2
 eyebrow: Hydraulika
 excerpt: Válce, pístnice a pístní tyče. Povolovací lavice do délky 4 m a tlaku 300 barů.
+metaDescription: >-
+  Opravy hydraulických válců od demontáže po zkoušku tlakem. Vlastní povolovací lavice pro válce do 4 metrů a 300 barů, obrábění pístnic v dílně.
 intro: >-
   Opravujeme hydraulické válce od demontáže po zkoušku tlakem. Vlastní povolovací
   lavice pro válce do délky 4 metrů a tlaku 300 barů, navazující obrábění pístnic
-  a svařování — celá oprava proběhne u nás, bez posílání dílů dál.
+  a svařování – celá oprava proběhne u nás, bez posílání dílů dál.
 seoTitle: Opravy hydraulických válců, pístnic a pístních tyčí
 tags: [Válce do 4 m, Tlak do 300 barů, Pístnice a pístní tyče]
 scope:
@@ -32,7 +34,7 @@ related: [opravy-strojnich-zarizeni, strojni-obrabeni, opravy-lesnicke-a-zemedel
 inquirySubject: Oprava
 ---
 
-Hydraulický válec bývá to první, co na těžké technice povolí — a zároveň to, co se
+Hydraulický válec bývá to první, co na těžké technice povolí – a zároveň to, co se
 skoro vždy vyplatí opravit místo výměny za nový. Rozebereme ho, změříme, opravíme
 nebo vyrobíme novou pístnici a válec vrátíme odzkoušený.
 
@@ -44,5 +46,5 @@ hydraulických ruk a kleští.
 
 ## Co potřebujeme vědět
 
-Stačí typ stroje a rozměr válce — ideálně fotka. Když rozměry neznáte, změříme si
+Stačí typ stroje a rozměr válce – ideálně fotka. Když rozměry neznáte, změříme si
 je sami po dovezení. Válce je možné dovézt demontované i celý stroj.

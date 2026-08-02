@@ -3,7 +3,7 @@ import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 /* Detailní stránky služeb. Schéma je navržené tak, aby se dalo škálovat
- * na desítky SEO podstránek — obsah řídí Markdown, ne šablona. */
+ * na desítky SEO podstránek – obsah řídí Markdown, ne šablona. */
 const sluzby = defineCollection({
   loader: glob({ base: './src/content/sluzby', pattern: '**/*.md' }),
   schema: z.object({
@@ -14,11 +14,17 @@ const sluzby = defineCollection({
     eyebrow: z.string(),
     /** Krátký popis do karty v rozcestníku. */
     excerpt: z.string(),
-    /** Perex pod H1 — zároveň meta description. */
+    /** Perex pod H1. */
     intro: z.string(),
+    /**
+     * Meta description. Perex je na to obvykle moc dlouhý – dobrý úvodní
+     * odstavec má jinou práci než popisek ve výsledcích hledání. Když chybí,
+     * použije se `intro` (a v Googlu se nejspíš usekne).
+     */
+    metaDescription: z.string().optional(),
     seoTitle: z.string().optional(),
     tags: z.array(z.string()).default([]),
-    /** Odrážky „co konkrétně děláme“ — hlavní obsah z klientského dokumentu. */
+    /** Odrážky „co konkrétně děláme“ – hlavní obsah z klientského dokumentu. */
     scope: z.array(z.string()).default([]),
     /** Tabulka vybavení: co to je + k čemu slouží. */
     equipment: z.array(z.object({ name: z.string(), role: z.string() })).default([]),

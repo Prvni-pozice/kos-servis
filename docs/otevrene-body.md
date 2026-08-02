@@ -58,6 +58,10 @@ naběhne za 60–90 s. Repo: `github.com/Prvni-pozice/kos-servis`.
 
 Zbývá:
 
+**Předávací kontrola proběhla 2. 8. 2026** — výsledky a otázky pro klienta
+jsou v `review/REVIEW_REPORT.md`, jednotlivé nálezy v `review/FINDINGS.md`.
+Opraveno 29 nálezů, 16 jich čeká na klienta.
+
 - [ ] Doplnit ostré logo
 - [ ] Nastavit SMTP env proměnné na Vercelu (bez nich formulář vrací 500)
 - [ ] Otestovat odeslání poptávky včetně přílohy

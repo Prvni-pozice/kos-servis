@@ -10,7 +10,7 @@ import InquiryForm from '../components/InquiryForm.astro';
 import { company, stats, industries, references, people, intake, yearsInBusiness } from '../data/site';
 
 const sluzby = (await getCollection('sluzby')).sort((a, b) => a.data.order - b.data.order);
-/** Na úvodce jen šest hlavních — zbytek je v rozcestníku. */
+/** Na úvodce jen šest hlavních – zbytek je v rozcestníku. */
 const hlavni = sluzby.slice(0, 6);
 /** Kontaktní blok vede lidmi, ne adresou. Stačí první čtyři. */
 const kontaktni = people.slice(0, 4);
@@ -22,22 +22,22 @@ const slogans = [
   },
   {
     kicker: 'Servisní dojezd do 100 km od Chyšné',
-    line: 'Opravíme cokoliv — od hydrauliky po celé strojní celky',
+    line: 'Opravíme cokoliv – od hydrauliky po celé strojní celky',
   },
   {
     kicker: 'Messer OmniMat L 5600 · 3D úkosy',
-    line: 'Výpalky na míru — konstrukční, vysokopevnostní i HARDOX',
+    line: 'Výpalky na míru – konstrukční, vysokopevnostní i HARDOX',
   },
   {
     kicker: 'Pálení · ohýbání · svařování · obrábění',
-    line: 'Vlastní strojový park — celá zakázka pod jednou střechou',
+    line: 'Vlastní strojový park – celá zakázka pod jednou střechou',
   },
 ];
 ---
 
 <BaseLayout
   title={company.name}
-  description="Strojní opravy, zakázková výroba a 3D pálení plazmou na Vysočině. Opravy strojních zařízení, hydraulických válců, svařování, strojní obrábění a výpalky z HARDOXu. Chyšná u Pacova."
+  description="Strojní opravy, zakázková kovovýroba a 3D pálení plazmou na Vysočině. Opravy strojů a hydraulických válců, svařování, obrábění, výpalky z HARDOXu."
 >
   <section style="padding: clamp(20px, 3vw, 36px) 0 0">
     <div class="wrap">
@@ -118,7 +118,7 @@ const slogans = [
         eyebrow="Strojový park"
         idx="04"
         title="Vlastní stroje, celá zakázka u nás"
-        lead="Kombinace pálení, obrábění, svařování, ohýbání a rovnání — od opravy jednotlivé součásti až po výrobu větších konstrukčních celků."
+        lead="Kombinace pálení, obrábění, svařování, ohýbání a rovnání – od opravy jednotlivé součásti až po výrobu větších konstrukčních celků."
       />
       <MachineGrid limit={5} />
       <div style="margin-top: 22px">
@@ -133,13 +133,13 @@ const slogans = [
         eyebrow="O firmě"
         idx="05"
         title={`Zavedená strojírna od roku ${company.founded}`}
-        lead="Začínali jsme opravami lesnické a zemědělské techniky. Dnes servisujeme průmyslové technologie, mobilní stroje i hydrauliku a vyrábíme na vlastním strojovém parku — pořád ale platí, že se domluvíte přímo s tím, kdo bude na zakázce pracovat."
+        lead="Začínali jsme opravami lesnické a zemědělské techniky. Dnes servisujeme průmyslové technologie, mobilní stroje i hydrauliku a vyrábíme na vlastním strojovém parku – pořád ale platí, že se domluvíte přímo s tím, kdo bude na zakázce pracovat."
       />
       <div class="linegrid cols-4">
         <div class="bignum"><div class="v">{yearsInBusiness}</div><div class="l">Let praxe</div></div>
         <div class="bignum"><div class="v">9 000 m²</div><div class="l">Výrobní areál</div></div>
         <div class="bignum"><div class="v">20</div><div class="l">Zaměstnanců</div></div>
-        <div class="bignum"><div class="v">Vlastní</div><div class="l">Strojní park</div></div>
+        <div class="bignum"><div class="v">Vlastní</div><div class="l">Strojový park</div></div>
       </div>
       <div style="margin-top: 22px">
         <a class="btn btn-secondary" href="/o-firme/">Historie a certifikáty →</a>

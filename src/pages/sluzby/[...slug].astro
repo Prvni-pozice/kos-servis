@@ -34,7 +34,7 @@ const idx = String(d.order).padStart(2, '0');
 const showGallery = d.gallery && hasPhotos(d.gallery);
 ---
 
-<BaseLayout title={d.seoTitle ?? d.title} description={d.intro}>
+<BaseLayout title={d.seoTitle ?? d.title} description={d.metaDescription ?? d.intro}>
   <section class="section" style="padding-bottom: clamp(40px, 5vw, 64px)">
     <div class="wrap">
       <Breadcrumbs items={[{ href: '/sluzby/', label: 'Služby' }, { label: d.title }]} />
@@ -117,7 +117,7 @@ const showGallery = d.gallery && hasPhotos(d.gallery);
         <div class="linegrid cols-2">
           {d.specs.map((g) => (
             <div style="padding: 26px 24px">
-              <h4 style="margin-bottom: 14px">{g.title}</h4>
+              <h3 class="h4" style="margin-bottom: 14px">{g.title}</h3>
               <ul class="spec">
                 {g.rows.map((r) => (
                   <li><span class="lbl">{r.label}</span><span class="val">{r.value}</span></li>
@@ -172,7 +172,7 @@ const showGallery = d.gallery && hasPhotos(d.gallery);
   <CtaBand
     kicker="Máte výkres nebo poškozený díl?"
     title="Pošlete podklady, vrátíme nabídku s termínem"
-    ctaLabel="Odeslat poptávku →"
+    ctaLabel="Vyplnit poptávku →"
     href={`/kontakt/?typ=${encodeURIComponent(d.inquirySubject ?? 'Obecný dotaz')}`}
   />
 </BaseLayout>
