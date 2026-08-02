@@ -53,17 +53,44 @@ a vyřadit slabší snímky. Detaily v `docs/rozhodnuti.md`.
 
 ## Nasazení
 
-Web **není v Gitu a není nikde nasazený**. Před prvním commitem projít security
-gate podle `/data/bot/CLAUDE.md`. `.gitignore` už blokuje `.env`, klíče
-a build výstupy.
+Běží na **https://kos-servis.vercel.app** — auto-deploy z větve `main`,
+naběhne za 60–90 s. Repo: `github.com/Prvni-pozice/kos-servis`.
 
-Před nasazením na Vercel:
+Zbývá:
 
 - [ ] Doplnit ostré logo
-- [ ] Nastavit SMTP env proměnné
+- [ ] Nastavit SMTP env proměnné na Vercelu (bez nich formulář vrací 500)
 - [ ] Otestovat odeslání poptávky včetně přílohy
-- [ ] Zkontrolovat, že redirecty ze starých URL fungují (26 pravidel)
+- [x] ~~Zkontrolovat redirecty ze starých URL~~ — ověřeno živě, 301 fungují
 - [ ] Zvážit kurátorství fotek
+- [ ] Připojit vlastní doménu a přesměrovat starý web
+
+## Výkon (Lighthouse, 2. 8. 2026)
+
+```
+                    perf   a11y  best  seo   | LCP     SI
+Vercel   desktop    100    100   100   100   | 0,7 s   0,5 s
+Vercel   mobil      87–88  100   100   100   | 3,7 s   2,2 s
+server   desktop    100    100    78   100   | 0,7 s   0,6 s
+server   mobil      80–86  100    78   100   | 3,6 s   2,7 s
+```
+
+Měřeno lokálním Lighthouse (veřejné PSI API mělo vyčerpanou kvótu), produkční
+build na obou stranách, mobil ze tří běhů. „server" = `npx serve` na portu 4332.
+
+- **Best practices 78 na serveru** je jen chybějící HTTPS na testovacím portu,
+  ne rozdíl v kódu.
+- **Mobilní LCP ~3,7 s je vlastní váha stránky, ne hosting** — čísla jsou na obou
+  stranách skoro stejná. Brzdí to prvních 1,25 MB přenosu: hero video 704 kB,
+  které se stahuje hned, a 258 kB fontů v 16 requestech.
+
+Nezkoušené zlepšení, pokud bude potřeba mobilní skóre zvednout:
+
+1. Odložit načtení hero videa až za LCP (`requestIdleCallback`), případně ho
+   na pomalém spojení (`navigator.connection.saveData`) nepouštět vůbec —
+   poster je WebP a vypadá dobře i sám o sobě.
+2. Zúžit fonty na potřebné řezy a subset `latin-ext`; teď se tahá 9 CSS souborů
+   `@fontsource`, které dohromady dělají 16 požadavků.
 
 ## Hotovo (ať se nedělá dvakrát)
 
