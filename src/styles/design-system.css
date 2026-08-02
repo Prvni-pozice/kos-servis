@@ -103,7 +103,12 @@ h2 { font-size: 34px; font-weight: 800; }
 h3 { font-size: 22px; }
 h4 { font-size: 18px; }
 h5 { font-size: 16px; }
-h6 {
+/* ODCHYLKA OD ZDROJE: přidána třída .h6. Vzhled h6 se v systému používá i tam,
+   kde jde o štítek, ne o nadpis (popisek skupiny nad názvem stroje, kicker nad
+   CTA). Sázet to jako <h6> přeskakuje úrovně nadpisů a Lighthouse to hlásí jako
+   chybu přístupnosti. Třída umožní stejný vzhled na neutrálním prvku, případně
+   na nadpisu správné úrovně. */
+h6, .h6 {
   font-family: var(--font-mono); font-weight: 500; font-size: 12px;
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-steel);
   margin: 0 0 var(--space-2);

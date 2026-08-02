@@ -63,7 +63,7 @@ const pozice = [
           <div style="padding: 30px 28px">
             <h3 style="margin-bottom: 18px">{p.title}</h3>
 
-            <h6>Náplň práce</h6>
+            <h4 class="h6">Náplň práce</h4>
             <ul style="list-style: none; margin: 0 0 22px; padding: 0">
               {p.napln.map((i) => (
                 <li style="display: flex; gap: 12px; padding: 6px 0; font-size: 15px">
@@ -73,7 +73,7 @@ const pozice = [
               ))}
             </ul>
 
-            <h6>Co očekáváme</h6>
+            <h4 class="h6">Co očekáváme</h4>
             <ul class="spec">
               {p.pozadavky.map((i) => <li><span class="lbl">{i}</span></li>)}
             </ul>
