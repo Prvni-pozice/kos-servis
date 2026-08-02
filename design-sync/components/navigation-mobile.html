@@ -1,0 +1,107 @@
+<!-- @dsCard group="Components" name="Navigation — mobile" subtitle="Rozbalovací menu pod 900 px; co ustupuje jako první při zužování okna" viewport="390x620" -->
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>Navigation — mobile</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+body { padding: 0; }
+.lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-steel); margin: 24px 20px 8px; }
+
+/* --- kandidáti na povýšení do styles.css --- */
+.nav-toggle { display: none; margin-left: auto; }
+.nav-links { display: contents; }
+/* CTA uvnitř panelu je jen pro mobil — na desktopu tlačítko v hlavičce už je. */
+.nav-links .nav-cta { display: none; }
+.nav a:not(.nav-brand) { white-space: nowrap; }
+.call .n, .call .l { white-space: nowrap; }
+
+@media (max-width: 1300px) {
+  .nav { gap: 18px; }
+  .nav a:not(.nav-brand):not(.btn) { font-size: 14px; }
+}
+/* Pod 1150 px se telefon i tlačítko do řádku nevejdou. Telefon zůstává. */
+@media (max-width: 1150px) {
+  .nav { gap: 14px; }
+  .nav > .btn-accent { display: none; }
+}
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; padding: 0; flex: none;
+    background: transparent; border: 1.5px solid var(--color-navy);
+    color: var(--color-navy); cursor: pointer;
+  }
+  .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--color-paper); border-bottom: 1px solid var(--color-line);
+    padding: var(--space-2) var(--gutter) var(--space-6);
+  }
+  .nav-links[data-open='true'] { display: block; }
+  .nav-links a {
+    display: block !important; padding: 13px 0; font-size: 16px;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .nav-links a::after { display: none; }
+  .nav-links .nav-cta {
+    display: flex !important; margin-top: var(--space-4);
+    border-bottom: none; justify-content: center;
+  }
+  .nav { position: relative; }
+}
+/* --- konec kandidátů --- */
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="nav" style="padding-inline: 20px">
+    <a class="nav-brand" href="#"><span style="font-family: var(--font-heading); font-weight: 800; font-size: 19px; color: var(--color-navy)">KOS servis</span></a>
+
+    <button class="nav-toggle" type="button" aria-expanded="true" aria-controls="m" aria-label="Zavřít menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+    </button>
+
+    <div class="nav-links" id="m" data-open="true">
+      <a href="#" aria-current="page">Úvod</a>
+      <a href="#">Služby</a>
+      <a href="#">Strojový park</a>
+      <a href="#">Reference</a>
+      <a href="#">O firmě</a>
+      <a href="#">Kariéra</a>
+      <a href="#">Kontakt</a>
+      <a class="btn btn-accent nav-cta" href="#" style="padding: 10px 18px">Poptávka</a>
+    </div>
+
+    <div class="call"><span class="l">Příjem oprav</span><span class="n">+420 602 125 699</span></div>
+    <a class="btn btn-accent" href="#" style="padding: 10px 18px">Poptávka</a>
+  </div>
+</div>
+
+<p class="lbl">Pořadí ustupování</p>
+<div style="padding: 0 20px 28px">
+  <ul class="spec">
+    <li><span class="lbl">nad 1300</span><span class="val">vše: 7 odkazů + telefon + CTA</span></li>
+    <li><span class="lbl">1300</span><span class="val">menší mezery a písmo odkazů</span></li>
+    <li><span class="lbl">1150</span><span class="val">mizí tlačítko Poptávka</span></li>
+    <li><span class="lbl">900</span><span class="val">odkazy do panelu, zůstává logo + telefon</span></li>
+  </ul>
+  <p style="font-size: 14px; color: #42566b; margin-top: 18px">
+    Telefon na Příjem oprav ustupuje až úplně poslední. Údržbář u stojícího stroje
+    ho má mít na dosah na jakémkoli displeji — proto padá dřív tlačítko než číslo.
+  </p>
+</div>
+
+<script>
+  const t = document.querySelector('.nav-toggle');
+  const m = document.querySelector('.nav-links');
+  t?.addEventListener('click', () => {
+    const open = m.dataset.open === 'true';
+    m.dataset.open = String(!open);
+    t.setAttribute('aria-expanded', String(!open));
+    t.setAttribute('aria-label', open ? 'Otevřít menu' : 'Zavřít menu');
+  });
+</script>
+</body>
+</html>

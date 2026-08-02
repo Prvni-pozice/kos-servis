@@ -1,0 +1,35 @@
+---
+interface Crumb {
+  href?: string;
+  label: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+/** Úvod je na každé drobečkové cestě, není potřeba ho psát u každé stránky. */
+const trail: Crumb[] = [{ href: '/', label: 'Úvod' }, ...items];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: trail.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    ...(c.href ? { item: new URL(c.href, Astro.site).href } : {}),
+  })),
+};
+---
+
+<nav class="crumbs" aria-label="Drobečková navigace">
+  {trail.map((c, i) => (
+    <>
+      {i > 0 && ' / '}
+      {c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
+    </>
+  ))}
+</nav>
+<set:html value={`<script type="application/ld+json">${JSON.stringify(schema)}</script>`} />

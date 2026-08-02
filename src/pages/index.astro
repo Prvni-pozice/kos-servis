@@ -1,0 +1,187 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import MachineGrid from '../components/MachineGrid.astro';
+import PersonCard from '../components/PersonCard.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import { company, stats, industries, references, people, intake, yearsInBusiness } from '../data/site';
+
+const sluzby = (await getCollection('sluzby')).sort((a, b) => a.data.order - b.data.order);
+/** Na úvodce jen šest hlavních — zbytek je v rozcestníku. */
+const hlavni = sluzby.slice(0, 6);
+/** Kontaktní blok vede lidmi, ne adresou. Stačí první čtyři. */
+const kontaktni = people.slice(0, 4);
+
+const slogans = [
+  {
+    kicker: `Chyšná · Vysočina · od roku ${company.founded}`,
+    line: 'Strojní opravy, výroba a 3D pálení plazmou',
+  },
+  {
+    kicker: 'Servisní dojezd do 100 km od Chyšné',
+    line: 'Opravíme cokoliv — od hydrauliky po celé strojní celky',
+  },
+  {
+    kicker: 'Messer OmniMat L 5600 · 3D úkosy',
+    line: 'Výpalky na míru — konstrukční, vysokopevnostní i HARDOX',
+  },
+  {
+    kicker: 'Pálení · ohýbání · svařování · obrábění',
+    line: 'Vlastní strojový park — celá zakázka pod jednou střechou',
+  },
+];
+---
+
+<BaseLayout
+  title={company.name}
+  description="Strojní opravy, zakázková výroba a 3D pálení plazmou na Vysočině. Opravy strojních zařízení, hydraulických válců, svařování, strojní obrábění a výpalky z HARDOXu. Chyšná u Pacova."
+>
+  <section style="padding: clamp(20px, 3vw, 36px) 0 0">
+    <div class="wrap">
+      <Hero
+        video="/video/hero.mp4"
+        poster="/img/video/hero-poster.webp"
+        slogans={slogans}
+      />
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: clamp(40px, 5vw, 64px); border-bottom: 1px solid var(--color-line)">
+    <div class="wrap">
+      <div class="split split-top">
+        <div>
+          <div class="eyebrow"><span class="idx">01</span> Strojírenský servis · Chyšná, Vysočina</div>
+          <h1 style="font-size: clamp(30px, 3.4vw, 44px); max-width: 20ch">
+            Strojní opravy, výroba a 3D pálení plazmou na Vysočině
+          </h1>
+        </div>
+        <div>
+          <p style="font-size: clamp(16px, 1.5vw, 18px); color: #37475b; max-width: 56ch">
+            Specializujeme se na opravy strojních zařízení, hydraulických válců, svařování,
+            strojní obrábění, pálení plechů 3D plazmou a zakázkovou výrobu pro průmysl,
+            zemědělství, lesnictví a dřevozpracující provozy.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px">
+            <a class="btn btn-primary" href="/kontakt/">Nezávazná poptávka →</a>
+            <a class="btn btn-accent" href={`tel:${intake.phoneHref}`}>
+              {intake.label}: {intake.phone}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="statbar" style="margin-top: clamp(32px, 4vw, 48px)">
+        {stats.map((s) => (
+          <div>
+            <div class="v">{s.value}</div>
+            <div class="l">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="sluzby">
+    <div class="wrap">
+      <SectionHead eyebrow="Hlavní služby" idx="02" title="Co pro vás uděláme" />
+      <div class="linegrid cols-3">
+        {hlavni.map((s) => (
+          <ServiceCard
+            href={`/sluzby/${s.id}/`}
+            index={s.data.order}
+            title={s.data.title}
+            body={s.data.excerpt}
+          />
+        ))}
+      </div>
+      <div style="margin-top: 22px">
+        <a class="btn btn-secondary" href="/sluzby/">Všech {sluzby.length} služeb →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt reveal">
+    <div class="wrap">
+      <SectionHead eyebrow="Pro koho pracujeme" idx="03" title="Obory, které známe" />
+      <div class="linegrid cols-3">
+        {industries.map((o) => <div class="industry">{o}</div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="park">
+    <div class="wrap">
+      <SectionHead
+        eyebrow="Strojový park"
+        idx="04"
+        title="Vlastní stroje, celá zakázka u nás"
+        lead="Kombinace pálení, obrábění, svařování, ohýbání a rovnání — od opravy jednotlivé součásti až po výrobu větších konstrukčních celků."
+      />
+      <MachineGrid limit={5} />
+      <div style="margin-top: 22px">
+        <a class="btn btn-secondary" href="/strojovy-park/">Celý strojový park →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt reveal" id="firma">
+    <div class="wrap">
+      <SectionHead
+        eyebrow="O firmě"
+        idx="05"
+        title={`Zavedená strojírna od roku ${company.founded}`}
+        lead="Začínali jsme opravami lesnické a zemědělské techniky. Dnes servisujeme průmyslové technologie, mobilní stroje i hydrauliku a vyrábíme na vlastním strojovém parku — pořád ale platí, že se domluvíte přímo s tím, kdo bude na zakázce pracovat."
+      />
+      <div class="linegrid cols-4">
+        <div class="bignum"><div class="v">{yearsInBusiness}</div><div class="l">Let praxe</div></div>
+        <div class="bignum"><div class="v">9 000 m²</div><div class="l">Výrobní areál</div></div>
+        <div class="bignum"><div class="v">20</div><div class="l">Zaměstnanců</div></div>
+        <div class="bignum"><div class="v">Vlastní</div><div class="l">Strojní park</div></div>
+      </div>
+      <div style="margin-top: 22px">
+        <a class="btn btn-secondary" href="/o-firme/">Historie a certifikáty →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="reference">
+    <div class="wrap">
+      <SectionHead
+        eyebrow="Reference"
+        idx="06"
+        title="Pracujeme pro průmysl i provozy"
+        lead="Dlouhodobě spolupracujeme s dřevozpracujícími podniky, zemědělskými družstvy i technickými službami."
+      />
+      <div class="linegrid cols-3">
+        {references.slice(0, 6).map((r) => (
+          <div style="padding: 22px 24px">
+            <div style="font-weight: 600; color: var(--color-navy)">{r.name}</div>
+            {r.city && <div class="mono" style="font-size: 12px; color: var(--color-steel); margin-top: 4px">{r.city}</div>}
+          </div>
+        ))}
+      </div>
+      <div style="margin-top: 22px">
+        <a class="btn btn-secondary" href="/reference/">Všechny reference →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt reveal" id="kontakt">
+    <div class="wrap">
+      <SectionHead
+        eyebrow="Kontakt a poptávka"
+        idx="07"
+        title="Ozvěte se přímo tomu, kdo řeší váš problém"
+      />
+      <div class="split split-top">
+        <div class="linegrid" style="grid-template-columns: 1fr">
+          {kontaktni.map((p) => <PersonCard person={p} />)}
+        </div>
+        <InquiryForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

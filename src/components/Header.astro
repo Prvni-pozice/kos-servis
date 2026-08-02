@@ -1,0 +1,54 @@
+---
+import { nav, intake, company } from '../data/site';
+
+const here = Astro.url.pathname;
+/** Aktivní je i podstránka — /sluzby/paleni-3d-plazmou/ zvýrazní „Služby“. */
+const isActive = (href: string) =>
+  href === '/' ? here === '/' : here.startsWith(href);
+---
+
+<header class="header">
+  <div class="nav wrap" style="padding-inline: var(--gutter)">
+    <a class="nav-brand" href="/">
+      <img src="/img/brand/logo-kos.png" alt={company.name} width="130" height="40" />
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="hlavni-menu"
+      aria-label="Otevřít menu"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" />
+      </svg>
+    </button>
+
+    <div class="nav-links" id="hlavni-menu">
+      {nav.map((item) => (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+      <a class="btn btn-accent nav-cta" href="/kontakt/" style="padding: 10px 18px">Poptávka</a>
+    </div>
+
+    <div class="call">
+      <span class="l">{intake.label}</span>
+      <a class="n" href={`tel:${intake.phoneHref}`} style="text-decoration: none">{intake.phone}</a>
+    </div>
+    <a class="btn btn-accent" href="/kontakt/" style="padding: 10px 18px">Poptávka</a>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const menu = document.querySelector<HTMLElement>('.nav-links');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.dataset.open === 'true';
+    if (menu) menu.dataset.open = String(!open);
+    toggle.setAttribute('aria-expanded', String(!open));
+    toggle.setAttribute('aria-label', open ? 'Otevřít menu' : 'Zavřít menu');
+  });
+</script>

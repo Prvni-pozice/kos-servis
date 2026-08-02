@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PersonCard from '../components/PersonCard.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import SectionHead from '../components/SectionHead.astro';
+import { company, people, intake } from '../data/site';
+
+const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${company.geo.lng - 0.02}%2C${company.geo.lat - 0.012}%2C${company.geo.lng + 0.02}%2C${company.geo.lat + 0.012}&layer=mapnik&marker=${company.geo.lat}%2C${company.geo.lng}`;
+---
+
+<BaseLayout
+  title="Kontakt"
+  description={`KOS servis s.r.o., ${company.street}, ${company.city}. Příjem oprav ${intake.phone}. Kontakty na jednotlivá střediska, mapa a poptávkový formulář.`}
+>
+  <section style="padding: clamp(20px, 3vw, 36px) 0 0">
+    <div class="wrap">
+      <div class="hero cut" style="aspect-ratio: 21/7; min-height: 300px">
+        <video
+          src="/video/kontakt.mp4"
+          poster="/img/video/kontakt-poster.webp"
+          muted
+          loop
+          playsinline
+          autoplay
+          preload="metadata"
+          data-active="true"
+          aria-hidden="true"
+        ></video>
+        <div class="hero-tone"></div>
+        <div class="hero-scrim"></div>
+        <div class="hero-slogan" data-active="true">
+          <div class="kicker">Chyšná 52 · 395 01 Pacov · sjezd z D1, 66. km</div>
+          <div class="line">Kde nás najdete</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-bottom: clamp(40px, 5vw, 64px)">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'Kontakt' }]} />
+      <div class="eyebrow"><span class="idx">01</span> Kontakt</div>
+      <h1 style="max-width: 24ch">Ozvěte se přímo tomu, kdo řeší váš problém</h1>
+      <p style="font-size: 18px; color: #37475b; max-width: 62ch; margin-top: 18px">
+        Kontakty jsou seřazené podle toho, s čím voláte. Když si nejste jistí, zavolejte
+        na příjem oprav — tam vás nasměrují dál.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap split split-top">
+      <div class="linegrid" style="grid-template-columns: 1fr">
+        {people.map((p) => <PersonCard person={p} />)}
+      </div>
+      <InquiryForm />
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Sídlo a fakturační údaje" idx="02" title="KOS servis s.r.o." />
+      <div class="split split-top">
+        <div>
+          <ul class="spec" style="font-size: 15px">
+            <li><span class="lbl">Adresa</span><span class="val">{company.street}, {company.city}</span></li>
+            <li><span class="lbl">IČ</span><span class="val">{company.ico}</span></li>
+            <li><span class="lbl">DIČ</span><span class="val">{company.dic}</span></li>
+            <li><span class="lbl">Telefon / fax</span><span class="val">{company.phone}</span></li>
+            <li><span class="lbl">E-mail</span><span class="val">{company.email}</span></li>
+            <li><span class="lbl">Servisní dojezd</span><span class="val">cca 100 km</span></li>
+          </ul>
+          <p style="font-size: 15px; color: #37475b; margin-top: 22px; max-width: 52ch">
+            Areál leží těsně u dálnice D1 na 66. kilometru — z Prahy i z Brna jste
+            u nás bez zajížděk. Zásilky a materiál přijímáme v pracovní dny.
+          </p>
+        </div>
+        <iframe
+          class="map-frame"
+          src={mapSrc}
+          title="Mapa — KOS servis s.r.o., Chyšná 52"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Odkaz s ?typ=… ze stránky služby předvyplní typ poptávky.
+  const typ = new URLSearchParams(location.search).get('typ');
+  const select = document.querySelector<HTMLSelectElement>('#typ');
+  if (typ && select && [...select.options].some((o) => o.value === typ)) {
+    select.value = typ;
+    document.querySelector('#poptavka')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>

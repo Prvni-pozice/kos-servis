@@ -1,0 +1,81 @@
+<!-- @dsCard group="Components" name="Form states" subtitle="Hlášky po odeslání, chyba u pole, výpis příloh, honeypot — doplněk k forms.html" viewport="640x680" -->
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>Form states</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+body { padding: 32px; max-width: 900px; }
+.lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-steel); margin: 0 0 8px; }
+
+/* --- kandidáti na povýšení do styles.css --- */
+.form-note { font-size: 13px; color: var(--color-steel); margin-top: -6px; margin-bottom: var(--space-4); }
+.form-msg { padding: 14px 16px; font-size: 15px; border-left: 3px solid; margin-bottom: var(--space-4); }
+.form-msg.ok { border-color: var(--color-navy); background: var(--color-accent-100); color: var(--color-navy); }
+.form-msg.err { border-color: var(--color-emergency); background: var(--color-accent-2-100); color: var(--color-accent-2-700); }
+.field .err-text { display: block; margin-top: 5px; font-size: 13px; color: var(--color-emergency); }
+.input[aria-invalid='true'] { border-color: var(--color-emergency); }
+.file-list { margin-top: 8px; font-family: var(--font-mono); font-size: 12px; color: var(--color-navy); }
+/* honeypot — skrytý před lidmi, viditelný pro roboty */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+/* --- konec kandidátů --- */
+</style>
+</head>
+<body>
+<div class="eyebrow"><span class="idx">15</span> Stavy formuláře</div>
+
+<p class="lbl">Úspěch — říká, co se stane dál</p>
+<div class="form-msg ok">Děkujeme, poptávku máme. Ozveme se obvykle do jednoho pracovního dne.</div>
+
+<p class="lbl">Chyba — říká, co udělat</p>
+<div class="form-msg err">Přílohy dohromady přesahují 10 MB. Zmenšete je nebo pošlete odkaz na úložiště.</div>
+
+<p class="lbl">Chyba u konkrétního pole</p>
+<div class="field" style="max-width: 420px">
+  <label for="a">Telefon nebo e-mail</label>
+  <input class="input" id="a" type="text" aria-invalid="true" value="" placeholder="+420 …" />
+  <span class="err-text">Bez kontaktu se vám nemáme jak ozvat.</span>
+</div>
+
+<p class="lbl">Příloha — po výběru souborů</p>
+<div class="field" style="max-width: 420px">
+  <label for="b">Příloha</label>
+  <label class="file-drop" for="b">+ Přiložit výkres nebo fotku (do 10 MB)</label>
+  <input id="b" type="file" style="display: none" />
+  <div class="file-list">vypalek-drzak.dxf, foto-praskliny.jpg · 3,4 MB</div>
+</div>
+
+<p class="lbl">Souhlas nad tlačítkem</p>
+<div style="max-width: 420px">
+  <p class="form-note">
+    Odesláním souhlasíte se zpracováním údajů pro vyřízení poptávky.
+    Podrobnosti v <a href="#">zásadách zpracování osobních údajů</a>.
+  </p>
+  <button class="btn btn-primary" type="button">Odeslat poptávku →</button>
+  <button class="btn btn-primary" type="button" disabled style="margin-left: 8px">Odesílám…</button>
+</div>
+
+<p class="lbl" style="margin-top: 26px">Honeypot — v markupu, ne na obrazovce</p>
+<div style="border: 1px dashed var(--color-line); padding: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--color-steel)">
+  &lt;div class="hp" aria-hidden="true"&gt;&lt;input name="web" tabindex="-1" autocomplete="off" /&gt;&lt;/div&gt;
+</div>
+
+<p class="lbl" style="margin-top: 26px">Pravidla</p>
+<ul class="spec">
+  <li><span class="lbl">Jazyk hlášek</span><span class="val">co se stalo + co udělat</span></li>
+  <li><span class="lbl">Zákaz</span><span class="val">„Došlo k chybě“, kódy, technický žargon</span></li>
+  <li><span class="lbl">Chybová barva</span><span class="val">--color-emergency, jen u chyb</span></li>
+  <li><span class="lbl">Úspěch</span><span class="val">navy, ne zelená — v paletě zelená není</span></li>
+  <li><span class="lbl">Fokus po chybě</span><span class="val">na první nevyplněné pole</span></li>
+  <li><span class="lbl">Odesílání</span><span class="val">tlačítko disabled + změna popisku</span></li>
+</ul>
+
+<p style="font-size: 14px; color: #42566b; margin-top: 22px; max-width: 60ch">
+  Chybová hláška je jediné další místo, kde se objevuje teplý akcent. Je to
+  obhajitelné — chyba je stejně naléhavá jako „Příjem oprav“ a obojí platí, že
+  si toho člověk musí všimnout hned. Úspěch záměrně akcent nemá, aby se
+  nerozmělnil.
+</p>
+</body>
+</html>

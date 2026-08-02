@@ -1,0 +1,70 @@
+<!-- @dsCard group="Components" name="Timeline" subtitle="Historie firmy — letopočet jako kóta vlevo, text vpravo, vláskové spáry" viewport="640x520" -->
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>Timeline</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+body { padding: 32px; max-width: 900px; }
+.lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-steel); margin: 0 0 8px; }
+
+/* --- kandidáti na povýšení do styles.css --- */
+.timeline > * {
+  display: grid; grid-template-columns: 110px 1fr;
+  gap: 20px; padding: 18px 24px; align-items: baseline;
+}
+.timeline .year {
+  font-family: var(--font-mono); font-weight: 600;
+  font-size: 18px; color: var(--color-emergency);
+}
+.timeline .text { font-size: 16px; color: #37475b; }
+@media (max-width: 640px) {
+  .timeline > * { grid-template-columns: 1fr; gap: 4px; }
+}
+/* --- konec kandidátů --- */
+</style>
+</head>
+<body>
+<div class="eyebrow"><span class="idx">13</span> Timeline</div>
+
+<p class="lbl">Timeline — kombinuje se s .linegrid v jednom sloupci</p>
+<div class="linegrid timeline" style="grid-template-columns: 1fr">
+  <div>
+    <div class="year">1997</div>
+    <div class="text">Vznik živnostenského oprávnění, počátky opravárenské činnosti.</div>
+  </div>
+  <div>
+    <div class="year">2007</div>
+    <div class="text">Založení KOS servis s.r.o., 10 zaměstnanců.</div>
+  </div>
+  <div>
+    <div class="year">2018</div>
+    <div class="text">Kolaudace hal č. 2 a 3, zprovoznění plazmového pálicího stroje s 3D hlavou, 17 zaměstnanců.</div>
+  </div>
+  <div>
+    <div class="year">2022</div>
+    <div class="text">Rozšíření areálu z cca 4 500 m² na cca 9 000 m², příprava stavby haly č. 4.</div>
+  </div>
+  <div>
+    <div class="year">2026</div>
+    <div class="text">Pořízení hydraulického rovnacího lisu, 20 zaměstnanců.</div>
+  </div>
+</div>
+
+<p class="lbl" style="margin-top: 26px">Pravidla</p>
+<ul class="spec">
+  <li><span class="lbl">Letopočet</span><span class="val">mono, teplý akcent — je to datový údaj</span></li>
+  <li><span class="lbl">Sloupec roku</span><span class="val">pevných 110 px, ať čísla lícují</span></li>
+  <li><span class="lbl">Zarovnání</span><span class="val">baseline, ne center</span></li>
+  <li><span class="lbl">Mobil</span><span class="val">pod 640 px se zalomí pod sebe</span></li>
+</ul>
+
+<p style="font-size: 14px; color: #42566b; margin-top: 22px; max-width: 60ch">
+  Výjimka z pravidla o vyhrazeném akcentu: letopočet je jediné místo mimo
+  „Příjem oprav“, kde se teplá barva používá. Funguje tu jako kóta na výkrese,
+  ne jako CTA — pokud by to mělo akcent rozmělnit, přebarvit na
+  <code>--color-steel</code>.
+</p>
+</body>
+</html>

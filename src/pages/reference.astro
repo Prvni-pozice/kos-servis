@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Gallery from '../components/Gallery.astro';
+import CtaBand from '../components/CtaBand.astro';
+import SectionHead from '../components/SectionHead.astro';
+import { references, industries } from '../data/site';
+---
+
+<BaseLayout
+  title="Reference"
+  description="Dlouhodobě pracujeme pro dřevozpracující podniky, zemědělská družstva, technické služby i průmyslové provozy na Vysočině a v okolí."
+>
+  <section class="section" style="padding-bottom: clamp(40px, 5vw, 64px)">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'Reference' }]} />
+      <div class="eyebrow"><span class="idx">01</span> Reference</div>
+      <h1 style="max-width: 22ch">Pro koho pracujeme</h1>
+      <p style="font-size: 18px; color: #37475b; max-width: 62ch; margin-top: 18px">
+        Většina zakázek k nám přichází na doporučení. Níže jsou firmy, se kterými
+        spolupracujeme dlouhodobě — od dřevozpracujícího průmyslu přes zemědělská
+        družstva až po technické služby měst.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap">
+      <div class="linegrid cols-3">
+        {references.map((r) => (
+          <div style="padding: 26px 24px">
+            <div style="font-family: var(--font-heading); font-weight: 700; font-size: 17px; color: var(--color-navy)">
+              {r.name}
+            </div>
+            {r.city && (
+              <div class="mono" style="font-size: 12px; color: var(--color-steel); margin-top: 6px">{r.city}</div>
+            )}
+          </div>
+        ))}
+      </div>
+      <p class="mono" style="font-size: 12px; color: var(--color-steel); margin-top: 18px">
+        Loga referenčních firem doplníme po získání souhlasu klientů.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Obory" idx="02" title="Odvětví, ve kterých se pohybujeme" />
+      <div class="linegrid cols-3">
+        {industries.map((o) => <div class="industry">{o}</div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <SectionHead
+        eyebrow="Z realizací"
+        idx="03"
+        title="Ukázky provedených prací"
+        lead="Fotografie z dílny a z dokončených zakázek."
+      />
+      <Gallery section="firma-pruchod" label="Realizace KOS servis" cols={3} limit={15} />
+    </div>
+  </section>
+
+  <CtaBand
+    kicker="Chcete referenci na konkrétní typ zakázky?"
+    title="Zavolejte — řekneme vám, co podobného jsme dělali"
+  />
+</BaseLayout>

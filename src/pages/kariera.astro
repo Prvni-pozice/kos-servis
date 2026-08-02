@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHead from '../components/SectionHead.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import { company, intake } from '../data/site';
+
+const pozice = [
+  {
+    title: 'Soustružník / frézař',
+    napln: [
+      'Výroba a opracování přesných dílů',
+      'Práce na klasických nebo CNC strojích',
+      'Práce podle výkresové dokumentace',
+      'Seřízení nástrojů a korekce programů',
+      'Běžná údržba strojů',
+    ],
+    pozadavky: [
+      'Vyučení ve strojním oboru nebo praxe',
+      'Orientace ve výkresech',
+      'Pečlivost při měření',
+    ],
+  },
+  {
+    title: 'Mechanik / svářeč',
+    napln: [
+      'Kompletace, svařování a montáž kovových konstrukcí',
+      'Opravy dílů a komponentů',
+      'Diagnostika závad',
+      'Mechanické opravy a servisní práce',
+    ],
+    pozadavky: [
+      'Svářečský průkaz',
+      'Praxe v oboru',
+      'Manuální zručnost',
+      'Schopnost číst technická schémata',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Kariéra"
+  description="Hledáme soustružníky, frézaře, mechaniky a svářeče do zavedené strojírenské firmy na Vysočině. Vlastní zázemí, rozmanité zakázky, modernizovaný strojový park."
+>
+  <section class="section" style="padding-bottom: clamp(40px, 5vw, 64px)">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'Kariéra' }]} />
+      <div class="eyebrow"><span class="idx">01</span> Kariéra</div>
+      <h1 style="max-width: 20ch">Práce v KOS servisu</h1>
+      <p style="font-size: 18px; color: #37475b; max-width: 62ch; margin-top: 18px">
+        Hledáme šikovné lidi do výroby, oprav a strojních prací. Nabízíme práci
+        v zavedené strojírenské firmě s vlastním zázemím, rozmanitými zakázkami
+        a modernizovaným strojovým parkem.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap">
+      <div class="linegrid cols-2">
+        {pozice.map((p) => (
+          <div style="padding: 30px 28px">
+            <h3 style="margin-bottom: 18px">{p.title}</h3>
+
+            <h6>Náplň práce</h6>
+            <ul style="list-style: none; margin: 0 0 22px; padding: 0">
+              {p.napln.map((i) => (
+                <li style="display: flex; gap: 12px; padding: 6px 0; font-size: 15px">
+                  <span style="width: 8px; height: 8px; flex: none; margin-top: 7px; background: var(--color-emergency-bright); transform: rotate(45deg)"></span>
+                  <span>{i}</span>
+                </li>
+              ))}
+            </ul>
+
+            <h6>Co očekáváme</h6>
+            <ul class="spec">
+              {p.pozadavky.map((i) => <li><span class="lbl">{i}</span></li>)}
+            </ul>
+
+            <p style="margin-top: 22px; font-size: 15px; color: #37475b">
+              <strong>Máte zájem?</strong> Zavolejte nám nebo pošlete krátký životopis.
+            </p>
+            <a class="btn btn-accent" href={`tel:${intake.phoneHref}`}>{intake.phone}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <SectionHead
+        eyebrow="Ozvěte se"
+        idx="02"
+        title="Pošlete životopis rovnou odsud"
+        lead="Nevidíte mezi pozicemi tu svou? Napište nám i tak — strojaře hledáme průběžně."
+      />
+      <div style="max-width: 620px">
+        <InquiryForm subject="Kariéra" title="Reakce na nabídku práce" />
+      </div>
+      <p class="mono" style="font-size: 12px; color: var(--color-steel); margin-top: 18px">
+        Nebo pište na {company.email}.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

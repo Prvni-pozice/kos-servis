@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Gallery from '../components/Gallery.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company, yearsInBusiness } from '../data/site';
+
+/* Historie z klientského dokumentu „Návrh struktury webu KOS servis“. */
+const historie = [
+  { year: '1997', text: 'Vznik živnostenského oprávnění, počátky opravárenské činnosti.' },
+  { year: '2003', text: 'Založení sdružení fyzických osob, rozhodnutí a začátek stavby administrativní budovy a haly č. 1.' },
+  { year: '2005', text: 'Kolaudace nových prostor, 7 zaměstnanců.' },
+  { year: '2007', text: 'Založení KOS servis s.r.o., 10 zaměstnanců.' },
+  { year: '2016', text: 'Rozšíření areálu a začátek stavby hal č. 2 a 3.' },
+  { year: '2018', text: 'Kolaudace hal č. 2 a 3, zprovoznění plazmového pálicího stroje s 3D hlavou, 17 zaměstnanců.' },
+  { year: '2020', text: 'Kolaudace administrativní budovy č. 2.' },
+  { year: '2022', text: 'Rozšíření areálu z cca 4 500 m² na cca 9 000 m², příprava stavby haly č. 4.' },
+  { year: '2025', text: 'Kolaudace haly č. 4, rozšíření strojového parku.' },
+  { year: '2026', text: 'Pořízení hydraulického rovnacího lisu, 20 zaměstnanců.' },
+];
+
+const zamereni = [
+  'Kusová výroba',
+  'Opravy strojních celků',
+  'Hydraulika',
+  'Strojní obrábění',
+  'Svařování',
+  'Pálení plazmou',
+];
+---
+
+<BaseLayout
+  title="O firmě"
+  description={`KOS servis s.r.o. — strojírenská firma v Chyšné u Pacova na Vysočině. Od roku ${company.founded}, areál 9 000 m², 20 zaměstnanců, vlastní strojový park.`}
+>
+  <section class="section" style="padding-bottom: clamp(40px, 5vw, 64px)">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'O firmě' }]} />
+      <div class="split split-top">
+        <div>
+          <div class="eyebrow"><span class="idx">01</span> Kdo jsme</div>
+          <h1 style="max-width: 20ch">Strojírna v Chyšné, {yearsInBusiness} let v provozu</h1>
+        </div>
+        <div>
+          <p style="font-size: 18px; color: #37475b; max-width: 58ch">
+            Působiště firmy je v kraji Vysočina těsně vedle dálnice D1 na 66. kilometru,
+            což je výhodná poloha v rámci republiky. Jsme malá firma s přibližně
+            20 zaměstnanci včetně THP, zaměřená na svářečské a strojní práce
+            v širokém rozsahu.
+          </p>
+          <p style="font-size: 17px; color: #37475b; max-width: 58ch">
+            Zakázky děláme především v areálu firmy, ale v rámci mezinárodní spolupráce
+            jsme cestovali na montáže do Ruska, Polska i Rakouska.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Na co se zaměřujeme" idx="02" title="Čím se živíme" />
+      <div class="linegrid cols-3">
+        {zamereni.map((z) => <div class="industry">{z}</div>)}
+      </div>
+      <p style="font-size: 17px; color: #37475b; max-width: 70ch; margin-top: 32px">
+        Hlavním portfoliem jsou opravy lesnické a zemědělské techniky — harvestory,
+        vyvážecí vleky, výroba svařenců ramen a výsuvů, opravy navijáků. Navazují na ně
+        hydraulické rozvody pro lesní a zemědělskou techniku: opravy trubek pístnic
+        a pístních tyčí, opravy rozvaděčů včetně čerpadel. Vlastníme oprávnění na
+        opravy i výrobu zdvihacích zařízení a ocelových konstrukcí — vyrábíme sloupové
+        jeřáby dle potřeb zákazníka a upravujeme vysokozdvižné vozíky. V posledních
+        letech jsme začali s projektováním hrabicových dopravníků pro dlouhodobé partnery.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <SectionHead
+        eyebrow="Historie firmy"
+        idx="03"
+        title="Od jednoho živnostenského listu k areálu 9 000 m²"
+      />
+      <div class="linegrid timeline" style="grid-template-columns: 1fr">
+        {historie.map((h) => (
+          <div>
+            <div class="year">{h.year}</div>
+            <div class="text">{h.text}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <SectionHead
+        eyebrow="Certifikáty a oprávnění"
+        idx="04"
+        title="Doklady, na které se můžete odvolat"
+        lead="Svářečská oprávnění včetně vyškolených zaměstnanců na hliník, litinu, bronz a nerez, oprávnění na opravy a výrobu vyhrazených zdvihacích zařízení."
+      />
+      <a class="btn btn-secondary" href="/certifikaty/">Certifikáty a dokumenty ke stažení →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <SectionHead eyebrow="Areál a dílny" idx="05" title="Jak to u nás vypadá" />
+      <Gallery section="firma-pruchod" label="Areál KOS servis" cols={3} limit={12} />
+    </div>
+  </section>
+
+  <CtaBand
+    kicker="Chcete se přijet podívat?"
+    title="Domluvíme prohlídku provozu — jsme kousek od D1"
+    ctaLabel="Kontakty a mapa →"
+    href="/kontakt/"
+  />
+</BaseLayout>

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import MachineGrid from '../components/MachineGrid.astro';
+import Gallery from '../components/Gallery.astro';
+import CtaBand from '../components/CtaBand.astro';
+import SectionHead from '../components/SectionHead.astro';
+import { plasmaSpecs } from '../data/site';
+
+const dalsi = [
+  { title: 'Svařování', items: ['Svářečské práce', 'Renovace', 'Navařování otěruvzdorných vrstev'] },
+  { title: 'Další strojní práce', items: ['Soustružení', 'Frézování', 'Vyvrtávání', 'Broušení', 'Obrážení'] },
+];
+---
+
+<BaseLayout
+  title="Strojový park"
+  description="Plazmové pálicí centrum Messer OmniMat L 5600 s 3D hlavou, CNC ohraňovací lis Rico 500 t, rovnací lis MAQ HD180, povolovací lavice a horizontální vyvrtávačka."
+>
+  <section class="section" style="padding-bottom: clamp(40px, 5vw, 64px)">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'Strojový park' }]} />
+      <div class="eyebrow"><span class="idx">01</span> Strojový park</div>
+      <h1 style="max-width: 22ch">Strojový park KOS servis</h1>
+      <p style="font-size: 18px; color: #37475b; max-width: 62ch; margin-top: 18px">
+        Vlastní strojový park nám umožňuje řešit opravy, výrobu i úpravy dílů přímo
+        v našem areálu. Díky kombinaci pálení, obrábění, svařování, ohýbání a rovnání
+        zvládáme zakázky od opravy jednotlivých součástí až po výrobu větších
+        konstrukčních celků.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap">
+      <MachineGrid />
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <SectionHead
+        eyebrow="Plazmové středisko"
+        idx="02"
+        title="Messer OmniMat L 5600 v detailu"
+        lead="Kompletní parametry pálicího stolu, hořáků a vrtací jednotky — podle nich poznáte, jestli váš díl vypálíme."
+      />
+      <div class="linegrid cols-2">
+        {plasmaSpecs.map((g) => (
+          <div style="padding: 26px 24px">
+            <h4 style="margin-bottom: 14px">{g.title}</h4>
+            <ul class="spec">
+              {g.rows.map((r) => (
+                <li><span class="lbl">{r.label}</span><span class="val">{r.value}</span></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top: 22px">
+        <a class="btn btn-secondary" href="/sluzby/paleni-3d-plazmou/">Detail služby 3D pálení plazmou →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <SectionHead eyebrow="Ruční práce" idx="03" title="Co stroje nezvládnou samy" />
+      <div class="linegrid cols-2">
+        {dalsi.map((b) => (
+          <div style="padding: 26px 24px">
+            <h4 style="margin-bottom: 14px">{b.title}</h4>
+            <ul class="spec">
+              {b.items.map((i) => <li><span class="lbl">{i}</span></li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Galerie" idx="04" title="Dílna a stroje" />
+      <Gallery section="firma-vyroba" label="Strojový park KOS servis" cols={3} limit={18} />
+    </div>
+  </section>
+
+  <CtaBand
+    kicker="Vejde se váš díl?"
+    title="Zavolejte a řekneme vám to hned podle rozměrů"
+  />
+</BaseLayout>

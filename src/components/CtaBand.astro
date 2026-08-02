@@ -1,0 +1,25 @@
+---
+import { intake } from '../data/site';
+
+interface Props {
+  kicker: string;
+  title: string;
+  /** Výchozí CTA je telefon na příjem oprav; `href` přepne na jinou akci. */
+  ctaLabel?: string;
+  href?: string;
+}
+
+const { kicker, title, ctaLabel, href } = Astro.props;
+const label = ctaLabel ?? `${intake.label}: ${intake.phone}`;
+const target = href ?? `tel:${intake.phoneHref}`;
+---
+
+<section class="section dark">
+  <div class="wrap ctaband">
+    <div>
+      <h6 style="margin-bottom: 10px">{kicker}</h6>
+      <h2 style="margin: 0; max-width: 24ch">{title}</h2>
+    </div>
+    <a class="btn btn-accent" href={target} style="padding: 16px 26px; font-size: 14px">{label}</a>
+  </div>
+</section>

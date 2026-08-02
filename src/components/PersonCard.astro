@@ -1,0 +1,28 @@
+---
+import type { Person } from '../data/site';
+
+interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+const telHref = person.phone?.replace(/\s/g, '');
+---
+
+<div class="person">
+  <div>
+    <div class="role">{person.role}</div>
+    <div class="name">{person.name}</div>
+    <p class="solves">{person.solves}</p>
+  </div>
+  <div class="num">
+    {person.phone && <a href={`tel:${telHref}`}>{person.phone}</a>}
+    {person.email && (
+      <>
+        <br />
+        <a href={`mailto:${person.email}`}>{person.email}</a>
+      </>
+    )}
+    {person.todo && <span class="todo">{person.todo}</span>}
+  </div>
+</div>

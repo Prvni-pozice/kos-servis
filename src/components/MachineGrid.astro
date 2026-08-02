@@ -1,0 +1,55 @@
+---
+import { machines } from '../data/site';
+import { intake } from '../data/site';
+
+interface Props {
+  /** Na úvodní straně stačí výběr, na Strojovém parku jedou všechny. */
+  limit?: number;
+}
+
+const { limit } = Astro.props;
+const list = limit ? machines.slice(0, limit) : machines;
+
+/* Hlavní stroj zabírá v mřížce dva řádky, takže počet obsazených buněk
+ * není roven počtu strojů. Zbytek řádku dopočítáme a doplníme, jinak
+ * by na konci zůstalo prázdné šedé pole. */
+const used = list.length + (list.some((m) => m.feature) ? 1 : 0);
+const fill = (3 - (used % 3)) % 3;
+---
+
+<div class="linegrid cols-3">
+  {list.map((m) => (
+    <div class={`machine${m.feature ? ' feature dark' : ''}`}>
+      <h6>{m.group}</h6>
+      {m.feature ? (
+        <h3 style="font-size: 26px; margin-bottom: 16px">{m.name}</h3>
+      ) : (
+        <h4 style="margin-bottom: 14px">{m.name}</h4>
+      )}
+      <ul class="spec">
+        {m.specs.map((s) => (
+          <li>
+            <span class="lbl">{s.label}</span>
+            <span class="val">{s.value}</span>
+          </li>
+        ))}
+      </ul>
+      {m.note && <p style="font-size: 14px; color: #c3d5e8; margin-top: 16px">{m.note}</p>}
+    </div>
+  ))}
+
+  {fill > 0 && (
+    <div class="machine" style={`grid-column: span ${fill}; display: flex; flex-direction: column; justify-content: center`}>
+      <h6>Nevíte, jestli se váš díl vejde?</h6>
+      <p style="font-size: 15px; color: #42566b; margin: 0 0 16px; max-width: 44ch">
+        Řekněte nám rozměry a materiál — hned vám povíme, na kterém stroji to uděláme
+        a jestli navazuje ohýbání nebo svařování.
+      </p>
+      <div>
+        <a class="btn btn-secondary" href={`tel:${intake.phoneHref}`}>
+          {intake.label}: {intake.phone}
+        </a>
+      </div>
+    </div>
+  )}
+</div>

@@ -1,0 +1,89 @@
+# Rozhodnutí a záludnosti
+
+Věci, které z kódu nejsou vidět, ale při další práci se hodí vědět.
+Stav k 2. 8. 2026.
+
+## Odchylky od design systému
+
+| Co | Proč |
+|---|---|
+| Fonty přes `@fontsource`, ne `@import` z Google Fonts | Design systém načítal fonty z fonts.googleapis.com. Na produkci to znamená render-blocking request na cizí doménu a GDPR problém. Úvodní strana teď nedělá jediný externí request. |
+| `.timeline` povýšena na třídy | Na `/o-firme/` byla původně inline styly. Před pushem do Designu se musela formalizovat, jinak by se obě strany rozešly. |
+| Výplňová buňka v mřížce strojů | Šest strojů, z toho jeden přes dva řádky = 7 buněk ve třech sloupcích → dvě prázdná šedá pole. Doplněno CTA blokem, počet se dopočítává. |
+| Teplý akcent i u letopočtu a chybové hlášky | Formálně porušuje pravidlo „akcent jen pro Příjem oprav". U chyby obhajitelné (stejná naléhavost), u letopočtu ke zvážení — poznámka je i v pushnuté komponentě. |
+
+## Záludnosti, na kterých se dá ztratit čas
+
+**`trailingSlash: 'always'` rozbije API route.** Formulář musí posílat na
+`/api/poptavka/` s lomítkem, jinak 404. Je to okomentované v `InquiryForm.astro`.
+
+**Astro má CSRF ochranu na POST.** Testy endpointu přes `curl` potřebují hlavičku
+`Origin` shodnou s hostem, jinak vrací 403 „Cross-site POST form submissions are forbidden":
+
+```bash
+curl -H "Origin: http://127.0.0.1:4331" -X POST http://127.0.0.1:4331/api/poptavka/ -F ...
+```
+
+**Astro 7 vyžaduje Node ≥ 22.12**, systémový je 20. Před každou prací:
+
+```bash
+nvm use 22
+```
+
+**HEIC z iPhonu sharp neotevře** — libheif má limit 16 referencí v `iref` boxu
+a iOS fotky jich mají 48. `ffmpeg -map 0:g:0` vrací jen jednu dlaždici, ne celý
+obraz. Funguje `heic-convert` → sharp, viz `scripts/import-client-photos.mjs`.
+
+**Importní skripty sdílejí `public/img/manifest.json`.** `import-old-photos.mjs`
+ho původně přepisoval celý a mazal tím sekce klientských fotek. Opraveno —
+teď se doplňují jen vlastní klíče. Při úpravách to nerozbít znovu.
+
+**Ve staré galerii je i logo webu.** Filtruje se podle rozměru zdroje (pod 600 px
+na delší straně se přeskakuje), jinak leze do fotogalerií.
+
+**Soubory pojmenované `sni-mek-obrazovky-*.png` NEJSOU screenshoty.** Jsou to
+profesionální fotky vlastního stroje Messer OmniMat — nejlepší fotky, které
+ze starého webu jsou. Nefiltrovat je pryč.
+
+## Screenshoty bez rootu
+
+Na serveru není chromium ani sudo. Postup, který funguje:
+
+```bash
+npm i playwright-core && npx playwright install chromium
+cd <scratchpad>/libs
+apt-get download libnspr4 libnss3 libatk1.0-0t64 libatk-bridge2.0-0t64 \
+  libatspi2.0-0t64 libcups2t64 libdrm2 libxkbcommon0 libxcomposite1 \
+  libxdamage1 libxfixes3 libxrandr2 libgbm1 libpango-1.0-0 libcairo2 \
+  libpangocairo-1.0-0 libgtk-3-0t64 libgdk-pixbuf-2.0-0 libxext6 libxi6 libxrender1
+for d in *.deb; do dpkg-deb -x "$d" root; done
+export LD_LIBRARY_PATH="$PWD/root/usr/lib/x86_64-linux-gnu"
+```
+
+`apt-get download` root nepotřebuje. Kontrola úplnosti:
+
+```bash
+ldd ~/.cache/ms-playwright/chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell | grep "not found"
+```
+
+## Data, která si odporují
+
+| Údaj | Starý web | Dokument / design | Na webu |
+|---|---|---|---|
+| Počet zaměstnanců | „přibližně 17" | 20 | **20** (novější zdroj) |
+
+Historie firmy v dokumentu uvádí 17 zaměstnanců k roku 2018 a 20 k roku 2026 —
+starý web tedy nejspíš jen nebyl aktualizovaný. Přesto stojí za ověření u klienta.
+
+## Fotky — kurátorství
+
+Import je automatický a **nekurátorovaný**. 190 fotek celkem:
+
+```
+firma-vyroba     87   klientské, telefon, kvalita kolísá
+firma-pruchod    31   klientské, jarní průchod firmou
+ostatní sekce    72   ze starého webu, starší a menší
+```
+
+Výběr i pořadí řídí `public/img/manifest.json` — stačí z něj položky smazat.
+Doporučuju projít před spuštěním.

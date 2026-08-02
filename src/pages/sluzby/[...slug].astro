@@ -1,0 +1,178 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import Gallery from '../../components/Gallery.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { hasPhotos } from '../../data/gallery';
+import { intake, people } from '../../data/site';
+
+export async function getStaticPaths() {
+  const sluzby = await getCollection('sluzby');
+  return sluzby.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+interface Props {
+  entry: CollectionEntry<'sluzby'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const all = await getCollection('sluzby');
+const related = d.related
+  .map((slug) => all.find((s) => s.id === slug))
+  .filter((s): s is CollectionEntry<'sluzby'> => Boolean(s));
+
+/* U pálení vede poptávku středisko plazma, jinde příjem oprav. */
+const plazma = people.find((p) => p.role === 'Středisko plazma');
+const contact = entry.id === 'paleni-3d-plazmou' && plazma?.phone ? plazma : null;
+
+const idx = String(d.order).padStart(2, '0');
+const showGallery = d.gallery && hasPhotos(d.gallery);
+---
+
+<BaseLayout title={d.seoTitle ?? d.title} description={d.intro}>
+  <section class="section" style="padding-bottom: clamp(40px, 5vw, 64px)">
+    <div class="wrap">
+      <Breadcrumbs items={[{ href: '/sluzby/', label: 'Služby' }, { label: d.title }]} />
+      <div class="split split-top">
+        <div>
+          <div class="eyebrow"><span class="idx">{idx}</span> {d.eyebrow}</div>
+          <h1>{d.title}</h1>
+          <p style="font-size: 18px; color: #37475b; max-width: 58ch; margin-top: 18px">{d.intro}</p>
+
+          {d.tags.length > 0 && (
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px">
+              {d.tags.map((t, i) => (
+                <span class={`tag ${i === 0 ? 'tag-accent' : i === 1 ? 'tag-outline' : 'tag-neutral'}`}>{t}</span>
+              ))}
+            </div>
+          )}
+
+          <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px">
+            <a class="btn btn-primary" href={`/kontakt/?typ=${encodeURIComponent(d.inquirySubject ?? 'Obecný dotaz')}`}>
+              Nezávazná poptávka →
+            </a>
+            {contact ? (
+              <a class="btn btn-secondary" href={`tel:${contact.phone!.replace(/\s/g, '')}`}>
+                {contact.role}: {contact.phone}
+              </a>
+            ) : (
+              <a class="btn btn-secondary" href={`tel:${intake.phoneHref}`}>
+                {intake.label}: {intake.phone}
+              </a>
+            )}
+          </div>
+        </div>
+
+        {d.scope.length > 0 && (
+          <div style="border: 1px solid var(--color-line); padding: 26px 28px">
+            <h6>Co konkrétně děláme</h6>
+            <ul style="list-style: none; margin: 0; padding: 0">
+              {d.scope.map((s) => (
+                <li style="display: flex; gap: 12px; padding: 8px 0; border-top: 1px dotted var(--color-line); font-size: 15px">
+                  <span style="width: 8px; height: 8px; flex: none; margin-top: 7px; background: var(--color-emergency-bright); transform: rotate(45deg)"></span>
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {d.equipment.length > 0 && (
+    <section class="section alt">
+      <div class="wrap">
+        <div style="max-width: 64ch; margin-bottom: 44px">
+          <div class="eyebrow"><span class="idx">02</span> Vybavení</div>
+          <h2>Čím to děláme</h2>
+        </div>
+        <table class="table" style="background: var(--color-paper); border: 1px solid var(--color-line)">
+          <thead><tr><th style="width: 32%">Zařízení</th><th>K čemu slouží</th></tr></thead>
+          <tbody>
+            {d.equipment.map((e) => (
+              <tr>
+                <td style="font-weight: 600; color: var(--color-navy)">{e.name}</td>
+                <td>{e.role}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  {d.specs.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <div style="max-width: 64ch; margin-bottom: 44px">
+          <div class="eyebrow"><span class="idx">03</span> Technické parametry</div>
+          <h2>Čísla, podle kterých se rozhodnete</h2>
+        </div>
+        <div class="linegrid cols-2">
+          {d.specs.map((g) => (
+            <div style="padding: 26px 24px">
+              <h4 style="margin-bottom: 14px">{g.title}</h4>
+              <ul class="spec">
+                {g.rows.map((r) => (
+                  <li><span class="lbl">{r.label}</span><span class="val">{r.value}</span></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {showGallery && (
+    <section class="section alt">
+      <div class="wrap">
+        <div style="max-width: 64ch; margin-bottom: 44px">
+          <div class="eyebrow"><span class="idx">04</span> Galerie</div>
+          <h2>Ukázky z dílny</h2>
+        </div>
+        <Gallery section={d.gallery!} label={d.title} cols={3} limit={12} />
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="wrap prose">
+      <Content />
+    </div>
+  </section>
+
+  {related.length > 0 && (
+    <section class="section alt">
+      <div class="wrap">
+        <div style="max-width: 64ch; margin-bottom: 44px">
+          <div class="eyebrow"><span class="idx">05</span> Související služby</div>
+          <h2>Kam zakázka nejčastěji pokračuje</h2>
+        </div>
+        <div class="linegrid cols-3">
+          {related.map((r) => (
+            <ServiceCard
+              href={`/sluzby/${r.id}/`}
+              kicker="Služba"
+              title={r.data.title}
+              body={r.data.excerpt}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CtaBand
+    kicker="Máte výkres nebo poškozený díl?"
+    title="Pošlete podklady, vrátíme nabídku s termínem"
+    ctaLabel="Odeslat poptávku →"
+    href={`/kontakt/?typ=${encodeURIComponent(d.inquirySubject ?? 'Obecný dotaz')}`}
+  />
+</BaseLayout>

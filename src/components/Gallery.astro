@@ -1,0 +1,89 @@
+---
+import { photos } from '../data/gallery';
+
+interface Props {
+  /** Klíč sekce v public/img/manifest.json. */
+  section: string;
+  /** Popisek pro alt texty — „Pálení 3D plazmou“ → „Pálení 3D plazmou – foto 3“. */
+  label: string;
+  cols?: 2 | 3 | 4;
+  limit?: number;
+}
+
+const { section, label, cols = 3, limit } = Astro.props;
+const items = photos(section, limit);
+---
+
+{items.length > 0 && (
+  <div class={`gallery cols-${cols}`}>
+    {items.map((p, i) => (
+      <button
+        class="gallery-item"
+        type="button"
+        data-full={p.src}
+        data-alt={`${label} – foto ${i + 1}`}
+        aria-label={`Zvětšit: ${label} – foto ${i + 1}`}
+      >
+        <img
+          src={p.src}
+          alt={`${label} – foto ${i + 1}`}
+          width={p.width}
+          height={p.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </button>
+    ))}
+  </div>
+)}
+
+<dialog class="lightbox" aria-label="Zvětšená fotografie">
+  <div class="lightbox-bar">
+    <span data-lb-count></span>
+    <span>
+      <button type="button" data-lb-prev aria-label="Předchozí fotografie">← Předchozí</button>
+      <button type="button" data-lb-next aria-label="Další fotografie">Další →</button>
+      <button type="button" data-lb-close aria-label="Zavřít">Zavřít ✕</button>
+    </span>
+  </div>
+  <img data-lb-img src="" alt="" />
+</dialog>
+
+<script>
+  // Lightbox: jeden dialog obslouží všechny galerie na stránce.
+  const dialog = document.querySelector<HTMLDialogElement>('.lightbox');
+  const img = dialog?.querySelector<HTMLImageElement>('[data-lb-img]');
+  const count = dialog?.querySelector<HTMLElement>('[data-lb-count]');
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.gallery-item'));
+  let current = 0;
+
+  function show(i: number) {
+    if (!buttons.length || !img || !dialog) return;
+    current = (i + buttons.length) % buttons.length;
+    const btn = buttons[current];
+    img.src = btn.dataset.full ?? '';
+    img.alt = btn.dataset.alt ?? '';
+    if (count) count.textContent = `${current + 1} / ${buttons.length}`;
+  }
+
+  buttons.forEach((btn, i) =>
+    btn.addEventListener('click', () => {
+      show(i);
+      dialog?.showModal();
+    }),
+  );
+
+  dialog?.querySelector('[data-lb-close]')?.addEventListener('click', () => dialog.close());
+  dialog?.querySelector('[data-lb-prev]')?.addEventListener('click', () => show(current - 1));
+  dialog?.querySelector('[data-lb-next]')?.addEventListener('click', () => show(current + 1));
+
+  // Klik mimo obrázek zavírá; šipkami se listuje.
+  dialog?.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!dialog?.open) return;
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
+</script>

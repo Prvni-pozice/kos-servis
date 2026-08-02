@@ -1,0 +1,111 @@
+---
+interface Slogan {
+  kicker: string;
+  line: string;
+}
+
+interface Props {
+  video: string;
+  poster: string;
+  slogans: Slogan[];
+  /** Modrý tón sjednotí záběry s brandem — na kontaktu se nechává vypnutý. */
+  tone?: boolean;
+  intervalSeconds?: number;
+}
+
+const { video, poster, slogans, tone = true, intervalSeconds = 6 } = Astro.props;
+---
+
+<div class="hero cut">
+  <img class="hero-poster" src={poster} alt="" width="1280" height="720" data-hero-poster />
+  <video
+    src={video}
+    poster={poster}
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    data-hero-vid
+    data-active="false"
+    aria-hidden="true"
+  ></video>
+
+  {tone && <div class="hero-tone"></div>}
+  <div class="hero-scrim"></div>
+
+  {slogans.map((s, i) => (
+    <div class="hero-slogan" data-hero-slogan={i} data-active={i === 0 ? 'true' : 'false'}>
+      <div class="kicker">{s.kicker}</div>
+      <div class="line">{s.line}</div>
+    </div>
+  ))}
+
+  {slogans.length > 1 && (
+    <div class="hero-dashes">
+      {slogans.map((s, i) => (
+        <button type="button" data-hero-dash={i} aria-pressed={i === 0} aria-label={`Heslo ${i + 1}: ${s.line}`}></button>
+      ))}
+    </div>
+  )}
+</div>
+
+<script is:inline define:vars={{ intervalSeconds }}>
+  (() => {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    const video = hero.querySelector('[data-hero-vid]');
+    const poster = hero.querySelector('[data-hero-poster]');
+    const slogans = [...hero.querySelectorAll('[data-hero-slogan]')];
+    const dashes = [...hero.querySelectorAll('[data-hero-dash]')];
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Video se pouští až po načtení; do té doby drží místo poster,
+    // takže hero nikdy neproblikne prázdným tmavým polem.
+    if (video && !reduced) {
+      video.muted = true;
+      video.addEventListener(
+        'canplay',
+        () => {
+          video.dataset.active = 'true';
+          if (poster) poster.style.opacity = '0';
+          video.play().catch(() => {});
+        },
+        { once: true },
+      );
+      video.load();
+    }
+
+    if (slogans.length < 2 || reduced) return;
+
+    let idx = 0;
+    let timer;
+
+    const apply = (i) => {
+      idx = (i + slogans.length) % slogans.length;
+      slogans.forEach((el, k) => (el.dataset.active = String(k === idx)));
+      dashes.forEach((el, k) => el.setAttribute('aria-pressed', String(k === idx)));
+    };
+
+    const schedule = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        apply(idx + 1);
+        schedule();
+      }, intervalSeconds * 1000);
+    };
+
+    dashes.forEach((el, i) =>
+      el.addEventListener('click', () => {
+        apply(i);
+        schedule();
+      }),
+    );
+
+    // Když stránka není vidět, nemá smysl točit hesla dál.
+    document.addEventListener('visibilitychange', () =>
+      document.hidden ? clearTimeout(timer) : schedule(),
+    );
+
+    schedule();
+  })();
+</script>

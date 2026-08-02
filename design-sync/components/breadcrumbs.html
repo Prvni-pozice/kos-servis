@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" name="Breadcrumbs" subtitle="Drobečková navigace v mono — orientace v hlubší struktuře služeb" viewport="640x300" -->
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<title>Breadcrumbs</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+body { padding: 32px; max-width: 900px; }
+.lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-steel); margin: 0 0 8px; }
+
+/* --- kandidáti na povýšení do styles.css --- */
+.crumbs {
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--color-steel); margin-bottom: 26px;
+}
+.crumbs a { color: var(--color-steel); text-decoration: none; }
+.crumbs a:hover { color: var(--color-navy); text-decoration: underline; }
+.crumbs [aria-current='page'] { color: var(--color-navy); }
+/* --- konec kandidátů --- */
+</style>
+</head>
+<body>
+<div class="eyebrow"><span class="idx">14</span> Drobečky</div>
+
+<p class="lbl">Detail služby — dvě úrovně</p>
+<nav class="crumbs" aria-label="Drobečková navigace">
+  <a href="#">Úvod</a> / <a href="#">Služby</a> / <span aria-current="page">3D pálení plazmou</span>
+</nav>
+
+<p class="lbl">Rozcestník — jedna úroveň</p>
+<nav class="crumbs" aria-label="Drobečková navigace">
+  <a href="#">Úvod</a> / <span aria-current="page">Strojový park</span>
+</nav>
+
+<p class="lbl" style="margin-top: 26px">Pravidla</p>
+<ul class="spec">
+  <li><span class="lbl">Umístění</span><span class="val">nad eyebrow, ne pod H1</span></li>
+  <li><span class="lbl">Úvod</span><span class="val">vždy první článek, nepíše se ručně</span></li>
+  <li><span class="lbl">Aktuální stránka</span><span class="val">navy, bez odkazu, aria-current="page"</span></li>
+  <li><span class="lbl">Oddělovač</span><span class="val">lomítko, ne šipka</span></li>
+  <li><span class="lbl">SEO</span><span class="val">doplnit JSON-LD BreadcrumbList</span></li>
+</ul>
+
+<p style="font-size: 14px; color: #42566b; margin-top: 22px; max-width: 60ch">
+  Struktura služeb je hluboká a počítá s desítkami SEO podstránek, na které lidé
+  přistanou z vyhledávače. Drobečky jsou proto na každé stránce kromě úvodní —
+  bez nich návštěvník neví, kde v webu je.
+</p>
+</body>
+</html>

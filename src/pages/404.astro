@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { intake } from '../data/site';
+---
+
+<BaseLayout title="Stránka nenalezena" description="Požadovaná stránka na webu KOS servis neexistuje." noindex>
+  <section class="section">
+    <div class="wrap" style="max-width: 60ch">
+      <div class="eyebrow"><span class="idx">404</span> Stránka nenalezena</div>
+      <h1>Tuhle stránku tu nemáme</h1>
+      <p style="font-size: 17px; color: #37475b; margin-top: 16px">
+        Odkaz je nejspíš zastaralý — web jsme nedávno předělali. Zkuste přehled služeb
+        nebo nám rovnou zavolejte, pokud potřebujete opravu.
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px">
+        <a class="btn btn-primary" href="/sluzby/">Přehled služeb →</a>
+        <a class="btn btn-accent" href={`tel:${intake.phoneHref}`}>{intake.label}: {intake.phone}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

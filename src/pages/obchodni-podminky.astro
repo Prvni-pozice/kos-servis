@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { company } from '../data/site';
+---
+
+<BaseLayout
+  title="Všeobecné obchodní podmínky"
+  description={`Všeobecné obchodní podmínky společnosti ${company.name}.`}
+  noindex
+>
+  <section class="section">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'Všeobecné obchodní podmínky' }]} />
+      <div class="eyebrow"><span class="idx">01</span> Dokumenty</div>
+      <h1 style="max-width: 24ch">Všeobecné obchodní podmínky</h1>
+
+      <div class="prose" style="margin-top: 28px">
+        <div style="border-left: 3px solid var(--color-emergency); background: var(--color-accent-2-100); padding: 16px 20px">
+          <p style="margin: 0; font-size: 15px; color: var(--color-accent-2-700)">
+            <strong>Text podmínek zatím nemáme.</strong> Dodá je klient — do té doby
+            stránka existuje jen kvůli odkazu v patičce a je vyřazená z indexace
+            vyhledávačů. Znění vložte do tohoto souboru:
+            <code>src/pages/obchodni-podminky.astro</code>.
+          </p>
+        </div>
+
+        <h2>Provozovatel</h2>
+        <p>
+          {company.name}<br />
+          {company.street}, {company.city}<br />
+          IČ: {company.ico}, DIČ: {company.dic}<br />
+          E-mail: <a href={`mailto:${company.email}`}>{company.email}</a>,
+          telefon: {company.phone}
+        </p>
+
+        <p>
+          Do doby zveřejnění úplného znění se práva a povinnosti smluvních stran řídí
+          uzavřenou smlouvou nebo potvrzenou objednávkou a příslušnými ustanoveními
+          občanského zákoníku.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

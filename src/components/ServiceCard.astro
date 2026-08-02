@@ -1,0 +1,21 @@
+---
+interface Props {
+  href: string;
+  /** Číslo v katalogu služeb, sází se jako „/ 03“. */
+  index?: number;
+  kicker?: string;
+  title: string;
+  body: string;
+  cta?: string;
+}
+
+const { href, index, kicker, title, body, cta = 'Detail →' } = Astro.props;
+const label = kicker ?? (index !== undefined ? `/ ${String(index).padStart(2, '0')}` : undefined);
+---
+
+<a class="card" href={href}>
+  {label && <span class="card-kicker">{label}</span>}
+  <span class="card-title">{title}</span>
+  <p class="card-body">{body}</p>
+  <span class="card-meta">{cta}</span>
+</a>

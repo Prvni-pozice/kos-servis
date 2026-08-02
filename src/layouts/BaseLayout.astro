@@ -1,0 +1,97 @@
+---
+import '@fontsource/archivo/400.css';
+import '@fontsource/archivo/700.css';
+import '@fontsource/archivo/800.css';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/ibm-plex-mono/600.css';
+import '../styles/design-system.css';
+import '../styles/site.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { company } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Bez koncového lomítka se kanonická URL rozchází se sitemapou. */
+  path?: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = title === company.name ? title : `${title} | ${company.name}`;
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: company.name,
+  url: Astro.site?.href,
+  telephone: company.phone,
+  email: company.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: company.street,
+    addressLocality: company.city,
+    addressCountry: 'CZ',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: company.geo.lat, longitude: company.geo.lng },
+  areaServed: 'Česká republika',
+  foundingDate: String(company.founded),
+};
+---
+
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:locale" content="cs_CZ" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#0f2b52" />
+    <set:html value={`<script type="application/ld+json">${JSON.stringify(orgSchema)}</script>`} />
+  </head>
+  <body>
+    <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+    <Header />
+    <main id="obsah">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Scroll-reveal: sekce se objeví při vstupu do viewportu.
+      // Bez JS zůstávají viditelné, `prefers-reduced-motion` řeší CSS.
+      const items = document.querySelectorAll('.reveal');
+      if (items.length && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px' },
+        );
+        items.forEach((el) => io.observe(el));
+      } else {
+        items.forEach((el) => el.classList.add('in'));
+      }
+    </script>
+  </body>
+</html>

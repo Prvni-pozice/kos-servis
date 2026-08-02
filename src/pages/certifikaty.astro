@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company } from '../data/site';
+
+/* Konkrétní dokumenty ke stažení dodá klient — struktura stránky je připravená,
+ * stačí doplnit soubory do public/dokumenty/ a přidat je sem. */
+const oblasti = [
+  {
+    title: 'Svářečská oprávnění',
+    text: 'Oprávnění a vyškolení zaměstnanci na svařování hliníku, litiny, bronzu a nerezových materiálů, včetně navařování otěruvzdorných vrstev.',
+  },
+  {
+    title: 'Zdvihací zařízení a ocelové konstrukce',
+    text: 'Oprávnění na opravy i výrobu vyhrazených zdvihacích zařízení a ocelových konstrukcí, včetně revizí.',
+  },
+  {
+    title: 'Revize a zkoušky',
+    text: 'Protokoly o provedených revizích a zkouškách vydáváme ke každé zakázce, které se týkají.',
+  },
+];
+---
+
+<BaseLayout
+  title="Certifikáty a oprávnění"
+  description="Svářečská oprávnění, oprávnění na opravy a výrobu vyhrazených zdvihacích zařízení a ocelových konstrukcí, revize a zkoušky."
+>
+  <section class="section">
+    <div class="wrap">
+      <Breadcrumbs items={[{ label: 'Certifikáty a oprávnění' }]} />
+      <div class="eyebrow"><span class="idx">01</span> Dokumenty</div>
+      <h1 style="max-width: 22ch">Certifikáty a oprávnění</h1>
+      <p style="font-size: 18px; color: #37475b; max-width: 62ch; margin-top: 18px">
+        Práce, které děláme, jsou z velké části vyhrazené činnosti — smí je provádět
+        jen firma s platným oprávněním a vyškolenými lidmi. Níže je přehled oblastí,
+        které máme pokryté.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap">
+      <div class="linegrid cols-3">
+        {oblasti.map((o) => (
+          <div style="padding: 26px 24px">
+            <h4 style="margin-bottom: 10px">{o.title}</h4>
+            <p style="font-size: 15px; color: #42566b; margin: 0">{o.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style="border: 1px solid var(--color-line); padding: 26px 28px; margin-top: 32px; max-width: 70ch">
+        <h6>Dokumenty ke stažení</h6>
+        <p style="font-size: 15px; color: #37475b; margin: 0">
+          Skeny certifikátů, oprávnění a rozhodnutí sem doplníme, jakmile je od klienta
+          dostaneme. Potřebujete-li konkrétní dokument dřív, napište na
+          <a href={`mailto:${company.email}`}>{company.email}</a> — pošleme ho e-mailem.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    kicker="Potřebujete doložit oprávnění k zakázce?"
+    title="Řekněte nám, o jaký dokument jde — pošleme ho"
+    ctaLabel="Napsat nám →"
+    href="/kontakt/"
+  />
+</BaseLayout>

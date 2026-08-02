@@ -1,0 +1,21 @@
+---
+interface Props {
+  /** Text kóty nad nadpisem — signature prvek design systému. */
+  eyebrow: string;
+  /** Číslo sekce, sází se jako callout na technickém výkresu. */
+  idx?: string;
+  title: string;
+  lead?: string;
+  /** H1 se používá jen na začátku stránky, jinak H2. */
+  as?: 'h1' | 'h2';
+}
+
+const { eyebrow, idx, title, lead, as = 'h2' } = Astro.props;
+const Heading = as;
+---
+
+<div style="max-width: 64ch; margin-bottom: 44px">
+  <div class="eyebrow">{idx && <span class="idx">{idx}</span>} {eyebrow}</div>
+  <Heading>{title}</Heading>
+  {lead && <p style="font-size: 17px; color: #37475b; margin-top: 12px">{lead}</p>}
+</div>
