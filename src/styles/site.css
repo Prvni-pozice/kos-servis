@@ -15,6 +15,13 @@
 /* CTA uvnitř rozbalovacího panelu je jen pro mobil — na desktopu tlačítko
    Poptávka v hlavičce už je a dvě vedle sebe by byla chyba. */
 .nav-links .nav-cta { display: none; }
+/* `.nav a` z design systému nastavuje barvu textu a přebíjí tím .btn-* —
+   selektor má vyšší specificitu (třída + prvek vs. samotná třída). Tlačítko
+   Poptávka v hlavičce pak mělo tmavý text na oranžové, kontrast 2,2:1.
+   Na mobilu se to neprojevilo, tam je tlačítko skryté. */
+.nav a.btn-primary, .nav a.btn-accent { color: #fff; }
+.nav a.btn-secondary, .nav a.btn-ghost { color: var(--color-navy); }
+
 /* Položky menu ani telefon se nesmí zalomit doprostřed. */
 .nav a:not(.nav-brand) { white-space: nowrap; }
 .call .n, .call .l { white-space: nowrap; }
