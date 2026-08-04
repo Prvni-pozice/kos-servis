@@ -19,8 +19,9 @@ export const company = {
   founded: 1997,
   /** § 435 NOZ vyžaduje zápis v OR i na webu. Ověřeno v ARES 2. 8. 2026. */
   registration: 'Krajský soud v Českých Budějovicích, oddíl C, vložka 14718',
-  // Chyšná 52 – orientační souřadnice sídla pro mapu a strukturovaná data.
-  geo: { lat: 49.4506, lng: 15.0847 },
+  // Chyšná 52 – souřadnice adresního bodu z OpenStreetMap (Nominatim, 4. 8. 2026).
+  // Původní hodnota 49.4506/15.0847 ukazovala o 15 km jižně, u Kamenice nad Lipou.
+  geo: { lat: 49.5859, lng: 15.1028 },
 } as const;
 
 /** Roky praxe se počítají, ať se číslo na webu nezasekne v čase. */

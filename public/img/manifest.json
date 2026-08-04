@@ -1158,5 +1158,31 @@
       "height": 1800,
       "from": "gdrive:1eMgm2knfD2UetQxN_RaPCe50C0n23f-2"
     }
+  ],
+  "sluzby-vyroba": [
+    {
+      "src": "/img/firma/vyroba/img-7128.webp",
+      "width": 1800,
+      "height": 1350,
+      "from": "gdrive:1LJBi2_i9zLrhQ6E0fLbYvC7MCuevUaXl"
+    },
+    {
+      "src": "/img/firma/vyroba/img-7129.webp",
+      "width": 1800,
+      "height": 1350,
+      "from": "gdrive:1xAsjJI1MQAZU2fev3vNdvi7Lak2CZaTv"
+    },
+    {
+      "src": "/img/firma/vyroba/opotrebene-ulozeni-cepu.webp",
+      "width": 1024,
+      "height": 767,
+      "from": "kos-servis.cz/media/hd/71/6756fd5d-4132-4377-bc2b-05792d4f72e4-jpg.JPG"
+    },
+    {
+      "src": "/img/firma/vyroba/img-7131.webp",
+      "width": 1800,
+      "height": 1350,
+      "from": "gdrive:1hA_v9g9teLM4cdYpKcuSzT3xm7T74Ypd"
+    }
   ]
 }

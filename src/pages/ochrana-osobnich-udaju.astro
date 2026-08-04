@@ -54,22 +54,32 @@ import { company } from '../data/site';
 
         <h2>Cookies a měření návštěvnosti</h2>
         <p>
-          Web nepoužívá reklamní ani sledovací cookies. Fonty jsou hostované přímo
-          na tomto webu, takže se při prohlížení nenačítá nic z cizích serverů.
-          Výjimkou je mapa na stránce Kontakt, která se načítá z OpenStreetMap.
+          Web neukládá žádné cookies – ani analytické, ani reklamní. Neběží na něm
+          Google Analytics ani jiný nástroj na měření návštěvnosti a nesledujeme,
+          kdo jednotlivé stránky otevřel. Písma i&nbsp;ostatní soubory jsou uložené
+          přímo na tomto webu, takže si prohlížeč při běžném prohlížení nic
+          nestahuje z&nbsp;cizích serverů.
         </p>
 
         <h2>Mapa na stránce Kontakt</h2>
         <p>
-          Mapu z&nbsp;OpenStreetMap načítáme až poté, co na ni kliknete. Do té doby
-          neodchází na cizí server žádný požadavek ani vaše IP adresa. Zbytek webu
-          se načítá výhradně z&nbsp;našich serverů.
+          Jedinou výjimkou je mapa na stránce Kontakt. Načte se z&nbsp;OpenStreetMap
+          až poté, co na ni sami kliknete – do té doby na cizí server neodejde žádný
+          požadavek ani vaše IP adresa.
+        </p>
+
+        <h2>Kde je web umístěný</h2>
+        <p>
+          Web běží u&nbsp;společnosti Vercel Inc., která jako zpracovatel vidí
+          technické údaje o&nbsp;požadavku (IP adresa, typ prohlížeče, čas) v&nbsp;provozních
+          protokolech serveru. Slouží výhradně k&nbsp;provozu a&nbsp;zabezpečení webu,
+          nespojujeme je s&nbsp;vaší osobou ani z&nbsp;nich neděláme statistiky.
         </p>
 
         <h2>Vaše práva</h2>
         <p>
           Máte právo na přístup ke svým údajům, jejich opravu nebo výmaz, na omezení
-          zpracování a na podání námitky. Stačí napsat na
+          zpracování a na podání námitky. Stačí napsat na{' '}
           <a href={`mailto:${company.email}`}>{company.email}</a>. Se stížností se
           můžete obrátit na Úřad pro ochranu osobních údajů.
         </p>

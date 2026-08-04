@@ -103,3 +103,30 @@ ostatní sekce    72   ze starého webu, starší a menší
 
 Výběr i pořadí řídí `public/img/manifest.json` — stačí z něj položky smazat.
 Doporučuju projít před spuštěním.
+
+**Ručně kurátorované sekce.** Kde má blok jiný výběr než „prvních N ze sekce",
+dostane vlastní klíč v manifestu — `sluzby-vyroba` pro čtveřici na `/sluzby/`.
+Kdyby ten blok četl `firma-vyroba`, pral by se o pořadí s galerií strojového
+parku, která čte stejný klíč. Ručně přidané klíče importní skripty nepřepisují
+(mergují po klíčích), ale soubor pod nimi ano — proto do nich nedávej fotku,
+kterou skript zároveň spravuje.
+
+## Whitespace kolem inline odkazů
+
+Astro při `compressHTML` zahodí zalomení řádku mezi textem a následující značkou,
+takže z
+
+```astro
+Napište na
+<a href="…">info@…</a>
+```
+
+vznikne `Napište na<a href=…>` **bez mezery**. Když odkaz začíná na novém řádku,
+uzavři mezeru explicitně: `Napište na{' '}`. Odchytí to
+
+```bash
+grep -roE "[a-záčďéěíňóřšťúůýž,)]<a " dist/ --include=*.html
+```
+
+— po změnách textů to stojí za projetí, v prohlížeči si toho nikdo nevšimne
+dřív než klient.

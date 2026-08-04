@@ -57,10 +57,12 @@ const sluzby = (await getCollection('sluzby')).sort((a, b) => a.data.order - b.d
         </div>
       </div>
       <div>
-        <Gallery section="firma-vyroba" label="Zakázková kovovýroba" cols={2} limit={4} />
+        {/* Vlastní sekce v manifestu, ne prvních pár z „firma-vyroba“ — jinak by se
+            výběr pro tenhle blok pral s galerií strojového parku, která čte stejný klíč. */}
+        <Gallery section="sluzby-vyroba" label="Zakázková kovovýroba" cols={2} limit={4} />
       </div>
     </div>
   </section>
 
-  <CtaBand kicker="Stojí vám stroj?" title="Zavolejte Příjem oprav – domluvíme postup hned" />
+  <CtaBand kicker="Stojí vám stroj?" title="Zavolejte nám – domluvíme ihned postup opravy" />
 </BaseLayout>
