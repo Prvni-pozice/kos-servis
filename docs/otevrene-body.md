@@ -107,3 +107,19 @@ Nezkoušené zlepšení, pokud bude potřeba mobilní skóre zvednout:
   na právních stránkách
 - Push 5 komponent zpět do design systému
 - `astro check`: 0 chyb, 0 varování
+
+## Všeobecné obchodní podmínky — návrh čeká na schválení
+
+Stránka `/obchodni-podminky/` už není zástupka, ale **návrh** sepsaný na míru
+oborům (opravy, zakázková výroba, pálení). Není to právní služba — než se web
+spustí, musí znění projít klientem a jeho právníkem. V šabloně jsou dvě věci
+k dořešení:
+
+- návrhová poznámka nahoře (blok končící komentářem `konec návrhové poznámky`) —
+  po schválení smazat,
+- konstanta `ucinnostOd` — doplnit skutečné datum.
+
+Body, které klient musí potvrdit, protože jsou v návrhu odhadnuté: záruční doby
+(24 měsíců výroba / 12 měsíců oprava), splatnost 14 dní, lhůta 30 dní pro
+převzetí a skladné, vyjádření k reklamaci do 15 dní, omezení náhrady škody
+na cenu zakázky.
