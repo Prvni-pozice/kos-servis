@@ -127,3 +127,6 @@ Vodorovné přetečení (375–1920 px)     0
 Strukturovaná data                    22/22 stránek, platný JSON
 Opraveno v této revizi                29 nálezů, z toho 9 blokujících předání
 ```
+
+
+> **Upřesnění (4. 8. 2026):** § 435 NOZ vyžaduje na webu jméno a sídlo podnikatele. Údaj o zápisu v rejstříku včetně oddílu a vložky (spisová značka) zákon váže na **obchodní listiny** — faktury, smlouvy, objednávky — nikoli výslovně na web. Doporučení „doplnit spisovou značku do patičky" bylo v původním znění reportu přeceněné; do patičky patří jméno, sídlo a IČO.

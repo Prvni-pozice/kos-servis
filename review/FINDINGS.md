@@ -121,3 +121,6 @@ Opraveno               29 nálezů, z toho 9 P0
 Čeká na klienta        16 nálezů
 Připravené návrhy      8 (texty hotové, nenasazené — mění sdělení klienta)
 ```
+
+
+> **Upřesnění (4. 8. 2026):** § 435 NOZ vyžaduje na webu jméno a sídlo podnikatele. Údaj o zápisu v rejstříku včetně oddílu a vložky (spisová značka) zákon váže na **obchodní listiny** — faktury, smlouvy, objednávky — nikoli výslovně na web. Doporučení „doplnit spisovou značku do patičky" bylo v původním znění reportu přeceněné; do patičky patří jméno, sídlo a IČO.
