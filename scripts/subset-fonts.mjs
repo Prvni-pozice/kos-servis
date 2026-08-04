@@ -48,7 +48,11 @@ const RANGES = [
   [0x2018, 0x201e], // uvozovky ' ' " „
   [0x2026, 0x2026], // …
   [0x20ac, 0x20ac], // €
+  [0x2039, 0x203a], // ‹ › (oddělovač v drobečkové navigaci)
   [0x2190, 0x2192], // ← ↑ → (šipky „zpět“ a „dál“)
+  [0x2260, 0x2260], // ≠
+  [0x25b6, 0x25b8], // ▶ (ovládání přehrávače)
+  [0x279c, 0x279c], // ➜
   [0x2713, 0x2716], // ✓ ✔ ✕ ✖ (✕ zavírá lightbox a mobilní menu)
 ];
 
@@ -166,7 +170,11 @@ async function check() {
       .replace(/<[^>]+>/g, ' ');
     for (const ch of body) {
       const cp = ch.codePointAt(0);
-      if (cp < 0x20 || inCharset(cp)) continue;
+      // Emoji a neviditelné znaky přeskoč — ty žádný textový font nekreslí,
+      // vykreslí je systémový emoji font a je to v pořádku.
+      const invisible = cp === 0x200b || cp === 0x200d || cp === 0xfe0f || cp === 0x00ad;
+      const emoji = cp >= 0x1f000 || (cp >= 0x2600 && cp <= 0x27bf && !inCharset(cp));
+      if (cp < 0x20 || invisible || emoji || inCharset(cp)) continue;
       if (!missing.has(ch)) missing.set(ch, new Set());
       missing.get(ch).add(path.relative(dir, f));
     }
