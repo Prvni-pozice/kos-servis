@@ -3,15 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { company } from '../data/site';
 
-/* NÁVRH k připomínkování – zatím neschválený klientem ani jeho právníkem.
- * Až bude znění odsouhlasené, smaž blok označený „konec návrhové poznámky“
- * a doplň skutečné datum účinnosti. */
-const ucinnostOd = '1. 9. 2026';
+/* Znění dodal klient (docs/Všeobecné obchodní podmínky firmy KOS servis_260428verzeOK.docx),
+ * prošlo právní kontrolou na jejich straně. Text je převzatý doslova — případné
+ * úpravy formulací patří klientovi, ne nám. */
 ---
 
 <BaseLayout
   title="Všeobecné obchodní podmínky"
-  description={`Všeobecné obchodní podmínky společnosti ${company.name} pro opravy strojních zařízení, zakázkovou kovovýrobu a pálení plazmou.`}
+  description={`Všeobecné obchodní podmínky společnosti ${company.name} pro servis, montáže, zakázkovou výrobu a prodej hutního materiálu.`}
   noindex
 >
   <section class="section">
@@ -21,248 +20,296 @@ const ucinnostOd = '1. 9. 2026';
       <h1 style="max-width: 24ch">Všeobecné obchodní podmínky</h1>
 
       <div class="prose" style="margin-top: 28px">
-        <div style="border: 1px solid var(--color-line); padding: 20px 24px; margin-bottom: 32px">
-          <p style="margin: 0">
-            <strong>Pracovní návrh.</strong> Znění zatím neprošlo schválením a neslouží
-            jako závazný dokument. Připomínky posílejte na{' '}
-            <a href={`mailto:${company.email}`}>{company.email}</a>.
-          </p>
-        </div>
-        {/* konec návrhové poznámky */}
-
-        <h2>1. Kdo podmínky vydává</h2>
         <p>
-          {company.name}, se sídlem {company.street}, {company.city},
-          IČ {company.ico}, DIČ {company.dic}, zapsaná v&nbsp;obchodním rejstříku
-          vedeném u&nbsp;{company.registration} (dále jen <strong>zhotovitel</strong>).
-          Kontakt: <a href={`mailto:${company.email}`}>{company.email}</a>,
-          telefon {company.phone}.
-        </p>
-        <p>
-          Tyto všeobecné obchodní podmínky (dále jen <strong>podmínky</strong>) upravují
-          práva a povinnosti zhotovitele a&nbsp;objednatele při opravách strojních
-          zařízení a&nbsp;hydrauliky, svařování a&nbsp;renovacích, strojním obrábění,
-          zpracování plechů a&nbsp;pálení plazmou.
+          společnosti {company.name}, IČO: 261 12 736, se sídlem čp. 52, 395 01 Chyšná,
+          zapsané v&nbsp;obchodním rejstříku vedeném Krajským soudem v&nbsp;Českých
+          Budějovicích, oddíl C, vložka 14718 (dále jen „KOS Servis")
         </p>
 
-        <h2>2. Komu jsou určeny</h2>
-        <p>
-          Podmínky platí pro objednatele, kteří jednají v&nbsp;rámci své podnikatelské
-          činnosti. Zhotovitel nedodává spotřebitelům; pokud by přesto smlouvu uzavřel
-          se spotřebitelem, neuplatní se ustanovení těchto podmínek, která jsou
-          v&nbsp;rozporu s&nbsp;právy spotřebitele podle občanského zákoníku.
-        </p>
-        <p>
-          Odchylná ujednání ve smlouvě nebo v&nbsp;potvrzené objednávce mají přednost
-          před zněním podmínek. Obchodní podmínky objednatele se použijí jen tehdy,
-          pokud je zhotovitel písemně přijme.
-        </p>
+        <h2>Úvodní ustanovení</h2>
+        <ol>
+          <li>
+            Tyto všeobecné obchodní podmínky (dále jen „VOP") upravují vzájemná práva
+            a povinnosti mezi KOS Servis jako zhotovitelem/prodávajícím a objednatelem,
+            který je právnickou osobou či fyzickou osobou, jež jedná v rámci své
+            podnikatelské činnosti (dále jen „Objednatel") a jsou v souladu s § 1751
+            odst. 1 zák. č. 89/2012 Sb., občanský zákoník, ve znění pozdějších předpisů
+            (dále jen „OZ") nedílnou součástí každé smlouvy uzavřené mezi KOS Servis
+            a Objednatelem (smlouvy o dílo, kupní smlouvy, potvrzené objednávky apod.),
+            nebude-li výslovně dohodnuto jinak. VOP jsou tak určeny výhradně pro obchodní
+            vztahy KOS Servis s podnikateli (právnickými osobami a/nebo fyzickými osobami
+            podnikajícími).
+          </li>
+          <li>
+            Na základě poptávky Objednatele předloží KOS Servis cenovou nabídku, která je
+            informativní a není návrhem na uzavření smlouvy. Za návrh na uzavření smlouvy
+            se považuje výhradně objednávka Objednatele ve formě písemného odsouhlasení
+            nabídky KOS Servis, není-li v konkrétním případě dohodnuto jinak. Jakékoliv
+            dodatky, výhrady nebo odchylky Objednatele k cenové nabídce KOS podléhají
+            výslovnému písemnému souhlasu KOS Servis. Není-li v konkrétním případě
+            dohodnuto jinak, příslušná smlouva je uzavřena okamžikem, kdy KOS Servis
+            odešle Objednateli písemné potvrzení objednávky, za které se považuje odeslání
+            e-mailu s potvrzením realizace příslušné zakázky. KOS Servis není povinen
+            objednávku přijmout.
+          </li>
+          <li>
+            Odsouhlasením nabídky KOS Servis Objednatel rovněž souhlasí s VOP a prohlašuje,
+            že měl možnost se s VOP seznámit před uzavřením příslušné smlouvy. V případě,
+            že příslušná smlouva výslovně stanoví něco jiného, než je uvedeno ve VOP, mají
+            ustanovení příslušné smlouvy přednost před ustanoveními VOP, které jsou s nimi
+            v rozporu.
+          </li>
+          <li>
+            Žádné jiné všeobecné obchodní podmínky než VOP, ani žádné jiné podmínky
+            Objednatele nejsou akceptovány, pokud KOS Servis výslovně písemně neodsouhlasí
+            jinak.
+          </li>
+          <li>
+            Veškerá komunikace mezi smluvními stranami může probíhat i elektronicky
+            (e-mailem), přičemž taková forma se považuje za písemnou.
+          </li>
+        </ol>
 
-        <h2>3. Poptávka, nabídka a uzavření smlouvy</h2>
-        <ul>
+        <h2>Předmět smlouvy a technické řešení</h2>
+        <ol>
           <li>
-            Poptávku lze podat e-mailem, telefonicky, formulářem na tomto webu nebo
-            osobně v&nbsp;dílně. Poptávka není objednávkou.
+            Předmětem plnění dle příslušné smlouvy mezi KOS Servis a Objednatelem je
+            servis, montáž, zakázková výroba (např. výpalky) nebo prodej hutního materiálu,
+            a to dle specifikace v potvrzené objednávce ze strany KOS Servis.
           </li>
           <li>
-            Na poptávku zhotovitel odpoví nabídkou s&nbsp;popisem prací, cenou
-            a&nbsp;předpokládaným termínem. Nabídka platí 30&nbsp;dní, není-li v&nbsp;ní
-            uvedeno jinak.
+            Pokud k plnění dle příslušné smlouvy mezi KOS Servis a Objednatelem neexistuje
+            výrobní dokumentace, KOS Servis navrhne materiál a řešení na základě svých
+            odborných zkušeností vycházejících z informací, parametrů a provozních podmínek
+            sdělených Objednatelem, který odpovídá za jejich úplnost a správnost. Písemným
+            odsouhlasením nabídky ze strany Objednatele přebírá Objednatel plnou odpovědnost
+            za to, že navržený materiál (např. konkrétní jakost oceli) odpovídá jeho
+            specifickým podmínkám, včetně provozních.
           </li>
           <li>
-            Smlouva vzniká písemným potvrzením objednávky ze strany zhotovitele,
-            uzavřením samostatné smlouvy nebo převzetím věci do opravy s&nbsp;potvrzeným
-            zakázkovým listem. Za písemnou formu se považuje i&nbsp;e-mail.
+            Jakékoli dodatečné požadavky Objednatele nad rámec původní objednávky (např.
+            v místě plnění) budou účtovány dle platných hodinových sazeb KOS Servis,
+            popřípadě i cen dalších plnění KOS Servis, které budou potřeba z důvodu takových
+            dodatečných požadavků Objednatele. Potvrzení servisního protokolu, případně
+            jakéhokoliv jiného dokumentu, s uvedením víceprací se považuje za závazný
+            dodatek k uzavřené smlouvě.
           </li>
-          <li>
-            Změny rozsahu zakázky se sjednávají stejným způsobem jako objednávka.
-            Ústní pokyny na dílně zhotovitel provede jen tehdy, potvrdí-li je
-            objednatel dodatečně písemně.
-          </li>
-        </ul>
+        </ol>
 
-        <h2>4. Podklady a věci dodané objednatelem</h2>
-        <ul>
+        <h2>Místo plnění a součinnost Objednatele</h2>
+        <ol>
           <li>
-            Objednatel dodá výkresy, technické parametry a&nbsp;informace potřebné
-            k&nbsp;provedení díla a&nbsp;odpovídá za jejich správnost a&nbsp;úplnost.
+            Místem plnění dle příslušné smlouvy je provozovna KOS Servis nebo místo určené
+            Objednatelem, a to dle specifikace v příslušné smlouvě.
           </li>
           <li>
-            Za materiál a&nbsp;díly dodané objednatelem – včetně jejich jakosti,
-            rozměrů a&nbsp;vhodnosti pro zamýšlené použití – odpovídá objednatel.
-            Zhotovitel na výsledek díla v&nbsp;rozsahu daném těmito díly neposkytuje
-            záruku.
+            Pro řádné provedení prací ze strany KOS Servis je Objednatel povinen zajistit
+            součinnost dle požadavků KOS Servis, přičemž nebude-li ze strany KOS Servis
+            požadováno jinak, je Objednatel povinen zajistit:
+            <ul>
+              <li>
+                bezpečný přístup k zařízení, které má být předmětem servisu a/nebo montáží
+                (včetně lešení, plošin apod.) a dodržení norem BOZP;
+              </li>
+              <li>
+                přívod nezbytných energií (elektřina, voda, vzduch) a součinnost obsluhy
+                příslušného zařízení;
+              </li>
+              <li>
+                techniku a personál pro vykládku zboží nebo montáž (zejména u těžších
+                dodávek a výpalků).
+              </li>
+            </ul>
           </li>
           <li>
-            Zjistí-li zhotovitel, že podklady nebo dodaný materiál brání řádnému
-            provedení díla, upozorní na to objednatele. Trvá-li objednatel na
-            původním zadání, provede zhotovitel dílo na jeho riziko.
+            Zjistí-li KOS Servis při provádění prací skryté vady nebo poškození, které nebylo
+            možné odhalit při úvodní diagnostice, práce se přerušují do doby odsouhlasení
+            nového rozsahu prací a ceny Objednatelem. Pokud Objednatel neodsouhlasí nový
+            rozsah prací a cenu nejpozději do 5 pracovních dnů od jejich předložení ze strany
+            KOS Servis, je KOS Servis oprávněn od příslušné smlouvy odstoupit a účtovat
+            Objednateli náklady na diagnostiku, demontáž a zpětnou montáž (bude-li vyžadována),
+            popř. i skladovací poplatek dle aktuálního ceníku.
           </li>
-          <li>
-            Předávaná zařízení musí být zbavena provozních náplní a&nbsp;nečistot
-            v&nbsp;rozsahu, který umožní bezpečnou práci. Náklady na nutné vyčištění
-            nad tento rámec nese objednatel.
-          </li>
-        </ul>
+        </ol>
 
-        <h2>5. Diagnostika a skryté vady</h2>
-        <ul>
+        <h2>Cena, platební podmínky a doprava</h2>
+        <ol>
           <li>
-            U oprav bývá přesný rozsah znám až po demontáži a&nbsp;diagnostice.
-            Cena uvedená v&nbsp;nabídce před demontáží je proto orientační.
+            Cena je stanovena dohodou smluvních stran, a to na základě cenové nabídky
+            KOS Servis. KOS Servis má právo požadovat zálohu až do výše 50 % z celkové ceny,
+            která je splatná před zahájením prací pro Objednatele. Nezaplatí-li Objednatel
+            zálohu ve stanovené lhůtě, je KOS Servis oprávněn nezahájit práce a/nebo
+            pozastavit již zahájené práce, a to bez jakékoliv odpovědnosti za prodlení
+            způsobené tímto přerušením.
           </li>
           <li>
-            Vyjde-li najevo, že oprava vyžaduje práce nebo díly nad rámec nabídky,
-            zhotovitel práce přeruší a&nbsp;předloží objednateli doplněnou cenovou
-            nabídku. V&nbsp;pracích pokračuje až po jejím odsouhlasení.
+            Náklady na dopravu, čas techniků na cestě a vedlejší náklady (parkovné, ubytování)
+            jsou účtovány dle sazeb obsažených v cenové nabídce KOS Servis.
           </li>
           <li>
-            Odmítne-li objednatel doplněnou nabídku, uhradí dosud provedené práce,
-            diagnostiku a&nbsp;účelně vynaložené náklady. Uvedení zařízení do
-            původního stavu se hradí samostatně a&nbsp;jen tehdy, je-li technicky možné.
+            Pokud nelze práce zahájit či dokončit z důvodů na straně Objednatele, má
+            KOS Servis nárok na úhradu nákladů na dopravu a náhradu za ztracený čas techniků
+            v plné výši.
           </li>
           <li>
-            Diagnostika se účtuje i&nbsp;v&nbsp;případě, že objednatel opravu nakonec
-            neobjedná.
+            Při jakémkoliv prodlení s úhradou faktury je Objednatel povinen uhradit KOS Servis
+            smluvní pokutu ve výši 0,1 % z dlužné částky za každý i započatý den prodlení.
+            Splatnost faktur je standardně 14 dní, pokud není v konkrétní nabídce KOS Servis
+            či na faktuře uvedeno jinak.
           </li>
-        </ul>
+          <li>
+            Veškeré zboží zůstává ve vlastnictví KOS Servis až do úplného zaplacení ceny
+            (výhrada vlastnictví). Do té doby nesmí Objednatel věc zcizit, zastavit či jinak
+            zatížit právy třetích osob bez předchozího písemného souhlasu KOS Servis.
+          </li>
+          <li>
+            Pokud jsou práce KOS Servis dle příslušné smlouvy prováděny na věci, ke které má
+            vlastnické právo Objednatel, je KOS Servis rovněž oprávněn takovou věc zadržet,
+            a to až do doby, kdy Objednatel uhradí KOS Servis veškeré provedené práce dle
+            takové smlouvy.
+          </li>
+        </ol>
 
-        <h2>6. Cena a platební podmínky</h2>
-        <ul>
+        <h2>Zakázková výroba a prodej hutního materiálu</h2>
+        <ol>
           <li>
-            Ceny se sjednávají jako pevné podle nabídky, nebo hodinovou sazbou podle
-            skutečně odvedené práce a&nbsp;spotřebovaného materiálu. Není-li ujednáno
-            jinak, platí ceník zhotovitele platný ke dni přijetí objednávky.
+            U zakázkové výroby a prodeje hutního materiálu Objednatel plně odpovídá za
+            správnost předaných technických výkresů a dat.
           </li>
           <li>
-            K&nbsp;ceně se připočítává DPH v&nbsp;zákonné výši. Doprava, servisní výjezd,
-            jeřáb a&nbsp;likvidace odpadu se účtují samostatně, nejsou-li v&nbsp;ceně
-            výslovně zahrnuty.
+            Odstoupí-li Objednatel bez zákonného nebo smluvního důvodu od příslušné smlouvy
+            týkající se zakázkové výroby po zahájení výroby nebo jinak zmaří provedení díla
+            z důvodu, za který odpovídá, náleží KOS Servis cena za dílo snížená o to, co
+            KOS Servis neprovedením díla ušetřil. Tím není dotčeno právo KOS Servis na úhradu
+            již provedených víceprací, účelně vynaložených nákladů, skladného a dalších
+            souvisejících nároků dle příslušné smlouvy.
           </li>
           <li>
-            Splatnost faktur je 14&nbsp;dní od vystavení, není-li ujednáno jinak.
-            U&nbsp;nových objednatelů a&nbsp;u&nbsp;zakázek s&nbsp;vyšším podílem materiálu
-            je zhotovitel oprávněn požadovat zálohu.
+            U prodeje hutního materiálu si KOS Servis vyhrazuje právo na odchylku ±5 %
+            oproti požadovanému množství a s tím související právo na úpravu ceny, a to podle
+            skutečně dodaného množství hutního materiálu Objednateli.
           </li>
-          <li>
-            Při prodlení s&nbsp;úhradou náleží zhotoviteli úrok z&nbsp;prodlení
-            v&nbsp;zákonné výši. Zhotovitel je do doby úhrady oprávněn pozastavit
-            práce na dalších zakázkách objednatele.
-          </li>
-        </ul>
+        </ol>
 
-        <h2>7. Termíny</h2>
-        <p>
-          Termín se počítá od okamžiku, kdy jsou splněny všechny podmínky pro zahájení
-          prací – zejména předání věci, podkladů a&nbsp;úhrada sjednané zálohy.
-          Termín se přiměřeně prodlužuje o&nbsp;dobu, po kterou objednatel neposkytuje
-          součinnost, o&nbsp;dobu schvalování doplněné nabídky podle článku&nbsp;5
-          a&nbsp;o&nbsp;dobu trvání překážky mimo kontrolu zhotovitele (výpadek dodávek,
-          živelní událost, stávka, porucha rozhodujícího stroje).
-        </p>
+        <h2>Termíny a předání</h2>
+        <ol>
+          <li>
+            Jakýkoliv dohodnutý termín dokončení a/nebo dodání se prodlužuje o dobu trvání
+            vyšší moci a/nebo o dobu prodlení Objednatele s poskytnutím požadované
+            součinnosti. Za případy vyšší moci považují smluvní strany zejména následující
+            události: požár, krádež, válečné stavy, mimořádné a krizové stavy, nepokoje,
+            stávky, okupační stávky, přerušení činnosti, válka, nepříznivé klimatické
+            podmínky, prodlení při dodávkách či přerušení dodávek materiálů či pomůcek
+            a/nebo služeb a dále obecně jakákoli příčina mimo kontrolu KOS Servis, v jejímž
+            důsledku je KOS Servis bráněno v plnění smlouvy s Objednatelem.
+          </li>
+          <li>
+            V případě, že je místem plnění provozovna KOS Servis a Objednatel si nevyzvedne
+            plnění dle příslušné smlouvy nejpozději do 30 dnů od zaslání písemné výzvy
+            (možno zaslat i elektronicky – e-mailem), KOS Servis je oprávněn účtovat
+            Objednateli skladovací poplatek dle aktuálního ceníku. Pokud si Objednatel
+            nevyzvedne plnění dle příslušné smlouvy ani do 90 dnů od zaslání takové písemné
+            výzvy, je KOS Servis oprávněn předmět plnění prodat k úhradě svých pohledávek.
+          </li>
+          <li>
+            Při vlastním odběru ze strany Objednatele přechází nebezpečí škody na věci na
+            Objednatele okamžikem nakládky v areálu KOS Servis.
+          </li>
+        </ol>
 
-        <h2>8. Předání díla</h2>
-        <ul>
+        <h2>Práva z vadného plnění a záruka</h2>
+        <ol>
           <li>
-            O&nbsp;předání se sepisuje předávací nebo dodací list. Objednatel dílo
-            prohlédne při převzetí a&nbsp;zjevné vady uvede do předávacího dokladu.
+            Objednatel je povinen dodané zboží bez zbytečného odkladu po jeho dodání a dílo
+            bez zbytečného odkladu po jeho předání a převzetí řádně prohlédnout a ověřit jeho
+            množství, vlastnosti a zjevný stav. Vady, které mohly a měly být zjištěny při této
+            prohlídce, zejména vady zjevné, množstevní vady a zjevná poškození povrchu, je
+            Objednatel povinen písemně vytknout u KOS Servis nejpozději do 5 pracovních dnů
+            od dodání zboží nebo od převzetí díla. K později vytknutým vadám, které mohly
+            a měly být zjištěny při této prohlídce, se nepřihlíží a Objednatel se v rozsahu
+            dovoleném právními předpisy vzdává práv z vadného plnění z těchto vad.
           </li>
           <li>
-            Nebezpečí škody na věci přechází na objednatele převzetím, u&nbsp;přepravy
-            předáním prvnímu dopravci.
+            Skryté vady je Objednatel povinen písemně vytknout u KOS Servis bez zbytečného
+            odkladu poté, co je zjistil nebo mohl při dostatečné péči zjistit, nejpozději
+            však do 6 měsíců od dodání zboží nebo od předání díla, nejde-li o vadu krytou
+            výslovně poskytnutou zárukou za jakost dle těchto VOP.
           </li>
           <li>
-            Vlastnické právo k&nbsp;nově vyrobeným dílům přechází na objednatele až
-            úplným zaplacením ceny díla.
+            KOS Servis poskytuje Objednateli záruku za jakost na servisní práce v délce
+            6 měsíců od předání plnění. Je-li součástí plnění KOS Servis dodání nových
+            náhradních dílů, poskytuje KOS Servis na tyto nové náhradní díly záruku za jakost
+            v délce 12 měsíců od předání plnění, není-li uvedeno jinak. Záruka se vztahuje
+            výlučně na provedené servisní práce a nové náhradní díly dodané ze strany
+            KOS Servis; nevztahuje se na běžné opotřebení, nevhodné užívání, zásah třetí
+            osoby, vady zařízení mimo rozsah provedeného zásahu ze strany KOS Servis, ani na
+            zjevné vady a/nebo skryté vady, které Objednatel nevytkl KOS Servis včas ve lhůtě
+            dle těchto VOP.
           </li>
           <li>
-            Nepřevezme-li objednatel dílo do 30&nbsp;dnů od výzvy, je zhotovitel
-            oprávněn účtovat skladné a&nbsp;po marném uplynutí další přiměřené lhůty
-            postupovat podle občanského zákoníku. K&nbsp;zajištění splatné pohledávky
-            má zhotovitel zadržovací právo k&nbsp;opravované věci.
+            V případě, že se reklamace ukáže jako neoprávněná, je KOS Servis oprávněn
+            požadovat po Objednateli úhradu účelně vynaložených a prokazatelných nákladů
+            spojených s prověřením oznámené vady a vyřízením reklamace (zejména náklady na
+            diagnostiku, práci technika, demontáž a montáž, dopravu, cestovné apod.).
           </li>
-        </ul>
+        </ol>
 
-        <h2>9. Záruka za jakost</h2>
-        <ul>
+        <h2>Ochrana osobních údajů (GDPR)</h2>
+        <ol>
           <li>
-            Na zakázkovou výrobu poskytuje zhotovitel záruku 24&nbsp;měsíců
-            a&nbsp;na opravy 12&nbsp;měsíců od předání, není-li ujednáno jinak.
+            KOS Servis zpracovává osobní údaje Objednatele (či jeho kontaktních osob),
+            přičemž podrobnosti týkající se takového zpracování jsou obsaženy v dokumentu
+            „Informace o zpracování osobních údajů (GDPR)", který je přístupný{' '}
+            <a href="/ochrana-osobnich-udaju/">zde</a>.
           </li>
           <li>
-            Záruka se nevztahuje na běžné opotřebení, na vady vzniklé nesprávným
-            provozem, přetěžováním, zanedbanou údržbou nebo zásahem třetí osoby,
-            na díly a&nbsp;materiál dodané objednatelem a&nbsp;na dílo provedené
-            podle zadání, před jehož nevhodností zhotovitel objednatele upozornil.
+            Objednatel se zavazuje informovat své pracovníky o předání jejich kontaktních
+            údajů KOS Servis zejména pro účely komunikace při realizaci plnění dle smlouvy
+            mezi KOS Servis a Objednatelem.
           </li>
-          <li>
-            U&nbsp;dílů nakupovaných od výrobců platí záruka poskytnutá výrobcem,
-            je-li kratší.
-          </li>
-        </ul>
+        </ol>
 
-        <h2>10. Reklamace</h2>
-        <ul>
+        <h2>Závěrečná ustanovení</h2>
+        <ol>
           <li>
-            Vady se uplatňují bez zbytečného odkladu po zjištění, písemně na{' '}
-            <a href={`mailto:${company.email}`}>{company.email}</a>. Reklamace obsahuje
-            číslo zakázky, popis vady a&nbsp;podmínky, za nichž se projevila.
+            Vztahy smluvních stran se řídí českým právním řádem, zejména pak OZ a příslušnými
+            právními předpisy souvisejícími.
           </li>
           <li>
-            Objednatel umožní zhotoviteli vadu prohlédnout. Reklamovanou věc dále
-            neupravuje ani neopravuje u&nbsp;jiného dodavatele; pokud tak učiní bez
-            souhlasu zhotovitele, nárok ze záruky zaniká.
+            Veškeré spory vzniklé z uzavřené smlouvy či v souvislosti s ní budou v prvé řadě
+            řešeny smírem. Pokud smíru nebude dosaženo během 30 (třiceti) dnů budou takové
+            spory rozhodovány soudy České republiky podle právního řádu České republiky.
+            Místně příslušným pro řešení případných sporů bude soud dle sídla KOS Servis.
           </li>
           <li>
-            Zhotovitel se k&nbsp;reklamaci vyjádří do 15&nbsp;dnů. Oprávněnou vadu
-            odstraní opravou, výměnou dílu, nebo poskytne přiměřenou slevu.
+            Celková odpovědnost KOS Servis za škodu vzniklou v souvislosti s příslušnou
+            smlouvou je omezena do výše celkové ceny dle příslušné smlouvy; nahrazuje se
+            pouze skutečná škoda, nikoli ušlý zisk, nepřímé či následné škody (zejména
+            provozní ztráty). KOS Servis dále neodpovídá za poškození zkorodovaných,
+            degradovaných nebo jinak technicky oslabených částí zařízení vzniklé při obvyklé
+            manipulaci nezbytné k provedení požadovaného plnění dle příslušné smlouvy.
           </li>
           <li>
-            Reklamace nezakládá právo zadržet úhradu nesporné části ceny.
+            Ujednáním o smluvní pokutě není dotčen nárok oprávněné strany na náhradu případné
+            újmy (škody) v plné výši.
           </li>
-        </ul>
+          <li>
+            Objednatel na sebe přebírá nebezpečí změny okolností ve smyslu § 1765 OZ.
+          </li>
+          <li>
+            Objednatel nesmí bez předchozího písemného souhlasu KOS Servis postoupit či
+            zastavit své pohledávky vůči KOS Servis, ani převést na třetí osobu jakákoli svá
+            jiná práva a povinnosti z příslušné smlouvy.
+          </li>
+          <li>
+            Tyto VOP jsou platné a účinnosti nabývají dne 1. 5. 2026. KOS Servis je oprávněn
+            znění těchto VOP jednostranně měnit či doplňovat. Pro vyloučení pochybností platí,
+            že právní poměr mezi KOS Servis a Objednatelem dle příslušné smlouvy se řídí VOP
+            účinnými v době uzavření takové smlouvy, není-li dohodnuto jinak.
+          </li>
+        </ol>
 
-        <h2>11. Odpovědnost za škodu</h2>
-        <p>
-          Zhotovitel odpovídá za škodu způsobenou porušením svých povinností.
-          Náhrada škody se omezuje na cenu příslušné zakázky; nehradí se ušlý zisk,
-          ztráta výroby, prostoje ani jiná následná škoda. Omezení neplatí pro škodu
-          způsobenou úmyslně nebo z&nbsp;hrubé nedbalosti a&nbsp;pro újmu na zdraví.
-        </p>
-
-        <h2>12. Odstoupení od smlouvy</h2>
-        <p>
-          Kterákoli strana může odstoupit při podstatném porušení smlouvy druhou
-          stranou, které nebylo napraveno ani v&nbsp;dodatečné přiměřené lhůtě.
-          Zhotovitel může dále odstoupit, je-li objednatel v&nbsp;prodlení s&nbsp;platbou
-          déle než 30&nbsp;dní nebo je-li vůči němu zahájeno insolvenční řízení.
-          Při odstoupení uhradí objednatel dosud provedené práce a&nbsp;účelně
-          vynaložené náklady.
-        </p>
-
-        <h2>13. Mlčenlivost a osobní údaje</h2>
-        <p>
-          Výkresy, technická dokumentace a&nbsp;údaje o&nbsp;zakázce se považují za
-          důvěrné a&nbsp;strany je nesdělí třetím osobám s&nbsp;výjimkou svých
-          subdodavatelů a&nbsp;případů daných zákonem. Nakládání s&nbsp;osobními údaji
-          popisuje samostatná stránka{' '}
-          <a href="/ochrana-osobnich-udaju/">Zpracování osobních údajů</a>.
-        </p>
-
-        <h2>14. Rozhodné právo a spory</h2>
-        <p>
-          Vztahy se řídí právním řádem České republiky, zejména zákonem
-          č.&nbsp;89/2012&nbsp;Sb., občanský zákoník. Strany se pokusí spory vyřešit
-          dohodou; nedojde-li k&nbsp;ní, rozhodne soud věcně příslušný podle sídla
-          zhotovitele.
-        </p>
-
-        <h2>15. Účinnost</h2>
-        <p>
-          Tyto podmínky nabývají účinnosti dnem {ucinnostOd} a&nbsp;vztahují se na
-          objednávky přijaté od tohoto dne. Zhotovitel je oprávněn podmínky měnit;
-          pro již uzavřené smlouvy platí znění účinné ke dni přijetí objednávky.
-        </p>
+        <p>V Chyšné dne 1.&nbsp;5.&nbsp;2026<br />{company.name}</p>
       </div>
     </div>
   </section>

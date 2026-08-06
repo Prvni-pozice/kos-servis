@@ -2,86 +2,212 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { company } from '../data/site';
+
+/* Hlavní text dodal klient (docs/Informace o zpracování osobních údajů_260428verzeOK.docx),
+ * prošel právní kontrolou na jejich straně a je převzatý doslova.
+ *
+ * Poslední oddíl „Web kos-servis.cz" je NAŠE doplnění — klientský dokument popisuje
+ * zpracování ve firmě, ale neřeší poptávkový formulář, životopisy z kariérní stránky,
+ * cookies ani hosting. Musí ho ještě schválit klient, viz docs/otevrene-body.md. */
 ---
 
 <BaseLayout
   title="Zpracování osobních údajů"
-  description={`Jak ${company.name} nakládá s osobními údaji z poptávkového formuláře – jaké údaje sbíráme, proč, jak dlouho je držíme a jaká máte práva.`}
+  description={`Jak ${company.name} nakládá s osobními údaji obchodních partnerů, zákazníků a návštěvníků webu – jaké údaje zpracováváme, proč, jak dlouho a jaká máte práva.`}
   noindex
 >
   <section class="section">
     <div class="wrap">
       <Breadcrumbs items={[{ label: 'Zpracování osobních údajů' }]} />
       <div class="eyebrow"><span class="idx">01</span> Dokumenty</div>
-      <h1 style="max-width: 24ch">Zpracování osobních údajů</h1>
+      <h1 style="max-width: 26ch">Informace o zpracování osobních údajů (GDPR)</h1>
 
       <div class="prose" style="margin-top: 28px">
-        <h2>Kdo údaje zpracovává</h2>
         <p>
-          {company.name}, {company.street}, {company.city}, IČ {company.ico}.
-          Kontakt ve věcech osobních údajů: <a href={`mailto:${company.email}`}>{company.email}</a>.
+          Jsme společnost KOS servis s.&nbsp;r.&nbsp;o., IČO: 261 127 36, se sídlem: č.p. 52,
+          395 01 Chyšná (dále jen „Správce") a tento dokument poskytuje informace o tom, jaké
+          osobní údaje zpracováváme o našich obchodních partnerech, zákaznících a jejich
+          pracovnících, k jakým účelům je využíváme, po jakou dobu je zpracováváme a jaká
+          jsou vaše práva.
+        </p>
+        <p>
+          Osobními údaji se rozumí veškeré informace o identifikované nebo identifikovatelné
+          fyzické osobě; identifikovatelnou fyzickou osobou je fyzická osoba, kterou lze přímo
+          či nepřímo identifikovat, zejména odkazem na určitý identifikátor, například jméno,
+          identifikační číslo, lokační údaje, síťový identifikátor nebo na jeden či více
+          zvláštních prvků fyzické, fyziologické, genetické, psychické, ekonomické, kulturní
+          nebo společenské identity této fyzické osoby.
+        </p>
+        <p>Správce nejmenoval pověřence pro ochranu osobních údajů.</p>
+
+        <h2>Jaké osobní údaje v návaznosti na příslušný právní titul a účel zpracování zpracováváme?</h2>
+        <ul>
+          <li>
+            identifikační (jméno, příjmení, titul, název firmy, IČO, DIČ) a kontaktní
+            (e-mail, telefonní číslo, doručovací adresa, adresa místa plnění) údaje;
+          </li>
+          <li>další údaje spojené se smluvním vztahem (číslo bankovního účtu, historie plateb);</li>
+          <li>
+            osobní údaje v komunikaci (v e-mailech, zápisech ze schůzek, potvrzených
+            servisních protokolech apod.) a v některých případech i obrazový záznam v rámci
+            našeho kamerového systému (pokud se budete pohybovat v areálu KOS Servis).
+          </li>
+        </ul>
+        <p>
+          Správce zpracovává osobní údaje, které jste mu poskytli a/nebo osobní údaje, které
+          získal na základě realizace požadovaného plnění. Vaše osobní údaje mohou být námi
+          zpracovávány manuálně i automatizovaně, nicméně při automatizovaném zpracování
+          vašich údajů nepoužíváme automatizované rozhodování, včetně profilování, které by
+          mohlo mít dopad na vaše práva.
         </p>
 
-        <h2>Jaké údaje a proč</h2>
+        <h2>Proč údaje zpracováváme (účely zpracování) a na základě čeho je zpracováváme (právní titul)?</h2>
+        <ul>
+          <li>
+            zpracování je nezbytné pro splnění smlouvy nebo pro provedení potřebných opatření
+            před jejím uzavřením: V tomto případě je účelem zpracování, abychom mohli provést
+            požadované plnění (servis, montáž, zakázková výroba nebo dodávka materiálu);
+          </li>
+          <li>
+            zpracování je nezbytné pro splnění právních povinností, které se na nás vztahují:
+            V tomto případě je účelem zpracování zejména vedení účetnictví a plnění daňových
+            předpisů (archivace faktur).
+          </li>
+          <li>
+            zpracování je nezbytné pro účely našich oprávněných zájmů, přičemž oprávněným
+            zájmem je:
+            <ul>
+              <li>ochrana našich práv (pro případné řešení reklamací, sporů nebo vymáhání pohledávek);</li>
+              <li>zajištění bezpečnosti a ochrany zdraví osob a majetku;</li>
+              <li>
+                přímý marketing (zasílání obchodních sdělení a newsletterů): Našim stávajícím
+                zákazníkům můžeme zasílat informace o novinkách a službách souvisejících
+                s naší činností. Z tohoto odběru se lze kdykoliv odhlásit.
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>Kdo má k údajům přístup a jak jsou zabezpečeny?</h2>
         <p>
-          Přes poptávkový formulář nám odesíláte jméno a firmu, telefon nebo e-mail,
-          popis poptávky a případné přílohy (výkresy, fotografie). Používáme je
-          výhradně k vyřízení vaší poptávky a k následné komunikaci o zakázce –
-          tedy na základě oprávněného zájmu a plnění smlouvy.
+          Vaše údaje jsou u nás v bezpečí. Přijali jsme vhodná technická a organizační
+          opatření, aby byla data chráněna proti neoprávněnému přístupu. K údajům mají přístup
+          pouze:
+        </p>
+        <ul>
+          <li>pověření zaměstnanci Správce (zejména administrativa a technici);</li>
+          <li>
+            externí poskytovatelé služeb (poskytovatel IT služeb/serveru, externí účetní,
+            případně dopravce pro doručení zboží).
+          </li>
+          <li>orgány veřejné moci (pokud nám to ukládá zákon – např. finanční úřad).</li>
+        </ul>
+        <p>
+          <strong>Poznámka:</strong> Od zpracovatelů údajů vyžadujeme obdobná technická
+          a organizační opatření údajů, jaká sami garantujeme. Zpracovatel je oprávněn nakládat
+          s předanými údaji výhradně pro účely výkonu činnosti, kterou byl ze strany Správce
+          pověřen. Vaše osobní údaje nepředáváme do zemí mimo EU/EHP.
         </p>
 
-        <h2>Komu se dostanou</h2>
-        <p>
-          Obsah formuláře přijde e-mailem na naši firemní adresu. Údaje nepředáváme
-          třetím stranám pro marketingové účely a neprodáváme je.
-        </p>
-
-        <h2>Životopisy a reakce na nabídku práce</h2>
-        <p>
-          Formulář na stránce Kariéra sbírá i&nbsp;životopisy. Zaslané údaje
-          použijeme výhradně k&nbsp;posouzení vaší reakce na konkrétní pozici.
-          Životopisy neúspěšných uchazečů mažeme nejpozději šest měsíců po
-          ukončení výběru, déle je držíme jen s&nbsp;vaším výslovným souhlasem.
-          O&nbsp;výmaz můžete kdykoliv požádat na <a href={`mailto:${company.email}`}>{company.email}</a>.
-        </p>
-
-        <h2>Jak dlouho je uchováváme</h2>
-        <p>
-          Poptávky, ze kterých nevznikla zakázka, mažeme nejpozději do dvou let.
-          U realizovaných zakázek se údaje uchovávají po dobu danou účetními
-          a daňovými předpisy.
-        </p>
-
-        <h2>Cookies a měření návštěvnosti</h2>
-        <p>
-          Web neukládá žádné cookies – ani analytické, ani reklamní. Neběží na něm
-          Google Analytics ani jiný nástroj na měření návštěvnosti a nesledujeme,
-          kdo jednotlivé stránky otevřel. Písma i&nbsp;ostatní soubory jsou uložené
-          přímo na tomto webu, takže si prohlížeč při běžném prohlížení nic
-          nestahuje z&nbsp;cizích serverů.
-        </p>
-
-        <h2>Mapa na stránce Kontakt</h2>
-        <p>
-          Jedinou výjimkou je mapa na stránce Kontakt. Načte se z&nbsp;OpenStreetMap
-          až poté, co na ni sami kliknete – do té doby na cizí server neodejde žádný
-          požadavek ani vaše IP adresa.
-        </p>
-
-        <h2>Kde je web umístěný</h2>
-        <p>
-          Web běží u&nbsp;společnosti Vercel Inc., která jako zpracovatel vidí
-          technické údaje o&nbsp;požadavku (IP adresa, typ prohlížeče, čas) v&nbsp;provozních
-          protokolech serveru. Slouží výhradně k&nbsp;provozu a&nbsp;zabezpečení webu,
-          nespojujeme je s&nbsp;vaší osobou ani z&nbsp;nich neděláme statistiky.
-        </p>
+        <h2>Jak dlouho údaje uchováváme?</h2>
+        <ul>
+          <li>údaje na daňových dokladech uchováváme po dobu 10 let (dle zákona o DPH);</li>
+          <li>
+            identifikační a kontaktní údaje, včetně údajů v rámci komunikace, uchováváme po
+            dobu trvání smluvního vztahu a následně nejméně po dobu 3 let (promlčecí lhůta pro
+            případné spory);
+          </li>
+          <li>
+            obrazové záznamy v rámci kamerového systému jsou ze strany KOS Servis uchovávány
+            max. po dobu 7 dnů, což je nezbytná doba, během níž mohou být předány orgánům
+            vyšetřujícím trestný čin nebo přestupek, popř. jiným zainteresovaným subjektům pro
+            naplnění účelu zpracování (např. pojišťovna). Po této době je záznam nevratně
+            vymazán/zlikvidován přepisem ve smyčce s výjimkou bezpečnostního incidentu, kdy
+            bude záznam předložen pouze orgánům činným v trestním nebo přestupkovém řízení,
+            popř. jiným zainteresovaným subjektům pro naplnění účelu zpracování (např.
+            pojišťovna) a v takovém případě bude záznam ponechán po dobu nezbytně nutnou
+            k vyšetření takového incidentu.
+          </li>
+        </ul>
 
         <h2>Vaše práva</h2>
         <p>
-          Máte právo na přístup ke svým údajům, jejich opravu nebo výmaz, na omezení
-          zpracování a na podání námitky. Stačí napsat na{' '}
-          <a href={`mailto:${company.email}`}>{company.email}</a>. Se stížností se
-          můžete obrátit na Úřad pro ochranu osobních údajů.
+          Vždy usilujeme o transparentní a korektní zpracování vašich osobních údajů
+          a zajištění jejich náležité ochrany, přičemž v souvislosti s ochranou osobních údajů
+          máte právo:
+        </p>
+        <ul>
+          <li>požadovat přístup k vašim údajům a podrobnější informaci, jak s nimi nakládáme;</li>
+          <li>na opravu nepřesných nebo neúplných údajů;</li>
+          <li>
+            na omezení nakládání s údaji (např. pokud požádáte o jejich opravu nebo doplnění,
+            a to až do doby, než se ověří přesnost údajů);
+          </li>
+          <li>
+            na vznesení námitky proti zpracování vašich údajů (zejména v případě zasílání
+            obchodních sdělení);
+          </li>
+          <li>
+            požádat nás o výmaz vašich osobních údajů, pokud již nemáme žádný právní důvod pro
+            jejich další zpracování (např. pro plnění smlouvy nebo zákonnou archivaci);
+          </li>
+          <li>
+            máte právo podat stížnost Úřadu pro ochranu osobních údajů, pokud si domníváte,
+            že s daty nenakládáme správně.
+          </li>
+        </ul>
+
+        <h2>Kontakt</h2>
+        <p>
+          Pokud máte jakékoliv dotazy k ochraně osobních údajů, kontaktujte nás na e-mailu:{' '}
+          <a href={`mailto:${company.email}`}>{company.email}</a> nebo osobně v sídle
+          společnosti (Správce).
+        </p>
+        <p>Tato informace je platná a účinná od: 1.&nbsp;5.&nbsp;2026</p>
+
+        <h2>Web kos-servis.cz</h2>
+        <p>
+          Nad rámec výše uvedeného doplňujeme, jak je to s údaji na tomto webu.
+        </p>
+
+        <h3>Poptávkový formulář</h3>
+        <p>
+          Přes poptávkový formulář nám odesíláte jméno a firmu, telefon nebo e-mail, popis
+          poptávky a případné přílohy (výkresy, fotografie). Obsah formuláře přijde e-mailem
+          na naši firemní adresu a použijeme ho výhradně k&nbsp;vyřízení vaší poptávky
+          a&nbsp;k&nbsp;následné komunikaci o&nbsp;zakázce.
+        </p>
+
+        <h3>Reakce na nabídku práce</h3>
+        <p>
+          Formulář na stránce Kariéra sbírá i&nbsp;životopisy. Zaslané údaje použijeme výhradně
+          k&nbsp;posouzení vaší reakce na konkrétní pozici. Životopisy neúspěšných uchazečů
+          mažeme nejpozději šest měsíců po ukončení výběru, déle je držíme jen s&nbsp;vaším
+          výslovným souhlasem. O&nbsp;výmaz můžete kdykoliv požádat na{' '}
+          <a href={`mailto:${company.email}`}>{company.email}</a>.
+        </p>
+
+        <h3>Cookies a měření návštěvnosti</h3>
+        <p>
+          Web neukládá žádné cookies – ani analytické, ani reklamní. Neběží na něm Google
+          Analytics ani jiný nástroj na měření návštěvnosti a nesledujeme, kdo jednotlivé
+          stránky otevřel. Písma i&nbsp;ostatní soubory jsou uložené přímo na tomto webu,
+          takže si prohlížeč při běžném prohlížení nic nestahuje z&nbsp;cizích serverů.
+        </p>
+
+        <h3>Mapa na stránce Kontakt</h3>
+        <p>
+          Jedinou výjimkou je mapa na stránce Kontakt. Načte se z&nbsp;OpenStreetMap až poté,
+          co na ni sami kliknete – do té doby na cizí server neodejde žádný požadavek ani vaše
+          IP adresa.
+        </p>
+
+        <h3>Kde je web umístěný</h3>
+        <p>
+          Web běží u&nbsp;společnosti Vercel Inc., která jako zpracovatel vidí technické údaje
+          o&nbsp;požadavku (IP adresa, typ prohlížeče, čas) v&nbsp;provozních protokolech
+          serveru. Slouží výhradně k&nbsp;provozu a&nbsp;zabezpečení webu, nespojujeme je
+          s&nbsp;vaší osobou ani z&nbsp;nich neděláme statistiky.
         </p>
       </div>
     </div>

@@ -39,8 +39,10 @@ const FACES = [
 const RANGES = [
   [0x0020, 0x007e], // základní latinka
   [0x00a0, 0x00a0], // nezlomitelná mezera
+  [0x00a7, 0x00a7], // § (odkazy na zákony ve VOP)
   [0x00a9, 0x00a9], // © (patička)
   [0x00b0, 0x00b0], // °
+  [0x00b1, 0x00b1], // ± (tolerance množství ve VOP)
   [0x00b2, 0x00b3], // ² ³ (m², m³)
   [0x00b7, 0x00b7], // · (oddělovač v drobečkové navigaci)
   [0x00d7, 0x00d7], // × (rozměry strojů)
