@@ -123,3 +123,16 @@ Body, které klient musí potvrdit, protože jsou v návrhu odhadnuté: záručn
 (24 měsíců výroba / 12 měsíců oprava), splatnost 14 dní, lhůta 30 dní pro
 převzetí a skladné, vyjádření k reklamaci do 15 dní, omezení náhrady škody
 na cenu zakázky.
+
+## Rok založení s.r.o. — 2006 vs 2007
+
+Klient v podkladu k časové ose uvádí založení firmy v roce 2007, obchodní
+rejstřík má zápis 29. 11. 2006 (ověřeno v ARES). Na ose je teď obojí:
+
+```
+2006   Zápis KOS servis s.r.o. do obchodního rejstříku.
+2007   Zahájení činnosti pod novou společností, 10 zaměstnanců.
+```
+
+Rozdělení dává smysl, ale formulace roku 2007 je **naše domněnka** — klient
+musí potvrdit, že tím rokem myslel rozjezd provozu, ne zápis.
