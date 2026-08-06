@@ -130,3 +130,30 @@ grep -roE "[a-záčďéěíňóřšťúůýž,)]<a " dist/ --include=*.html
 
 — po změnách textů to stojí za projetí, v prohlížeči si toho nikdo nevšimne
 dřív než klient.
+
+## Kurátorství fotek — kontaktní archy
+
+Vybírat z 87 fotek po jedné je zdlouhavé. Rychlejší je poskládat je do
+očíslovaných kontaktních archů (4×3 na arch) a vybírat podle čísel:
+
+```js
+// sharp: každou fotku na 420×315 do mřížky, přes levý horní roh SVG s číslem
+sharp({create:{width:4*420,height:3*315,channels:3,background:'#fff'}})
+  .composite(cells).jpeg({quality:72}).toFile('sheet-1.jpg')
+```
+
+Výsledná čísla odpovídají pořadí v `manifest.json`, takže výběr jde rovnou
+přepsat na klíč v manifestu. Skript stál za to napsat i pro jednorázové použití —
+projít 87 fotek jinak znamená 87 samostatných pohledů.
+
+## Skladba galerií na /reference/ a /o-firme/
+
+Obě stránky mají vlastní klíč v manifestu (`reference-galerie`,
+`o-firme-galerie`), který v sobě spojuje víc zdrojů: 21 vybraných z výroby,
+za nimi zbytek vhodných a nakonec starší sada z jarního průchodu. Důvod je
+stejný jako u `sluzby-vyroba` — kdyby stránky četly sdílené sekce přímo,
+prala by se o pořadí a limit s ostatními místy.
+
+`Gallery` umí prop `initial` — ukáže jen prvních N a zbytek schová pod tlačítko
+„Zobrazit všech N fotek". Lightbox sbírá i skryté položky **záměrně**: kdo si
+otevře fotku, má šipkami projít celou sadu, ne jen viditelný výřez.

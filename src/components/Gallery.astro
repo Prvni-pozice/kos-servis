@@ -8,17 +8,20 @@ interface Props {
   label: string;
   cols?: 2 | 3 | 4;
   limit?: number;
+  /** Kolik fotek ukázat rovnou; zbytek se schová pod tlačítko. */
+  initial?: number;
 }
 
-const { section, label, cols = 3, limit } = Astro.props;
+const { section, label, cols = 3, limit, initial } = Astro.props;
 const items = photos(section, limit);
+const hiddenFrom = initial && items.length > initial ? initial : null;
 ---
 
 {items.length > 0 && (
-  <div class={`gallery cols-${cols}`}>
+  <div class={`gallery cols-${cols}`} data-gallery-expandable={hiddenFrom ? '' : null}>
     {items.map((p, i) => (
       <button
-        class="gallery-item"
+        class:list={['gallery-item', { 'gallery-more': hiddenFrom !== null && i >= hiddenFrom }]}
         type="button"
         data-full={p.src}
         data-alt={`${label} – foto ${i + 1}`}
@@ -37,6 +40,12 @@ const items = photos(section, limit);
   </div>
 )}
 
+{hiddenFrom !== null && (
+  <button type="button" class="btn btn-secondary gallery-toggle" data-gallery-toggle aria-expanded="false">
+    Zobrazit všech {items.length} fotek →
+  </button>
+)}
+
 <dialog class="lightbox" aria-label="Zvětšená fotografie">
   <div class="lightbox-bar">
     <span data-lb-count></span>
@@ -48,6 +57,22 @@ const items = photos(section, limit);
   </div>
   <img data-lb-img src="" alt="" />
 </dialog>
+
+<script>
+  // Rozbalení zbytku galerie. Lightbox níž sbírá i skryté položky záměrně –
+  // kdo si otevře fotku, má šipkami projít celou sadu, ne jen viditelný výřez.
+  document.querySelectorAll('[data-gallery-toggle]').forEach((btn) => {
+    const grid = btn.previousElementSibling;
+    if (!grid) return;
+    const total = grid.querySelectorAll('.gallery-item').length;
+    btn.addEventListener('click', () => {
+      const open = grid.hasAttribute('data-expanded');
+      grid.toggleAttribute('data-expanded', !open);
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.textContent = open ? `Zobrazit všech ${total} fotek →` : 'Zobrazit méně';
+    });
+  });
+</script>
 
 <script>
   // Lightbox: jeden dialog obslouží všechny galerie na stránce.

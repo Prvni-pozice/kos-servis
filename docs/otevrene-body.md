@@ -165,13 +165,16 @@ klientova výčtu, kde je první obchod. Rozhodnutí z předávací kontroly.
 
 **Logo** už není blokující — majitel si stávající logo přeje ponechat.
 
-## Fotky na /o-firme/ — čeká lepší sada
+## Fotky na /reference/ a /o-firme/ — čeká další složka
 
-Galerie na `/o-firme/` pořád čte celou sekci `firma-pruchod` (31 fotek z jarního
-průchodu firmou). Klient chystá další složku s lepšími snímky — až dorazí,
-nahradit. Do té doby se nevyplatí sekci kurátorovat.
+Obě galerie teď vedou snímky z výroby (`firma-vyroba`, 87 HEIC z Drive složky
+`1pa1wWQIsqCLaq1FY4xy5ZyZYETZLPzYY`) — 21 vybraných rovnou, zbytek vhodných pod
+tlačítkem, starší sada z jarního průchodu firmou (`firma-pruchod`) až na konci.
+Skladbu drží klíče `reference-galerie` a `o-firme-galerie` v manifestu.
 
-Poznámka ke zdrojům: Drive složka `1pa1wWQIsqCLaq1FY4xy5ZyZYETZLPzYY`
-(„Fotky z výroby", 87 HEIC) **už natažená je** — je to sekce `firma-vyroba`
-a jede z ní strojový park i čtveřice na `/sluzby/`. Na `/reference/`
-a `/o-firme/` je ta druhá, slabší sada (`firma-pruchod`).
+Klient chystá **další složku s lepšími snímky**. Až dorazí, projít výběr znovu —
+kontaktní archy se dají vyrobit skriptem, viz `rozhodnuti.md`.
+
+Z výběru zůstalo venku 46 z 87 fotek: interiéry servisní dodávky, rozmazané
+snímky a série, kde je totéž několikrát za sebou. Nejsou smazané, jen nejsou
+v žádné z publikovaných sekcí.
