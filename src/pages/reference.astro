@@ -58,7 +58,10 @@ import { references, industries } from '../data/site';
         title="Ukázky provedených prací"
         lead="Fotografie z dílny a z dokončených zakázek."
       />
-      <Gallery section="firma-pruchod" label="Realizace KOS servis" cols={3} limit={15} />
+      {/* Ruční výběr klienta ze sekce firma-pruchod, promíchaný tak, aby vedle
+          sebe nestály dva snímky pořízené za sebou. Vlastní klíč v manifestu,
+          ať se to nepere s galerií na /o-firme/, která čte celou sekci. */}
+      <Gallery section="reference-vyber" label="Realizace KOS servis" cols={3} />
     </div>
   </section>
 

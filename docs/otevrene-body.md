@@ -164,3 +164,14 @@ vrátíme je.
 klientova výčtu, kde je první obchod. Rozhodnutí z předávací kontroly.
 
 **Logo** už není blokující — majitel si stávající logo přeje ponechat.
+
+## Fotky na /o-firme/ — čeká lepší sada
+
+Galerie na `/o-firme/` pořád čte celou sekci `firma-pruchod` (31 fotek z jarního
+průchodu firmou). Klient chystá další složku s lepšími snímky — až dorazí,
+nahradit. Do té doby se nevyplatí sekci kurátorovat.
+
+Poznámka ke zdrojům: Drive složka `1pa1wWQIsqCLaq1FY4xy5ZyZYETZLPzYY`
+(„Fotky z výroby", 87 HEIC) **už natažená je** — je to sekce `firma-vyroba`
+a jede z ní strojový park i čtveřice na `/sluzby/`. Na `/reference/`
+a `/o-firme/` je ta druhá, slabší sada (`firma-pruchod`).

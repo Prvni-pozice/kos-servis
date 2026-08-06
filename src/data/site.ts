@@ -224,12 +224,13 @@ export const industries = [
   'Těžká technika a hydraulika',
 ] as const;
 
-/* Seznam schválený klientem – ne to, co bylo na starém webu. Firmy, které
- * v jeho výčtu nebyly (BAGO s.r.o., Technické služby města Pelhřimova), jsme
- * vypustili: referenci nezveřejňujeme bez souhlasu. Klient chystá další. */
+/* Seznam schválený klientem, doplněný o BAGO a Technické služby ze starého webu –
+ * v jeho výčtu nebyly, ale zveřejněné už byly. Klient chystá další firmy. */
 export const references = [
   { name: 'Dřevozpracující družstvo DDL', city: 'Lukavec' },
+  { name: 'BAGO s.r.o.', city: 'Hnátnice' },
   { name: 'MOSER LEGNO s.r.o.', city: 'Pelhřimov' },
+  { name: 'Technické služby města Pelhřimova', city: 'Pelhřimov' },
   { name: 'AGRODAM Hořepník, s.r.o.', city: '' },
   { name: 'VOD Jetřichovec, družstvo', city: '' },
   { name: 'E.H.P., s.r.o.', city: '' },

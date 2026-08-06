@@ -21,6 +21,27 @@ const oblasti = [
     text: 'Oprávnění Technické inspekce ČR k revizím a zkouškám provozovaných tlakových zařízení a k montážím a opravám vyhrazených tlakových zařízení (ev. č. 1523/7/22/TZ-R,M-NA). Protokoly předáváme u zakázek, u nichž jsou vyžadovány.',
   },
 ];
+
+/* Skeny vyvěšujeme v původní podobě na výslovné rozhodnutí klienta. Oprávnění
+ * na tlaková zařízení nese datum narození a adresu bydliště odpovědného
+ * zástupce — bylo to nahlášeno, klient si přeje dokument beze změn. */
+const dokumenty = [
+  {
+    title: 'Certifikát ČSN EN ISO 3834-2:2022 – svařování',
+    href: '/dokumenty/certifikat-csn-en-iso-3834-2.pdf',
+    size: '2,1 MB',
+  },
+  {
+    title: 'Oprávnění TIČR – zdvihací zařízení',
+    href: '/dokumenty/opravneni-zdvihaci-zarizeni.pdf',
+    size: '600 kB',
+  },
+  {
+    title: 'Oprávnění TIČR – tlaková zařízení',
+    href: '/dokumenty/opravneni-tlakova-zarizeni.pdf',
+    size: '700 kB',
+  },
+];
 ---
 
 <BaseLayout
@@ -53,9 +74,18 @@ const oblasti = [
 
       <div style="border: 1px solid var(--color-line); padding: 26px 28px; margin-top: 32px; max-width: 70ch">
         <h2 class="h6">Dokumenty ke stažení</h2>
-        <p style="font-size: 15px; color: #37475b; margin: 0">
-          Potřebujete konkrétní certifikát nebo oprávnění doložit do zakázkové
-          dokumentace? Napište na{' '}
+        <ul class="spec" style="margin-top: 14px">
+          {dokumenty.map((d) => (
+            <li>
+              <span class="lbl">
+                <a href={d.href} type="application/pdf">{d.title}</a>
+              </span>
+              <span class="val">PDF · {d.size}</span>
+            </li>
+          ))}
+        </ul>
+        <p style="font-size: 15px; color: #37475b; margin: 20px 0 0">
+          Potřebujete doložit něco dalšího do zakázkové dokumentace? Napište na{' '}
           <a href={`mailto:${company.email}`}>{company.email}</a> a sken vám pošleme e-mailem.
         </p>
       </div>
