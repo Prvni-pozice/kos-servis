@@ -4,20 +4,21 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { company } from '../data/site';
 
-/* Konkrétní dokumenty ke stažení dodá klient – struktura stránky je připravená,
- * stačí doplnit soubory do public/dokumenty/ a přidat je sem. */
+/* Znění odpovídá dokumentům, které dodal klient (docs/). Dřív tu stálo, že máme
+ * oprávnění na *výrobu* zdvihacích zařízení a *revize* zdvihacích zařízení —
+ * ani jedno v dokumentech není. Revize a zkoušky se týkají tlakových zařízení. */
 const oblasti = [
   {
-    title: 'Svářečská oprávnění',
-    text: 'Oprávnění a vyškolení zaměstnanci na svařování hliníku, litiny, bronzu a nerezových materiálů, včetně navařování otěruvzdorných vrstev.',
+    title: 'Certifikace svařování',
+    text: 'Certifikát ČSN EN ISO 3834-2:2022 pro proces svařování v rozsahu oprav strojů a jejich částí a zámečnické výroby (č. ZCV-25-314/C01, platný do 13. 6. 2030). Svařujeme hliník, litinu, bronz i nerez, včetně navařování otěruvzdorných vrstev.',
   },
   {
-    title: 'Zdvihací zařízení a ocelové konstrukce',
-    text: 'Oprávnění na opravy i výrobu vyhrazených zdvihacích zařízení a ocelových konstrukcí, včetně revizí.',
+    title: 'Zdvihací zařízení',
+    text: 'Oprávnění Technické inspekce ČR k montážím a opravám vyhrazených zdvihacích zařízení (ev. č. 358/24/ZZ-M,O-a,a1,a2,a5,a6,b,b1).',
   },
   {
-    title: 'Revize a zkoušky',
-    text: 'Protokoly o revizích a provedených zkouškách předáváme u zakázek, u nichž jsou tyto dokumenty vyžadovány.',
+    title: 'Tlaková zařízení',
+    text: 'Oprávnění Technické inspekce ČR k revizím a zkouškám provozovaných tlakových zařízení a k montážím a opravám vyhrazených tlakových zařízení (ev. č. 1523/7/22/TZ-R,M-NA). Protokoly předáváme u zakázek, u nichž jsou vyžadovány.',
   },
 ];
 ---

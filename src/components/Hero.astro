@@ -5,7 +5,8 @@ interface Slogan {
 }
 
 interface Props {
-  video: string;
+  /** Nepovinné – bez videa zůstane jen statický záběr z `poster`. */
+  video?: string;
   poster: string;
   slogans: Slogan[];
   /** Modrý tón sjednotí záběry s brandem – na kontaktu se nechává vypnutý. */
@@ -30,17 +31,19 @@ const { video, poster, slogans, tone = true, band = false, intervalSeconds = 6 }
     data-hero-poster
   />
   {/* `src` se doplňuje až ze skriptu – jinak si video ukousne pásmo ještě před LCP. */}
-  <video
-    poster={poster}
-    muted
-    loop
-    playsinline
-    preload="none"
-    data-hero-vid
-    data-hero-src={video}
-    data-active="false"
-    aria-hidden="true"
-  ></video>
+  {video && (
+    <video
+      poster={poster}
+      muted
+      loop
+      playsinline
+      preload="none"
+      data-hero-vid
+      data-hero-src={video}
+      data-active="false"
+      aria-hidden="true"
+    ></video>
+  )}
 
   {tone && <div class="hero-tone"></div>}
   <div class="hero-scrim"></div>

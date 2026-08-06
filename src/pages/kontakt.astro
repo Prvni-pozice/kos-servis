@@ -17,10 +17,12 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${company.geo.lat}&mlon=${c
 >
   <section style="padding: clamp(20px, 3vw, 36px) 0 0">
     <div class="wrap">
+      {/* Letecký záběr areálu od klienta – bez videa, ten snímek stojí sám o sobě.
+          Tón je vypnutý, aby zůstaly barvy hal. */}
       <Hero
         band
-        video="/video/kontakt.mp4"
-        poster="/img/video/kontakt-poster.webp"
+        tone={false}
+        poster="/img/kontakt/areal.webp"
         slogans={[
           { kicker: 'Chyšná 52 · 395 01 Chyšná · sjezd z D1, 66. km', line: 'Kde nás najdete' },
         ]}

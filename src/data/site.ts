@@ -65,7 +65,7 @@ export type Person = {
 /* Pořadí je záměrné: servis/havárie → výroba → technika → vedení. */
 export const people: Person[] = [
   {
-    role: 'Příjem oprav · mistr',
+    role: 'Příjem oprav · vedoucí dílny',
     name: 'Rostislav Vymazal',
     phone: '+420 602 125 699',
     email: 'rosta.vymazal@kos-servis.cz',
@@ -79,7 +79,7 @@ export const people: Person[] = [
     solves: 'Výpalky, 3D úkosy, poptávky pálení plechů podle výkresu.',
   },
   {
-    role: 'Technolog · konstruktér',
+    role: 'Konstruktér · technolog',
     name: 'Mgr. Tomáš Cvrček',
     phone: '+420 603 934 014',
     email: 'tomas.cvrcek@kos-servis.cz',
@@ -93,9 +93,11 @@ export const people: Person[] = [
     solves: 'Svařování hliníku, litiny, bronzu a nerezu, navařování a renovace.',
   },
   {
-    role: 'Obchod · prodej a nákup',
+    role: 'Obchodní oddělení · prodej a nákup',
     name: 'Ing. Viktor Knopp',
-    solves: 'Nabídky, termíny a obchodní podmínky zakázek. Volejte na ústřednu, přepojí vás.',
+    phone: '+420 605 837 605',
+    email: 'viktor.knopp@kos-servis.cz',
+    solves: 'Nabídky, termíny a obchodní podmínky zakázek.',
   },
   {
     role: 'Jednatel',
@@ -134,12 +136,11 @@ export const machines: Machine[] = [
     group: 'Plazma · CNC',
     name: 'Messer OmniMat L 5600',
     feature: true,
+    /* Klient chtěl parametry výrazně zestručnit – zůstává rozsah pálení
+     * a obě hlavy. Detailní tabulky jsou níž na stránce. */
     specs: [
       { label: 'Rozsah řezání', value: '2 500 × 6 500 mm' },
-      { label: 'Max. tloušťka', value: '200 mm' },
-      { label: 'Pracovní výška', value: '720 mm' },
       { label: 'Hlava', value: '3D úkosová' },
-      { label: 'Hořáky', value: 'plazma + acetylen' },
       { label: 'Doplněk', value: 'vrtací agregát' },
     ],
     note:
@@ -147,7 +148,7 @@ export const machines: Machine[] = [
   },
   {
     group: 'Ohraňování',
-    name: 'CNC lis Rico PRCB 35500',
+    name: 'CNC ohraňovací lis Rico PRCB 35500',
     specs: [
       { label: 'Délka', value: '3 600 mm' },
       { label: 'Síla', value: '500 t' },
@@ -166,7 +167,7 @@ export const machines: Machine[] = [
   },
   {
     group: 'Hydraulika',
-    name: 'Povolovací lavice',
+    name: 'Povolovací lavice pro demontáž hydraulických válců',
     specs: [
       { label: 'Délka', value: 'do 4 000 mm' },
       { label: 'Tlak', value: 'do 300 barů' },
@@ -190,39 +191,26 @@ export const machines: Machine[] = [
   },
 ];
 
-/** Parametry plazmového střediska – detailní tabulky ze starého webu. */
+/* Parametry plazmového střediska. Původně to byly čtyři tabulky ze starého webu;
+ * klient je chtěl výrazně zestručnit na rozsah pálení a obě hlavy. Vypadla mimo
+ * jiné „maximální tloušťka materiálu 200 mm", která si odporovala s autogenem
+ * do 300 mm — správnou hodnotu má potvrdit klient, viz docs/otevrene-body.md. */
 export const plasmaSpecs = [
   {
-    title: 'Pálicí stůl Messer OmniMat L 5600',
+    title: 'Rozsah pálení',
     rows: [
-      { label: 'Rozsah řezání (uložení plechu)', value: '2 500 × 6 500 mm' },
-      { label: 'Pracovní výška', value: '720 mm' },
-      { label: 'Maximální tloušťka materiálu', value: '200 mm' },
+      { label: 'Formát plechu', value: '2 500 × 6 500 mm' },
+      { label: 'Plazma – doporučený rozsah', value: '2 – 50 mm' },
+      { label: 'Plazma – dělicí řez', value: 'do 120 mm' },
+      { label: 'Autogen – kolmé řezy', value: '3 – 300 mm' },
     ],
   },
   {
-    title: 'Plazmový hořák Hi Focus 440i',
+    title: '3D úkosová a vrtací hlava',
     rows: [
-      { label: 'Rozsah řezání (doporučený)', value: '2 – 50 mm' },
-      { label: 'Propalování otvorů (max.)', value: '50 mm' },
-      { label: 'Dělicí řez', value: '120 mm' },
       { label: 'Úkosy', value: 'do 45°, do tloušťky 45 mm' },
-    ],
-  },
-  {
-    title: 'Autogenní hořák ALFA (kolmé řezy)',
-    rows: [
-      { label: 'Rozsah řezání', value: '3 – 300 mm' },
-      { label: 'Propalování otvorů acetylenem', value: 'max. 130 mm' },
-    ],
-  },
-  {
-    title: 'CNC vrtací jednotka',
-    rows: [
-      { label: 'Průměr vrtáků – běžná ocel', value: '5 – 32 mm' },
-      { label: 'Průměr vrtáků – nerez', value: '6 – 18 mm' },
-      { label: 'Maximální otáčky', value: '4 000 ot/min' },
-      { label: 'Pracovní zdvih', value: '490 mm' },
+      { label: 'Vrtání – běžná ocel', value: '5 – 32 mm' },
+      { label: 'Vrtání – nerez', value: '6 – 18 mm' },
     ],
   },
 ] as const;
@@ -236,15 +224,17 @@ export const industries = [
   'Těžká technika a hydraulika',
 ] as const;
 
-/** Referenční firmy ze starého webu. Loga doplníme po souhlasu klientů. */
+/* Seznam schválený klientem – ne to, co bylo na starém webu. Firmy, které
+ * v jeho výčtu nebyly (BAGO s.r.o., Technické služby města Pelhřimova), jsme
+ * vypustili: referenci nezveřejňujeme bez souhlasu. Klient chystá další. */
 export const references = [
   { name: 'Dřevozpracující družstvo DDL', city: 'Lukavec' },
-  { name: 'BAGO s.r.o.', city: 'Hnátnice' },
   { name: 'MOSER LEGNO s.r.o.', city: 'Pelhřimov' },
-  { name: 'Technické služby města Pelhřimova', city: 'Pelhřimov' },
-  { name: 'AGRODAM Hořepník, s.r.o.', city: 'Hořepník' },
-  { name: 'VOD Jetřichovec, družstvo', city: 'Jetřichovec' },
+  { name: 'AGRODAM Hořepník, s.r.o.', city: '' },
+  { name: 'VOD Jetřichovec, družstvo', city: '' },
   { name: 'E.H.P., s.r.o.', city: '' },
+  { name: 'KUKS a.s.', city: 'Pelhřimov' },
+  { name: 'BES s.r.o.', city: '' },
 ] as const;
 
 /** Typy poptávky ve formuláři – hodnota jde i do předmětu e-mailu. */

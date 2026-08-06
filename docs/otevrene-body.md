@@ -136,3 +136,31 @@ rejstřík má zápis 29. 11. 2006 (ověřeno v ARES). Na ose je teď obojí:
 
 Rozdělení dává smysl, ale formulace roku 2007 je **naše domněnka** — klient
 musí potvrdit, že tím rokem myslel rozjezd provozu, ne zápis.
+
+## Připomínky z 5. kola — co zůstalo otevřené
+
+**Tloušťka pálení.** Na `/strojovy-park/` je plazma zestručněná podle přání klienta
+a sporná „maximální tloušťka materiálu 200 mm" odtud vypadla. Na
+`/sluzby/paleni-3d-plazmou/` ale pořád je — a to i v perexu a meta description.
+Odporuje si s autogenem 3–300 mm. Klient musí říct, co platí.
+
+**Skeny certifikátů.** Tři PDF jsou v `docs/`, na web zatím **nejsou nasazené**.
+Oprávnění TIČR na tlaková zařízení obsahuje datum narození a adresu bydliště
+odpovědného zástupce (Libor Kos) — než to půjde ven, musí se to začernit, nebo
+zveřejnit jen čísla oprávnění bez skenů. Texty na `/certifikaty/` už podle
+dokumentů opravené jsou.
+
+**Chybějící fotky strojů.** Klient odkazuje na snímky „ohrlis", „rovnacilis",
+„Lavice" a „Horizontka" a na video ohraňovacího lisu. Nic z toho zatím nedorazilo.
+
+**Miloš Petrů** (svářecí technolog) není v klientově výčtu kontaktů. Necháváme ho
+tam — klient psal „mj." — ale stojí za potvrzení.
+
+**Vypuštěné reference.** BAGO s.r.o. a Technické služby města Pelhřimova nebyly
+v klientem schváleném seznamu, tak jsme je vyřadili. Pokud to bylo opomenutí,
+vrátíme je.
+
+**Pořadí kontaktů** zůstává podle problému (příjem oprav první), ne podle
+klientova výčtu, kde je první obchod. Rozhodnutí z předávací kontroly.
+
+**Logo** už není blokující — majitel si stávající logo přeje ponechat.
