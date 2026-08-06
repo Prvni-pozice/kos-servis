@@ -14,7 +14,7 @@ const {
   subject,
   title = 'Poptávkový formulář',
   /** Kariéra sbírá životopisy, ne výkresy – popisek i povolené přípony se liší. */
-  fileLabel = '+ Přiložit výkres nebo fotku (do 10 MB)',
+  fileLabel = '+ Přiložit výkres nebo fotku (do 4 MB)',
   accept = '.pdf,.dwg,.dxf,.jpg,.jpeg,.png,.heic,.zip',
 } = Astro.props;
 const selected = subject && inquiryTypes.includes(subject as never) ? subject : inquiryTypes[0];
@@ -86,7 +86,8 @@ const selected = subject && inquiryTypes.includes(subject as never) ? subject : 
   const err = form?.querySelector<HTMLElement>('[data-err]');
   const fileInput = form?.querySelector<HTMLInputElement>('#priloha');
   const fileList = form?.querySelector<HTMLElement>('[data-files]');
-  const MAX_BYTES = 10 * 1024 * 1024;
+  // Musí odpovídat MAX_TOTAL_BYTES v /api/poptavka – strop drží Vercel, ne my.
+  const MAX_BYTES = 4 * 1024 * 1024;
 
   fileInput?.addEventListener('change', () => {
     const files = Array.from(fileInput.files ?? []);
@@ -117,7 +118,7 @@ const selected = subject && inquiryTypes.includes(subject as never) ? subject : 
 
     const total = Array.from(fileInput?.files ?? []).reduce((n, f) => n + f.size, 0);
     if (total > MAX_BYTES) {
-      err.textContent = 'Přílohy dohromady přesahují 10 MB. Zmenšete je nebo pošlete odkaz na úložiště.';
+      err.textContent = 'Přílohy dohromady přesahují 4 MB. Zmenšete je nebo pošlete odkaz na úložiště.';
       err.hidden = false;
       return;
     }

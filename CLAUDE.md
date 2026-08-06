@@ -98,13 +98,24 @@ zpracuje sharp.
 
 ## Poptávkový formulář
 
-`/api/poptavka` odesílá e-mail přes SMTP. Konfigurace je v proměnných prostředí
+`/api/poptavka` odesílá e-mail přes **HTTP API Resendu** (`RESEND_API_KEY`,
+`MAIL_FROM`, `MAIL_TO`) — ne přes SMTP. Serverless funkce žije krátce a navazovat
+z ní SMTP spojení je pomalé a nespolehlivé. Konfigurace je v proměnných prostředí
 (`.env` lokálně, Vercel env na produkci) — viz `.env.example`.
 **Přístupové údaje nikdy nepatří do gitu.**
 
-Ochrany: honeypot pole, whitelist přípon, limit 5 souborů / 10 MB celkem,
+`MAIL_FROM` musí být na doméně ověřené v Resendu, jinak Resend zprávu odmítne.
+Doména `kos-servis.cz` má vlastní poštu u Avatechu a SPF končí `-all`, takže se
+ověřuje **subdoména** `send.kos-servis.cz` — stávající poštu to nechá být.
+
+Ochrany: honeypot pole, whitelist přípon, limit 5 souborů / 4 MB celkem,
 strip řídicích znaků kvůli podvržení hlaviček. Do logu se nikdy nepíše obsah
-poptávky ani SMTP heslo.
+poptávky ani API klíč.
+
+**Strop 4 MB drží Vercel, ne my** — serverless funkce nepřijme request větší
+než 4,5 MB a vrátí 413 dřív, než se route spustí. Limit je proto na třech
+místech (`MAX_TOTAL_BYTES` v route, `MAX_BYTES` a popisky v `InquiryForm.astro`)
+a musí zůstat sladěný. Větší přílohy by znamenaly nahrávat soubory mimo tuhle route.
 
 ## Push zpět do design systému
 
