@@ -36,7 +36,7 @@ specs:
         value: žádné
       - label: Použití
         value: hřídele, uložení, ochrana proti korozi
-gallery: oteruvzdorne-materialy
+gallery: sl-oteruvzdorne-materialy
 related: [paleni-3d-plazmou, svarovani-a-renovace, ohybani-a-zpracovani-plechu]
 inquirySubject: Výroba
 ---

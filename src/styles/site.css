@@ -193,6 +193,12 @@
   position: relative; margin: 0; padding: 0; border: none; background: var(--color-mist);
   aspect-ratio: 4 / 3; overflow: hidden; cursor: zoom-in;
 }
+/* Galerie drží na mobilu dva sloupce, i když design systém sráží .cols-3 na jeden.
+   Při jednom sloupci nadělá dvanáct fotek přes 3 000 px výšky a stránka se stane
+   nekonečným pásem — nález 2.4 z předávací kontroly. */
+@media (max-width: 640px) {
+  .gallery.cols-3, .gallery.cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
 .gallery-more { display: none; }
 .gallery[data-expanded] .gallery-more { display: block; }
 .gallery-toggle { margin-top: 18px; }

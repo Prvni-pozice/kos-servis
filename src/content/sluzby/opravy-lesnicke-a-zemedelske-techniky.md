@@ -20,7 +20,7 @@ scope:
   - Svařování a strojní opravy
   - Výroba svařenců ramen a výsuvů
   - Opravy navijáků
-gallery: opravy-lesnicke-techniky
+gallery: sl-opravy-lesnicke-techniky
 related: [opravy-hydraulickych-valcu, oteruvzdorne-materialy-a-navarovani, svarovani-a-renovace]
 inquirySubject: Oprava
 ---

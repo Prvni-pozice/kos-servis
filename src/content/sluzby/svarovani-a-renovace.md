@@ -17,7 +17,7 @@ scope:
   - Navařování opotřebených částí
   - Renovace dílů
   - Servisní svařování u zákazníka
-gallery: vyroba-pro-prumysl
+gallery: sl-svarovani-a-renovace
 related: [oteruvzdorne-materialy-a-navarovani, opravy-strojnich-zarizeni, strojni-obrabeni]
 inquirySubject: Oprava
 ---

@@ -66,7 +66,7 @@ specs:
         value: 4 000 ot/min
       - label: Pracovní zdvih
         value: 490 mm
-gallery: paleni-3d-plazmou
+gallery: sl-paleni-3d-plazmou
 related: [ohybani-a-zpracovani-plechu, oteruvzdorne-materialy-a-navarovani, strojni-obrabeni]
 inquirySubject: Pálení plazmou
 ---

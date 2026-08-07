@@ -18,7 +18,7 @@ scope:
   - Výroba a opravy ocelových konstrukcí
   - Výroba sloupových jeřábů na míru
   - Kompletní opravy zdvihacích zařízení včetně revizí
-gallery: opravy-zdvihacich-zarizeni
+gallery: sl-opravy-zdvihacich-zarizeni
 related: [svarovani-a-renovace, opravy-hydraulickych-valcu, ohybani-a-zpracovani-plechu]
 inquirySubject: Oprava
 ---

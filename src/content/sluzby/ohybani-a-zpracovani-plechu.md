@@ -41,7 +41,7 @@ specs:
         value: 1 550 mm
       - label: Pracovní výška
         value: 900 mm
-gallery: vyroba-pro-prumysl
+gallery: sl-ohybani-a-zpracovani-plechu
 related: [paleni-3d-plazmou, oteruvzdorne-materialy-a-navarovani, svarovani-a-renovace]
 inquirySubject: Výroba
 ---

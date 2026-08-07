@@ -157,3 +157,16 @@ prala by se o pořadí a limit s ostatními místy.
 `Gallery` umí prop `initial` — ukáže jen prvních N a zbytek schová pod tlačítko
 „Zobrazit všech N fotek". Lightbox sbírá i skryté položky **záměrně**: kdo si
 otevře fotku, má šipkami projít celou sadu, ne jen viditelný výřez.
+
+## Galerie u služeb
+
+Každá z devíti služeb má vlastní klíč `sl-*` v manifestu. Skladba je stejná jako
+u velkých galerií: nejdřív vybrané snímky z `firma-vyroba` a `firma-pruchod`
+promíchané tak, aby vedle sebe nestály dva podobné, za nimi starší sada
+ze starého webu. Zobrazí se prvních devět, zbytek je pod tlačítkem.
+
+Tím padá nález 1.19 z předávací kontroly — ohýbání plechů, strojní obrábění
+a svařování sdílely jednu sekci `vyroba-pro-prumysl` a týž snímek se tak
+vydával za tři různé činnosti. Sekce se rozpadla podle toho, co na fotkách
+opravdu je: svarové housenky ke svařování, plechové boxy k ohýbání.
+Strojní obrábění z ní nedostalo nic, protože tam žádné obrábění nebylo.

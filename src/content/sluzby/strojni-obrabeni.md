@@ -37,7 +37,7 @@ specs:
         value: 1 250 × 1 400 mm
       - label: Maximální výška
         value: 1 120 mm
-gallery: vyroba-pro-prumysl
+gallery: sl-strojni-obrabeni
 related: [opravy-hydraulickych-valcu, svarovani-a-renovace, ohybani-a-zpracovani-plechu]
 inquirySubject: Výroba
 ---

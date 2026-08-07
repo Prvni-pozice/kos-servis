@@ -17,7 +17,7 @@ scope:
   - Opravy provozních částí strojů
   - Renovace poškozených dílů
   - Servisní práce pro průmysl, zemědělství a lesnictví
-gallery: opravy-strojnich-zarizeni
+gallery: sl-opravy-strojnich-zarizeni
 related: [opravy-hydraulickych-valcu, svarovani-a-renovace, strojni-obrabeni]
 inquirySubject: Oprava
 ---
