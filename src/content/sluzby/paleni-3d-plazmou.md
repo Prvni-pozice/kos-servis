@@ -28,7 +28,7 @@ equipment:
       Řezání úkosů do úhlu 45° a tloušťky 45 mm ve tvaru I, V, X, Y i podle úkosových
       křivek z DXF nebo DWG. Messer Hole Technology pro přesnější otvory v běžných ocelích do 25 mm.
   - name: Autogenní hořák ALFA
-    role: Kolmé řezy silných plechů až do tloušťky 300 mm.
+    role: Kolmé řezy silných plechů až do tloušťky 200 mm.
   - name: CNC vrtací jednotka
     role: Vrtání otvorů, zahloubení pro šrouby i závity (ověřeno do M40×1,5) bez přepínání na jiný stroj.
 specs:
@@ -46,14 +46,12 @@ specs:
         value: 2 – 50 mm
       - label: Propalování otvorů (max.)
         value: 50 mm
-      - label: Dělicí řez
-        value: 120 mm
       - label: Úkosy
         value: do 45°, do tloušťky 45 mm
   - title: Autogenní hořák ALFA (pouze kolmé řezy)
     rows:
       - label: Rozsah řezání
-        value: 3 – 300 mm
+        value: 3 – 200 mm
       - label: Propalování otvorů acetylenem
         value: max. 130 mm
   - title: CNC vrtací jednotka

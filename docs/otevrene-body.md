@@ -1,7 +1,32 @@
 # Otevřené body
 
-Stav k 2. 8. 2026. Web je funkční a kompletní ve struktuře — tohle jsou věci,
+Stav k 18. 8. 2026. Web je funkční a kompletní ve struktuře — tohle jsou věci,
 které čekají na podklad od klienta nebo na rozhodnutí.
+
+## Po 6. kole připomínek (18. 8. 2026) — co zůstalo otevřené
+
+- **Fotky strojů z e-mailu ze 3. 6. 2026.** Klient na ně odkazuje („posílal jsem
+  je i s popisem"), ale v repu ani na Drivu nejsou. Galerie strojového parku je
+  zatím poskládaná z toho, co máme — ke každému stroji z přehledu jedna fotka
+  s popiskem. Chybí **povolovací lavice na hydraulické válce**, tu na žádném
+  snímku nepoznáme.
+- **Popisky u tří strojů jsou naše domněnka.** Messer OmniMat a ohraňovací lis
+  Rico jdou přečíst přímo ze štítku na fotce; „rovnání dílu na hydraulickém lisu",
+  „horizontální vyvrtávačka" a „hrotový soustruh" jsme přiřadili podle vzhledu.
+  Klient by je měl potvrdit.
+- **Loga na servisních dodávkách.** Fotky dodávek jsou nově na `/kontakt/`, ale
+  vozy na nich zatím logo firmy nemají. Domalovat ho do fotky by znamenalo
+  ukazovat něco, co neexistuje — až budou vozy polepené, stačí nafotit znovu.
+- **URL služby „opravy lesnické a zemědělské techniky".** Nadpis je nově
+  `Opravy zemědělské, stavební a lesnické techniky`, ale adresa zůstala
+  `/sluzby/opravy-lesnicke-a-zemedelske-techniky/`. Přejmenovat jde (web ještě
+  neběží na ostré doméně), chce to jen redirect ze staré adresy.
+- **Tloušťka pálení sjednocena na 200 mm** podle klienta — autogen 3–200 mm,
+  plazma doporučený rozsah 2–50 mm, řádek „dělicí řez 120 mm" ze stránek pryč.
+  Rozpor s dřívějšími 300 mm tím zmizel.
+- **MAIL_TO na Vercelu.** Kód posílá poptávky na `info@kos-servis.cz` i bez
+  nastavené proměnné (fallback je `company.email`). Pokud je na Vercelu
+  `MAIL_TO` nastavené na něco jiného, přebije to — zkontrolovat.
 
 ## Blokující spuštění
 
@@ -139,10 +164,8 @@ musí potvrdit, že tím rokem myslel rozjezd provozu, ne zápis.
 
 ## Připomínky z 5. kola — co zůstalo otevřené
 
-**Tloušťka pálení.** Na `/strojovy-park/` je plazma zestručněná podle přání klienta
-a sporná „maximální tloušťka materiálu 200 mm" odtud vypadla. Na
-`/sluzby/paleni-3d-plazmou/` ale pořád je — a to i v perexu a meta description.
-Odporuje si s autogenem 3–300 mm. Klient musí říct, co platí.
+**Tloušťka pálení.** ~~Odporuje si s autogenem 3–300 mm.~~ **Vyřešeno 18. 8. 2026**:
+platí 200 mm, viz výše.
 
 **Skeny certifikátů.** Tři PDF jsou v `docs/`, na web zatím **nejsou nasazené**.
 Oprávnění TIČR na tlaková zařízení obsahuje datum narození a adresu bydliště
@@ -156,9 +179,9 @@ dokumentů opravené jsou.
 **Miloš Petrů** (svářecí technolog) není v klientově výčtu kontaktů. Necháváme ho
 tam — klient psal „mj." — ale stojí za potvrzení.
 
-**Vypuštěné reference.** BAGO s.r.o. a Technické služby města Pelhřimova nebyly
-v klientem schváleném seznamu, tak jsme je vyřadili. Pokud to bylo opomenutí,
-vrátíme je.
+**Vypuštěné reference.** ~~BAGO s.r.o. a Technické služby města Pelhřimova~~ —
+BAGO zůstává, Technické služby města Pelhřimova klient 18. 8. 2026 vyřadil
+a nahradil je firmou **SOMPO, a.s., Pelhřimov**.
 
 **Pořadí kontaktů** zůstává podle problému (příjem oprav první), ne podle
 klientova výčtu, kde je první obchod. Rozhodnutí z předávací kontroly.

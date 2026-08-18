@@ -3,7 +3,15 @@
  * <img> width/height, takže se stránka při načítání fotek nehýbe (CLS). */
 import manifest from '../../public/img/manifest.json';
 
-export type Photo = { src: string; width: number; height: number; from?: string };
+export type Photo = {
+  src: string;
+  width: number;
+  height: number;
+  from?: string;
+  /** Popisek pod fotkou. Má ho jen strojový park – tam bez něj galerie
+   *  nesplní účel, protože devět strojů vedle sebe nikdo nerozliší. */
+  caption?: string;
+};
 
 const sections = manifest as Record<string, Photo[]>;
 

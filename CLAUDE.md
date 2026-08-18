@@ -87,10 +87,33 @@ node scripts/import-client-photos.mjs
 
 # hero a kontaktní video z Drive: Full HD 20 Mbps → 720p bez zvuku + poster
 node scripts/prepare-media.mjs <složka-se-zdrojovými-videi>
+
+# fotky, které klient nahrál do složky review/ v repu (12 dorazilo, 6 se používá)
+node scripts/import-review-photos.mjs
 ```
 
 `public/img/manifest.json` vzniká z těchto skriptů a drží rozměry každé fotky,
 aby `<img>` měl `width`/`height` a stránka při načítání neposkakovala.
+
+**Skladbu galerií nikdy needituj v manifestu ručně** – jediný zdroj pravdy je
+`scripts/curate-galleries.mjs`. Fotky se v něm adresují pořadovým číslem ve
+zdrojové sadě (`V(42)` = 42. z `firma-vyroba`), což jsou přesně čísla
+z kontaktních archů, podle kterých se vybírá:
+
+```bash
+node scripts/curate-galleries.mjs   # přepíše sekce sl-*, reference-galerie, …
+```
+
+Pravidla, která z toho plynou (připomínky klienta z 18. 8. 2026):
+
+- **Devět nebo dvanáct fotek na galerii**, ne dvacet. Počet musí dělit tři,
+  jinak zůstane v poslední řadě prázdné pole.
+- **Tematický výběr, minimální překryv.** Pálicí centrum je buď na strojovém
+  parku, nebo na detailu pálení – ne na obou. Opakování stejných snímků na
+  třech stránkách po sobě bylo to, co klientovi vadilo.
+- **`/reference/` = jen hotové výrobky a opravené díly**, žádný náš stroj.
+- **`/strojovy-park/` = jedna fotka ke každému stroji z přehledu**, s popiskem
+  (`caption` v manifestu). Bez popisku galerie ten požadavek nesplní.
 
 **HEIC z iPhonu:** sharp je neotevře (libheif má limit na počet referencí
 v dlaždicové mřížce). Proto se dekódují přes `heic-convert` a teprve výsledek

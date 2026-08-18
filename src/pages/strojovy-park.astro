@@ -81,8 +81,16 @@ const dalsi = [
 
   <section class="section alt">
     <div class="wrap">
-      <SectionHead eyebrow="Galerie" idx="04" title="Dílna a stroje" />
-      <Gallery section="firma-vyroba" label="Strojový park KOS servis" cols={3} limit={18} />
+      <SectionHead
+        eyebrow="Galerie"
+        idx="04"
+        title="Dílna a stroje"
+        lead="Ke každému stroji z přehledu výše jedna fotka – ať víte, co u nás skutečně stojí."
+      />
+      {/* Vlastní sekce s popisky, ne prvních 18 z „firma-vyroba“. Klient chtěl
+          u každého jmenovaného stroje jeho fotku; bez popisků by to nesplnilo
+          účel a bez vlastního klíče by se výběr pral s ostatními galeriemi. */}
+      <Gallery section="strojovy-park-galerie" label="Strojový park KOS servis" cols={3} />
     </div>
   </section>
 

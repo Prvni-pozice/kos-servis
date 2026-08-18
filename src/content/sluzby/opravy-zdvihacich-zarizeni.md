@@ -1,20 +1,25 @@
 ---
 title: Opravy zdvihacích zařízení a ocelových konstrukcí
 order: 4
-eyebrow: Zdvihací zařízení
-excerpt: Zdvihací zařízení, ocelové konstrukce, kontroly a opravy nosných částí.
+eyebrow: Vyhrazená zařízení
+excerpt: Zdvihací i tlaková zařízení, ocelové konstrukce, manipulační vozíky.
 metaDescription: >-
-  Oprávnění na opravy i výrobu zdvihacích zařízení a ocelových konstrukcí. Sloupové jeřáby na míru, opravy výsuvníků a hydraulických ruk.
+  Oprávnění TIČR na opravy zdvihacích i tlakových zařízení. Sloupové jeřáby na míru, opravy výsuvníků, hydraulických ruk a manipulačních vozíků.
 intro: >-
-  Firma vlastní oprávnění na opravy i výrobu zdvihacích zařízení a ocelových
-  konstrukcí. Vyrábíme sloupové jeřáby podle potřeb zákazníka, opravujeme
-  zdvihací zařízení, výsuvníky a hydraulické ruky včetně generálních oprav.
-seoTitle: Opravy zdvihacích zařízení a výroba ocelových konstrukcí
-tags: [Sloupové jeřáby, Výsuvníky, Oprávnění na VZZ]
+  Firma vlastní oprávnění Technické inspekce ČR na opravy vyhrazených zdvihacích
+  i tlakových zařízení a na výrobu ocelových konstrukcí. Vyrábíme sloupové jeřáby
+  podle potřeb zákazníka, opravujeme zdvihací zařízení, výsuvníky, hydraulické
+  ruky i manipulační vozíky včetně přídavných zařízení.
+seoTitle: Opravy zdvihacích a tlakových zařízení, ocelové konstrukce
+tags: [Sloupové jeřáby, Manipulační vozíky, Oprávnění TIČR]
 scope:
   - Opravy vyhrazených zdvihacích zařízení
+  - Opravy vyhrazených tlakových zařízení
+  - Revize a zkoušky provozovaných tlakových zařízení
   - Opravy hydraulických ruk včetně generálních oprav
   - Opravy výsuvníků
+  - Opravy a servis manipulačních vozíků
+  - Opravy přídavných zařízení manipulačních vozíků
   - Výroba a opravy ocelových konstrukcí
   - Výroba sloupových jeřábů na míru
   - Kompletní opravy zdvihacích zařízení včetně revizí
@@ -29,8 +34,19 @@ na to má oprávnění. My ho máme, včetně vyškolených svářečů na nosn�
 ## Co pro zákazníky děláme
 
 Vyrábíme sloupové jeřáby podle konkrétních dispozic provozu, opravujeme
-a udržujeme stávající zdvihací zařízení, renovujeme nosné části ocelových
-konstrukcí a upravujeme vysokozdvižné vozíky.
+a udržujeme stávající zdvihací zařízení a renovujeme nosné části ocelových
+konstrukcí.
+
+## Manipulační vozíky
+
+Provádíme opravy a servis manipulačních vozíků včetně jejich přídavných
+zařízení – od nosných částí a hydrauliky po úpravy podle provozu zákazníka.
+
+## Tlaková zařízení
+
+Máme také oprávnění Technické inspekce ČR k montážím a opravám vyhrazených
+tlakových zařízení a k revizím a zkouškám těch provozovaných. Protokoly
+předáváme u zakázek, kde jsou vyžadované.
 
 > Rozsah platných certifikátů a oprávnění najdete na stránce
 > [Certifikáty a oprávnění](/certifikaty/).

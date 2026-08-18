@@ -2,16 +2,20 @@
 title: Otěruvzdorné materiály a navařování
 order: 6
 eyebrow: Ochrana proti opotřebení
-excerpt: HARDOX a vysokopevnostní plechy, návary exponovaných ploch, delší životnost dílů.
+excerpt: Plechy HARDOX a HB400 až HB500, vysokopevnostní plechy, návary exponovaných ploch.
 metaDescription: >-
-  Zpracování otěruvzdorných, CDP a pevnostních plechů. Navařujeme ochranné vrstvy na díly namáhané abrazí – pro lomy, stavebnictví i zemědělství.
+  Zpracování plechů HARDOX, otěruvzdorných plechů HB400, HB450 a HB500, CDP i vysokopevnostních plechů. Navařujeme ochranné vrstvy a děláme pancíře výsypek.
 intro: >-
-  Zpracováváme otěruvzdorné materiály, CDP a pevnostní plechy a navařujeme ochranné
-  vrstvy na díly namáhané abrazí, erozí a třením. Používá se to v zemědělství,
-  stavebnictví, kamenolomech i dřevařském průmyslu – všude, kde se díl obrušuje rychleji, než by měl.
-seoTitle: Otěruvzdorné materiály, HARDOX a navařování ochranných vrstev
-tags: [HARDOX, CDP plechy, Žárové nástřiky]
+  Zpracováváme plechy HARDOX, otěruvzdorné plechy tvrdosti HB400, HB450 a HB500,
+  CDP i vysokopevnostní plechy a navařujeme ochranné vrstvy na díly namáhané
+  abrazí, erozí a třením. Používá se to v zemědělství, stavebnictví, kamenolomech
+  i dřevařském průmyslu – všude, kde se díl obrušuje rychleji, než by měl.
+seoTitle: Otěruvzdorné plechy HARDOX a HB400–HB500, navařování
+tags: [HARDOX, HB400 – HB500, Žárové nástřiky]
 scope:
+  - Zpracování plechů HARDOX a otěruvzdorných plechů HB400, HB450 a HB500
+  - Zpracování CDP a vysokopevnostních plechů
+  - Pancíře pro vyložení výsypek, třídičů a drtičů
   - Opravy radlic
   - Výroba břitů
   - Opravy rotorů ventilátorů
@@ -47,8 +51,16 @@ buď navařit ochrannou vrstvu, nebo díl rovnou vyrobit z otěruvzdorného plec
 
 ## Kde se to nejvíc vyplatí
 
-Zemědělství (radlice, plazy, lopatky), stavebnictví a kamenolomy (břity, výsypky,
-lopaty), dřevařský průmysl (rotory ventilátorů, díly drtičů a štěpkovačů).
+Zemědělství (radlice, plazy, lopatky), stavebnictví a kamenolomy (břity, lopaty,
+pancíře pro vyložení výsypek, třídičů a drtičů), dřevařský průmysl (rotory
+ventilátorů, díly drtičů a štěpkovačů).
+
+## Materiály, které vedeme a zpracujeme
+
+Plechy **HARDOX**, otěruvzdorné plechy tvrdosti **HB400, HB450 a HB500**, plechy
+**CDP** s navařenou vrstvou a **vysokopevnostní** konstrukční plechy. Který stupeň
+tvrdosti dává smysl, záleží na tom, jestli se díl jen obrušuje, nebo dostává i rány
+– poradíme podle toho, co se vám opotřebovává dnes.
 
 ## Dvě cesty ke stejnému cíli
 

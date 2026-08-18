@@ -16,7 +16,7 @@ scope:
   - Diagnostika závad
   - Opravy provozních částí strojů
   - Renovace poškozených dílů
-  - Servisní práce pro průmysl, zemědělství a lesnictví
+  - Servisní práce pro zemědělství, stavebnictví, těžbu a průmysl
 gallery: sl-opravy-strojnich-zarizeni
 related: [opravy-hydraulickych-valcu, svarovani-a-renovace, strojni-obrabeni]
 inquirySubject: Oprava
@@ -35,7 +35,8 @@ plechů pod jednou střechou, takže mezi jednotlivými operacemi nikam nevozít
 
 ## Co opravujeme nejčastěji
 
-Výrobní technologie v průmyslových provozech, stroje v zemědělských podnicích,
-lesnickou a dřevozpracující techniku a mobilní stroje ve stavebnictví. Pokud si
-nejste jistí, jestli je oprava v našich možnostech, ozvěte se – poradíme rovnou
-po telefonu.
+Stroje v zemědělských podnicích, mobilní techniku ve stavebnictví, technologie
+v těžebním průmyslu – kamenolomy a štěrkovny, kde jde hlavně o drtiče, třídiče
+a dopravníky – dále výrobní technologie v průmyslových provozech a techniku
+lesnickou a dřevozpracující. Pokud si nejste jistí, jestli je oprava v našich
+možnostech, ozvěte se – poradíme rovnou po telefonu.

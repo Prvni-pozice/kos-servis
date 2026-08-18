@@ -5,7 +5,8 @@ import Hero from '../components/Hero.astro';
 import PersonCard from '../components/PersonCard.astro';
 import InquiryForm from '../components/InquiryForm.astro';
 import SectionHead from '../components/SectionHead.astro';
-import { company, people, intake } from '../data/site';
+import Gallery from '../components/Gallery.astro';
+import { company, people, intake, serviceRadius } from '../data/site';
 
 const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${company.geo.lng - 0.02}%2C${company.geo.lat - 0.012}%2C${company.geo.lng + 0.02}%2C${company.geo.lat + 0.012}&layer=mapnik&marker=${company.geo.lat}%2C${company.geo.lng}`;
 const mapLink = `https://www.openstreetmap.org/?mlat=${company.geo.lat}&mlon=${company.geo.lng}#map=15/${company.geo.lat}/${company.geo.lng}`;
@@ -51,9 +52,32 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${company.geo.lat}&mlon=${c
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <div class="eyebrow"><span class="idx">02</span> Servis u zákazníka</div>
+        <h2 style="max-width: 22ch">Když stroj nemůže z provozu, přijedeme my</h2>
+        <p style="font-size: 17px; color: #37475b; max-width: 58ch">
+          Máme vybavené servisní dodávky na svářečské a strojní opravy na místě.
+          Běžně jezdíme {serviceRadius.long} – po telefonické specifikaci závady
+          se domluvíme i na vzdálenější zásah. Zavolejte na příjem oprav
+          a řekněte, co se stalo.
+        </p>
+        <div style="margin-top: 24px">
+          <a class="btn btn-accent" href={`tel:${intake.phoneHref}`}>
+            {intake.label}: {intake.phone}
+          </a>
+        </div>
+      </div>
+      <div>
+        <Gallery section="servisni-dodavky" label="Servisní dodávka KOS servis" cols={2} />
+      </div>
+    </div>
+  </section>
+
   <section class="section alt">
     <div class="wrap">
-      <SectionHead eyebrow="Sídlo a fakturační údaje" idx="02" title="KOS servis s.r.o." />
+      <SectionHead eyebrow="Sídlo a fakturační údaje" idx="03" title="KOS servis s.r.o." />
       <div class="split split-top">
         <div>
           <ul class="spec" style="font-size: 15px">
@@ -66,11 +90,13 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${company.geo.lat}&mlon=${c
               <span class="val"><a href={`tel:${company.phoneHref}`}>{company.phone}</a></span>
             </li>
             <li><span class="lbl">E-mail</span><span class="val">{company.email}</span></li>
-            <li><span class="lbl">Servisní dojezd</span><span class="val">do 100 km</span></li>
+            <li><span class="lbl">Provozní doba</span><span class="val">{company.hours.label}</span></li>
+            <li><span class="lbl">Servisní dojezd</span><span class="val">{serviceRadius.long}</span></li>
           </ul>
           <p style="font-size: 15px; color: #37475b; margin-top: 22px; max-width: 52ch">
             Areál leží těsně u dálnice D1 na 66. kilometru – z Prahy i z Brna jste
-            u nás bez zajížděk. Zásilky a materiál přijímáme v pracovní dny.
+            u nás bez zajížděk. Zásilky a materiál přijímáme v pracovní dny
+            od 7 do 15 hodin.
           </p>
         </div>
         {/*

@@ -137,7 +137,9 @@ const showGallery = d.gallery && hasPhotos(d.gallery);
           <div class="eyebrow"><span class="idx">04</span> Galerie</div>
           <h2>Ukázky z dílny</h2>
         </div>
-        <Gallery section={d.gallery!} label={d.title} cols={3} initial={9} />
+        {/* Galerie mají po kurátorském průchodu 8–12 fotek, takže se ukážou celé –
+            schovávat poslední tři za tlačítko nemá smysl. */}
+        <Gallery section={d.gallery!} label={d.title} cols={3} />
       </div>
     </section>
   )}

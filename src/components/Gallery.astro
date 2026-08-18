@@ -19,24 +19,29 @@ const hiddenFrom = initial && items.length > initial ? initial : null;
 
 {items.length > 0 && (
   <div class={`gallery cols-${cols}`} data-gallery-expandable={hiddenFrom ? '' : null}>
-    {items.map((p, i) => (
-      <button
-        class:list={['gallery-item', { 'gallery-more': hiddenFrom !== null && i >= hiddenFrom }]}
-        type="button"
-        data-full={p.src}
-        data-alt={`${label} – foto ${i + 1}`}
-        aria-label={`Zvětšit: ${label} – foto ${i + 1}`}
-      >
-        <img
-          src={p.src}
-          alt={`${label} – foto ${i + 1}`}
-          width={p.width}
-          height={p.height}
-          loading="lazy"
-          decoding="async"
-        />
-      </button>
-    ))}
+    {items.map((p, i) => {
+      /* Popisek, když ho fotka má – jinak zůstává původní „label – foto N“. */
+      const popis = p.caption ?? `${label} – foto ${i + 1}`;
+      return (
+        <button
+          class:list={['gallery-item', { 'gallery-more': hiddenFrom !== null && i >= hiddenFrom }]}
+          type="button"
+          data-full={p.src}
+          data-alt={popis}
+          aria-label={`Zvětšit: ${popis}`}
+        >
+          <img
+            src={p.src}
+            alt={popis}
+            width={p.width}
+            height={p.height}
+            loading="lazy"
+            decoding="async"
+          />
+          {p.caption && <span class="gallery-caption">{p.caption}</span>}
+        </button>
+      );
+    })}
   </div>
 )}
 

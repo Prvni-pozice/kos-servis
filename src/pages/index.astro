@@ -7,11 +7,24 @@ import ServiceCard from '../components/ServiceCard.astro';
 import MachineGrid from '../components/MachineGrid.astro';
 import PersonCard from '../components/PersonCard.astro';
 import InquiryForm from '../components/InquiryForm.astro';
-import { company, stats, industries, references, people, intake, yearsInBusiness } from '../data/site';
+import { company, stats, industries, references, people, intake, yearsInBusiness, serviceRadius } from '../data/site';
 
 const sluzby = (await getCollection('sluzby')).sort((a, b) => a.data.order - b.data.order);
-/** Na úvodce jen šest hlavních – zbytek je v rozcestníku. */
-const hlavni = sluzby.slice(0, 6);
+/* Na úvodce jen šest služeb – zbytek je v rozcestníku. Výběr je záměrný, ne
+ * prvních šest podle pořadí: klient 18. 8. 2026 chtěl na úvodce vidět pálení
+ * plazmou místo svařování a renovací. Číslo na kartě je proto pořadí na úvodce,
+ * ne `order` z kolekce – jinak by tu byla řada 01, 02, 03, 04, 09, 06. */
+const naUvodce = [
+  'opravy-strojnich-zarizeni',
+  'opravy-hydraulickych-valcu',
+  'opravy-lesnicke-a-zemedelske-techniky',
+  'opravy-zdvihacich-zarizeni',
+  'paleni-3d-plazmou',
+  'oteruvzdorne-materialy-a-navarovani',
+];
+const hlavni = naUvodce
+  .map((slug) => sluzby.find((s) => s.id === slug))
+  .filter((s): s is NonNullable<typeof s> => Boolean(s));
 /** Kontaktní blok vede lidmi, ne adresou. Stačí první čtyři. */
 const kontaktni = people.slice(0, 4);
 
@@ -21,7 +34,7 @@ const slogans = [
     line: 'Strojní opravy, výroba a 3D pálení plazmou',
   },
   {
-    kicker: 'Servisní dojezd do 100 km od Chyšné',
+    kicker: `Servisní dojezd ${serviceRadius.short} od Chyšné`,
     line: 'Opravíme cokoliv – od hydrauliky po celé strojní celky',
   },
   {
@@ -62,7 +75,7 @@ const slogans = [
           <p style="font-size: clamp(16px, 1.5vw, 18px); color: #37475b; max-width: 56ch">
             Specializujeme se na opravy strojních zařízení, hydraulických válců, svařování,
             strojní obrábění, pálení plechů 3D plazmou a zakázkovou výrobu pro průmysl,
-            zemědělství, lesnictví a dřevozpracující provozy.
+            zemědělství, lesnictví, dřevozpracující provozy a těžební průmysl.
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px">
             <a class="btn btn-primary" href="/kontakt/">Nezávazná poptávka →</a>
@@ -88,10 +101,10 @@ const slogans = [
     <div class="wrap">
       <SectionHead eyebrow="Hlavní služby" idx="02" title="Co pro vás uděláme" />
       <div class="linegrid cols-3">
-        {hlavni.map((s) => (
+        {hlavni.map((s, i) => (
           <ServiceCard
             href={`/sluzby/${s.id}/`}
-            index={s.data.order}
+            index={i + 1}
             title={s.data.title}
             body={s.data.excerpt}
           />
@@ -133,7 +146,7 @@ const slogans = [
         eyebrow="O firmě"
         idx="05"
         title={`Zavedená strojírna od roku ${company.founded}`}
-        lead="Začínali jsme opravami lesnické a zemědělské techniky. Dnes servisujeme průmyslové technologie, mobilní stroje i hydrauliku a vyrábíme na vlastním strojovém parku – pořád ale platí, že se domluvíte přímo s tím, kdo bude na zakázce pracovat."
+        lead="Začínali jsme opravami mobilní techniky. Dnes servisujeme zemědělské a stavební stroje, techniku pro těžební a dřevozpracující provozy, průmyslové technologie i hydrauliku a vyrábíme na vlastním strojovém parku – pořád ale platí, že se domluvíte přímo s tím, kdo bude na zakázce pracovat."
       />
       <div class="linegrid cols-4">
         <div class="bignum"><div class="v">{yearsInBusiness}</div><div class="l">Let praxe</div></div>
@@ -153,7 +166,7 @@ const slogans = [
         eyebrow="Reference"
         idx="06"
         title="Pracujeme pro průmysl i provozy"
-        lead="Dlouhodobě spolupracujeme s dřevozpracujícími podniky, zemědělskými družstvy i technickými službami."
+        lead="Dlouhodobě spolupracujeme se zemědělskými družstvy, dřevozpracujícími podniky, stavebními firmami i provozovateli svozové techniky."
       />
       <div class="linegrid cols-3">
         {references.slice(0, 6).map((r) => (

@@ -51,6 +51,7 @@ const orgSchema = {
     addressCountry: 'CZ',
   },
   geo: { '@type': 'GeoCoordinates', latitude: company.geo.lat, longitude: company.geo.lng },
+  openingHours: company.hours.schema,
   areaServed: 'Česká republika',
   foundingDate: String(company.founded),
 };

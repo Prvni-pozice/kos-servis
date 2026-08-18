@@ -56,12 +56,11 @@ import { references, industries } from '../data/site';
         eyebrow="Z realizací"
         idx="03"
         title="Ukázky provedených prací"
-        lead="Fotografie z dílny a z dokončených zakázek."
+        lead="Hotové výrobky, opravené díly a stroje, které od nás odjely zpátky do provozu."
       />
-      {/* Sestavená sekce: 21 nejlepších snímků z výroby, za nimi zbytek vhodných
-          fotek a úplně na konci starší sada z jarního průchodu firmou (výběr
-          klienta). Rovnou se ukáže prvních 21, zbytek je pod tlačítkem. */}
-      <Gallery section="reference-galerie" label="Realizace KOS servis" cols={3} initial={21} />
+      {/* Jen výsledky práce – žádný náš stroj. Přání klienta z 18. 8. 2026:
+          strojní vybavení patří na /strojovy-park/, sem hotové kusy. */}
+      <Gallery section="reference-galerie" label="Realizace KOS servis" cols={3} initial={12} />
     </div>
   </section>
 

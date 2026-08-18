@@ -22,10 +22,20 @@ export const company = {
   // Chyšná 52 – souřadnice adresního bodu z OpenStreetMap (Nominatim, 4. 8. 2026).
   // Původní hodnota 49.4506/15.0847 ukazovala o 15 km jižně, u Kamenice nad Lipou.
   geo: { lat: 49.5859, lng: 15.1028 },
+  /** Provozní doba dílny a příjmu oprav (doplnil klient 18. 8. 2026). */
+  hours: { label: 'Pondělí – pátek, 7:00 – 15:00', schema: 'Mo-Fr 07:00-15:00' },
 } as const;
 
 /** Roky praxe se počítají, ať se číslo na webu nezasekne v čase. */
 export const yearsInBusiness = new Date().getFullYear() - company.founded;
+
+/* Servisní dojezd. Klient 18. 8. 2026: „může být klidně větší do 300 km nebo
+ * na základě dohody" – po specifikaci problému se zajíždí i takhle daleko.
+ * Drží se na jednom místě, protože je na úvodce, v číslech i na kontaktu. */
+export const serviceRadius = {
+  short: 'do 300 km',
+  long: 'do 300 km, dál po dohodě',
+} as const;
 
 /** „Příjem oprav“ – vyhrazené CTA, jediné místo s teplým akcentem. */
 export const intake = {
@@ -65,7 +75,7 @@ export type Person = {
 /* Pořadí je záměrné: servis/havárie → výroba → technika → vedení. */
 export const people: Person[] = [
   {
-    role: 'Příjem oprav · vedoucí dílny',
+    role: 'Příjem oprav · mistr dílny',
     name: 'Rostislav Vymazal',
     phone: '+420 602 125 699',
     email: 'rosta.vymazal@kos-servis.cz',
@@ -102,14 +112,16 @@ export const people: Person[] = [
   {
     role: 'Jednatel',
     name: 'Libor Kos',
-    phone: '+420 565 447 823',
+    // Mobilní čísla jednatelů doplnil klient 18. 8. 2026 – dřív tu byla
+    // dvakrát pevná linka na ústřednu, což jednatele fakticky skrývalo.
+    phone: '+420 603 112 255',
     email: 'libor.kos@kos-servis.cz',
     solves: 'Rámcová spolupráce, větší zakázky a montáže.',
   },
   {
     role: 'Jednatel · vedoucí výroby',
     name: 'Vladimír Kos',
-    phone: '+420 565 447 823',
+    phone: '+420 603 531 889',
     email: 'vladimir.kos@kos-servis.cz',
     solves: 'Kapacity výroby a průběh zakázky v dílně.',
   },
@@ -119,7 +131,7 @@ export const stats = [
   { value: String(company.founded), label: 'Od roku' },
   { value: '9 000 m²', label: 'Areál' },
   { value: '20', label: 'Zaměstnanců' },
-  { value: 'do 100 km', label: 'Servisní dojezd' },
+  { value: serviceRadius.short, label: 'Servisní dojezd' },
 ] as const;
 
 export type Machine = {
@@ -192,17 +204,16 @@ export const machines: Machine[] = [
 ];
 
 /* Parametry plazmového střediska. Původně to byly čtyři tabulky ze starého webu;
- * klient je chtěl výrazně zestručnit na rozsah pálení a obě hlavy. Vypadla mimo
- * jiné „maximální tloušťka materiálu 200 mm", která si odporovala s autogenem
- * do 300 mm — správnou hodnotu má potvrdit klient, viz docs/otevrene-body.md. */
+ * klient je chtěl výrazně zestručnit na rozsah pálení a obě hlavy.
+ * Klient 18. 8. 2026: platí autogen 3 – 200 mm (ne 300), dělicí řez plazmou
+ * ze stránky pryč. Tím zmizel i rozpor s „max. tloušťkou materiálu 200 mm". */
 export const plasmaSpecs = [
   {
     title: 'Rozsah pálení',
     rows: [
       { label: 'Formát plechu', value: '2 500 × 6 500 mm' },
       { label: 'Plazma – doporučený rozsah', value: '2 – 50 mm' },
-      { label: 'Plazma – dělicí řez', value: 'do 120 mm' },
-      { label: 'Autogen – kolmé řezy', value: '3 – 300 mm' },
+      { label: 'Autogen – kolmé řezy', value: '3 – 200 mm' },
     ],
   },
   {
@@ -215,22 +226,26 @@ export const plasmaSpecs = [
   },
 ] as const;
 
+/* Pořadí odráží dnešní skladbu zakázek, ne historii firmy. Lesnictví je dnes
+ * 5–10 % kapacity (klient 18. 8. 2026), proto není první. Těžební průmysl
+ * je nový obor – klient ho chtěl doplnit ke stavebnictví. */
 export const industries = [
-  'Dřevozpracující průmysl',
   'Zemědělské podniky',
-  'Lesnická technika',
-  'Stavebnictví',
+  'Stavebnictví a těžební průmysl',
+  'Dřevozpracující průmysl',
   'Průmyslové provozy',
+  'Lesnická technika',
   'Těžká technika a hydraulika',
 ] as const;
 
-/* Seznam schválený klientem, doplněný o BAGO a Technické služby ze starého webu –
- * v jeho výčtu nebyly, ale zveřejněné už byly. Klient chystá další firmy. */
+/* Seznam schválený klientem, doplněný o BAGO ze starého webu. Technické služby
+ * města Pelhřimova klient 18. 8. 2026 vyřadil a nahradil je firmou SOMPO.
+ * Klient chystá další firmy. */
 export const references = [
   { name: 'Dřevozpracující družstvo DDL', city: 'Lukavec' },
   { name: 'BAGO s.r.o.', city: 'Hnátnice' },
   { name: 'MOSER LEGNO s.r.o.', city: 'Pelhřimov' },
-  { name: 'Technické služby města Pelhřimova', city: 'Pelhřimov' },
+  { name: 'SOMPO, a.s.', city: 'Pelhřimov' },
   { name: 'AGRODAM Hořepník, s.r.o.', city: '' },
   { name: 'VOD Jetřichovec, družstvo', city: '' },
   { name: 'E.H.P., s.r.o.', city: '' },

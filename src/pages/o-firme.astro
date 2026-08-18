@@ -48,13 +48,12 @@ const zamereni = [
         <div>
           <p style="font-size: 18px; color: #37475b; max-width: 58ch">
             Působiště firmy je v kraji Vysočina těsně vedle dálnice D1 na 66. kilometru,
-            což je výhodná poloha v rámci republiky. Jsme malá firma s přibližně
-            20 zaměstnanci včetně THP, zaměřená na svářečské a strojní práce
-            v širokém rozsahu.
+            což je výhodná poloha v rámci republiky. Máme přibližně 20 zaměstnanců
+            včetně THP a zaměřujeme se na svářečské a strojní práce v širokém rozsahu.
           </p>
           <p style="font-size: 17px; color: #37475b; max-width: 58ch">
             Zakázky děláme především v areálu firmy, ale v rámci mezinárodní spolupráce
-            jsme cestovali na montáže do Ruska, Polska i Rakouska.
+            jsme cestovali na montáže na Slovensko, do Polska i Rakouska.
           </p>
         </div>
       </div>
@@ -67,14 +66,24 @@ const zamereni = [
       <div class="linegrid cols-3">
         {zamereni.map((z) => <div class="industry">{z}</div>)}
       </div>
+      {/* Klient 18. 8. 2026: lesnictví je dnes 5–10 % kapacity, ne hlavní obor.
+          Pořadí odstavce proto vede zemědělstvím a stavební technikou, lesnictví
+          zůstává zmíněné, ale až za nimi. */}
       <p style="font-size: 17px; color: #37475b; max-width: 70ch; margin-top: 32px">
-        Hlavním portfoliem jsou opravy lesnické a zemědělské techniky – harvestory,
-        vyvážecí vleky, výroba svařenců ramen a výsuvů, opravy navijáků. Navazují na ně
-        hydraulické rozvody pro lesní a zemědělskou techniku: opravy trubek, pístnic
-        a pístních tyčí, opravy rozvaděčů včetně čerpadel. Vlastníme oprávnění na
-        opravy i výrobu zdvihacích zařízení a ocelových konstrukcí – vyrábíme sloupové
-        jeřáby dle potřeb zákazníka a upravujeme vysokozdvižné vozíky. V posledních
-        letech jsme začali s projektováním hrabicových dopravníků pro dlouhodobé partnery.
+        Největší část kapacity dnes zabírá zemědělská technika – manipulátory, nápravy,
+        kombajny, traktory, přídavná zařízení a zemědělské nářadí. Hned za ní je
+        stavební a těžební technika: nakladače, nákladní vozy, frézy, radlice, bagrové
+        lžíce, jeřáby a mobilní drtiče pro kamenolomy a štěrkovny. Opravujeme i techniku
+        lesnickou a dřevozpracující, včetně harvestorů a vyvážecích vleků, a vyrábíme
+        svařence ramen a výsuvů.
+      </p>
+      <p style="font-size: 17px; color: #37475b; max-width: 70ch; margin-top: 18px">
+        Napříč obory na to navazuje hydraulika – opravy trubek, pístnic a pístních tyčí,
+        opravy rozvaděčů včetně čerpadel. Vlastníme oprávnění na opravy zdvihacích
+        i tlakových zařízení a na výrobu ocelových konstrukcí: vyrábíme sloupové jeřáby
+        podle potřeb zákazníka, opravujeme a servisujeme manipulační vozíky včetně jejich
+        přídavných zařízení. V posledních letech jsme začali s projektováním hrabicových
+        dopravníků pro dlouhodobé partnery.
       </p>
     </div>
   </section>
@@ -103,7 +112,7 @@ const zamereni = [
         eyebrow="Certifikáty a oprávnění"
         idx="04"
         title="Doklady, na které se můžete odvolat"
-        lead="Svářečská oprávnění včetně vyškolených zaměstnanců na hliník, litinu, bronz a nerez, oprávnění na opravy a výrobu vyhrazených zdvihacích zařízení."
+        lead="Svářečská oprávnění včetně vyškolených zaměstnanců na hliník, litinu, bronz a nerez, oprávnění Technické inspekce ČR na montáže a opravy vyhrazených zdvihacích i tlakových zařízení a na revize a zkoušky provozovaných tlakových zařízení."
       />
       <a class="btn btn-secondary" href="/certifikaty/">Certifikáty a dokumenty ke stažení →</a>
     </div>
@@ -111,10 +120,15 @@ const zamereni = [
 
   <section class="section">
     <div class="wrap">
-      <SectionHead eyebrow="Areál a dílny" idx="05" title="Jak to u nás vypadá" />
-      {/* Stejná skladba jako na /reference/ – nejdřív výběr z výroby, starší
-          sada z jarního průchodu až za ní. */}
-      <Gallery section="o-firme-galerie" label="Areál KOS servis" cols={3} initial={21} />
+      <SectionHead
+        eyebrow="Areál a dílny"
+        idx="05"
+        title="Jak to u nás vypadá"
+        lead="Areál z venku a pak jednotlivé haly – obrobna, svařovna, plazmové středisko a sklad materiálu."
+      />
+      {/* Fotky samotné firmy, ne další výběr z výroby (přání klienta 18. 8. 2026).
+          Vede exteriér, za ním interiéry hal. */}
+      <Gallery section="o-firme-galerie" label="Areál KOS servis" cols={3} />
     </div>
   </section>
 
