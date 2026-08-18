@@ -28,7 +28,12 @@ které čekají na podklad od klienta nebo na rozhodnutí.
   Rozpor s dřívějšími 300 mm tím zmizel.
 - **MAIL_TO na Vercelu.** Kód posílá poptávky na `info@kos-servis.cz` i bez
   nastavené proměnné (fallback je `company.email`). Pokud je na Vercelu
-  `MAIL_TO` nastavené na něco jiného, přebije to — zkontrolovat.
+  `MAIL_TO` nastavené na něco jiného, přebije to.
+- **Opraveno 18. 8. 2026: proměnné se nečetly vůbec.** Route brala konfiguraci
+  z `import.meta.env`, který Vite zapeče do bundlu při buildu — cokoliv
+  nastaveného v dashboardu Vercelu by se ignorovalo a formulář by vracel 500
+  „Odesílání e-mailů není nastavené". Teď se čte `process.env`. Kdyby se to
+  někdy vrátilo, poznáš to takhle: proměnné v projektu jsou, a přesto 500.
 
 ## Blokující spuštění
 

@@ -127,6 +127,13 @@ z ní SMTP spojení je pomalé a nespolehlivé. Konfigurace je v proměnných pr
 (`.env` lokálně, Vercel env na produkci) — viz `.env.example`.
 **Přístupové údaje nikdy nepatří do gitu.**
 
+**Proměnné se čtou z `process.env`, ne z `import.meta.env`.** Vite zapeče
+`import.meta.env` do bundlu už při buildu — hodnoty nastavené v dashboardu
+Vercelu by se přes něj za běhu nikdy nenačetly a formulář by vracel 500, i když
+by v projektu byly správně vyplněné. `import.meta.env` zůstává jen jako záloha
+pro lokální `.env`. Ověřeno: bez proměnných 500, s proměnnými se request dostane
+až k Resendu.
+
 `MAIL_FROM` musí být na doméně ověřené v Resendu, jinak Resend zprávu odmítne.
 Doména `kos-servis.cz` má vlastní poštu u Avatechu a SPF končí `-all`, takže se
 ověřuje **subdoména** `send.kos-servis.cz` — stávající poštu to nechá být.
