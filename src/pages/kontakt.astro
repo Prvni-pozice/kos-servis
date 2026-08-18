@@ -100,22 +100,25 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${company.geo.lat}&mlon=${c
           </p>
         </div>
         {/*
-          Mapa se načítá až na kliknutí. Vložený rám z OpenStreetMap stáhne
-          přes 290 kB cizího JS – sráželo to výkon stránky o osm bodů a hlavně
-          to znamenalo požadavek na cizí server dřív, než o něj kdokoliv požádal.
-          Zbytek webu nedělá jediný externí request a mapa v tom nemá dělat výjimku.
+          Mapa je vidět rovnou, bez kliknutí (přání klienta 18. 8. 2026) – tlačítko
+          „Zobrazit mapu“ působilo jako rozbitý prvek.
+
+          `loading="lazy"` je tu podstatné: rám z OpenStreetMap stáhne přes 290 kB
+          cizího JS a načíst ho hned se stránkou srazilo výkon o osm bodů. Takhle
+          se stáhne, až se k němu návštěvník doroluje – z jeho pohledu je mapa
+          normálně na stránce, ale první vykreslení nebrzdí.
+
+          Cenou je požadavek na cizí server bez zeptání; jinde na webu se to
+          nikde neděje, proto je to zmíněné v zásadách zpracování údajů.
         */}
         <div class="map-box">
-          <button type="button" class="map-load" data-map-src={mapSrc}>
-            <svg class="map-pin" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
-              <path
-                fill="currentColor"
-                d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"
-              />
-            </svg>
-            <span class="map-load-label">Zobrazit mapu</span>
-            <span class="map-load-note">Načte se z OpenStreetMap</span>
-          </button>
+          <iframe
+            class="map-frame"
+            src={mapSrc}
+            title="Mapa – KOS servis s.r.o., Chyšná 52"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          />
           <p class="map-alt">
             Nebo rovnou <a href={mapLink} target="_blank" rel="noopener">otevřít v mapách</a>.
           </p>
@@ -124,21 +127,6 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${company.geo.lat}&mlon=${c
     </div>
   </section>
 </BaseLayout>
-
-<script>
-  // Mapa na kliknutí – teprve tady se sáhne na cizí doménu.
-  const mapBtn = document.querySelector<HTMLButtonElement>('.map-load');
-  mapBtn?.addEventListener('click', () => {
-    const src = mapBtn.dataset.mapSrc;
-    if (!src) return;
-    const frame = document.createElement('iframe');
-    frame.className = 'map-frame';
-    frame.src = src;
-    frame.title = 'Mapa – KOS servis s.r.o., Chyšná 52';
-    frame.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
-    mapBtn.replaceWith(frame);
-  });
-</script>
 
 <script>
   // Odkaz s ?typ=… ze stránky služby předvyplní typ poptávky.
