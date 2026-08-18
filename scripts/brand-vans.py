@@ -41,7 +41,11 @@ VANS = [
     ('img-7216', [(143, 336), (233, 330), (233, 368), (143, 374)]),
     # Boční pohledy s lehkým natočením; panel končí na x≈288, resp. 287.
     ('img-7214', [(120, 334), (270, 328), (270, 372), (120, 378)]),
-    ('img-7215', [(120, 332), (268, 325), (268, 369), (120, 376)]),
+    # 7215 je z celé čtveřice nejvíc natočený a panel je tu vidět kratší.
+    # Logo proto sedí o 10 px výš (jinak zbýval nad ním velký prázdný modrý pruh,
+    # zatímco u ostatních snímků je zhruba v 60 % výšky panelu) a má o něco větší
+    # náklon, aby drželo úběžník boku vozu – 11 px na 148 px šířky.
+    ('img-7215', [(120, 322), (268, 311), (268, 355), (120, 366)]),
     # Čistý bok – prakticky bez perspektivy, panel má rezervu až k x≈345.
     ('img-7212', [(180, 336), (330, 335), (330, 379), (180, 380)]),
 ]
