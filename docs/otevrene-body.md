@@ -14,9 +14,17 @@ které čekají na podklad od klienta nebo na rozhodnutí.
   Rico jdou přečíst přímo ze štítku na fotce; „rovnání dílu na hydraulickém lisu",
   „horizontální vyvrtávačka" a „hrotový soustruh" jsme přiřadili podle vzhledu.
   Klient by je měl potvrdit.
-- **Loga na servisních dodávkách.** Fotky dodávek jsou nově na `/kontakt/`, ale
-  vozy na nich zatím logo firmy nemají. Domalovat ho do fotky by znamenalo
-  ukazovat něco, co neexistuje — až budou vozy polepené, stačí nafotit znovu.
+- **Loga na servisních dodávkách — dokreslená, vozy polepené nejsou.**
+  Na výslovné přání klienta je logo na fotkách v `/kontakt/` domalované
+  (`scripts/brand-vans.py`): převedené na čistou bílou a perspektivně posazené
+  na zadní boční panel, na všech čtyřech snímcích na stejné místo vozu.
+  Originály zůstaly nedotčené v `public/img/firma/vyroba/`, výsledek je
+  v `public/img/servisni-dodavky/`.
+
+  **Fotky tedy ukazují stav, který zatím neplatí.** Až budou vozy polepené
+  doopravdy, nafotit znovu, smazat `public/img/servisni-dodavky/`
+  a v `curate-galleries.mjs` vrátit `polep(n)` zpátky na `V(n)`. Kdyby si to
+  klient rozmyslel dřív, je to stejný jednořádkový krok.
 - ~~**URL služby „opravy lesnické a zemědělské techniky".**~~ **Vyřešeno
   18. 8. 2026:** adresa je nově `/sluzby/opravy-zemedelske-a-stavebni-techniky/`.
   Redirect ze staré adresy se **záměrně nedělal** — web ještě neběží na ostré

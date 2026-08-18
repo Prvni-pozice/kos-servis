@@ -90,7 +90,18 @@ node scripts/prepare-media.mjs <složka-se-zdrojovými-videi>
 
 # fotky, které klient nahrál do složky review/ v repu (12 dorazilo, 6 se používá)
 node scripts/import-review-photos.mjs
+
+# logo dokreslené na servisní dodávky pro /kontakt/ (vozy zatím polepené nejsou)
+python3 scripts/brand-vans.py
 ```
+
+**`brand-vans.py` maluje do fotek něco, co ve skutečnosti není** — logo na bok
+dodávky. Je to na výslovné přání klienta a v `docs/otevrene-body.md` je to vedené
+jako dočasný stav. Originály se nepřepisují, výstup jde do
+`public/img/servisni-dodavky/`. Souřadnice čtyřúhelníku pro logo jsou v měřítku
+náhledu 900×675, protože podle něj se odměřovaly; skript si je přepočítá.
+Náhled v galerii i zvětšenina v lightboxu čtou **týž soubor**, takže se nemůžou
+rozejít.
 
 `public/img/manifest.json` vzniká z těchto skriptů a drží rozměry každé fotky,
 aby `<img>` měl `width`/`height` a stránka při načítání neposkakovala.

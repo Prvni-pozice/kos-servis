@@ -11,7 +11,7 @@
  *
  *   node scripts/curate-galleries.mjs
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 const MANIFEST = 'public/img/manifest.json';
 const manifest = JSON.parse(readFileSync(MANIFEST, 'utf8'));
@@ -26,6 +26,17 @@ const V = pick('firma-vyroba');
 const P = pick('firma-pruchod');
 /** Stroje zákazníků, které klient poslal 18. 8. 2026 – viz import-review-photos.mjs. */
 const N = (i) => ({ ...manifest['stroje-zakazniku'][i] });
+
+/** Táž fotka dodávky, ale s dokresleným logem (scripts/brand-vans.py).
+ *  Rozměry sedí s originálem, mění se jen adresář. */
+const polep = (n) => {
+  const p = V(n);
+  const src = p.src.replace('/img/firma/vyroba/', '/img/servisni-dodavky/');
+  if (!existsSync(`public${src}`)) {
+    throw new Error(`Chybí ${src} – spusť nejdřív: python3 scripts/brand-vans.py`);
+  }
+  return { ...p, src };
+};
 
 const galerie = {
   /* Strojový park – „fotku každého zmíněného stroje" (přání klienta). Popisky
@@ -46,8 +57,8 @@ const galerie = {
   /* Servisní dodávky na /kontakt/. Klient je připomněl 18. 8. 2026 – fotky
    * z návštěvy ležely v importu nepoužité, protože se braly jako „interiéry
    * dodávky". Venkovní záběry ale přesně dokládají, že jezdíme za zákazníkem.
-   * Loga firmy na vozech zatím nejsou a nedomalovávají se – viz otevřené body. */
-  'servisni-dodavky': [V(66), V(64), V(65), V(62)],
+   * Logo je do fotek dokreslené, vozy zatím polepené nejsou – scripts/brand-vans.py. */
+  'servisni-dodavky': [polep(66), polep(64), polep(65), polep(62)],
 
   /* Úvod rozcestníku služeb, blok „Od opravy k výrobě". Klient chtěl fotky
    * s logickou návazností na téma – proto sedřený díl vedle nového, pak
