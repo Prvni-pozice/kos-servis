@@ -39,13 +39,11 @@ VANS = [
     # fyzicky je to stejně velký polep jako jinde, jen viděný pod ostrým úhlem.
     # Panel končí u otevřených dveří na x≈243, proto logo doběhne na 233.
     ('img-7216', [(143, 336), (233, 330), (233, 368), (143, 374)]),
-    # Boční pohledy s lehkým natočením; panel končí na x≈288, resp. 287.
+    # Boční pohled s lehkým natočením; panel končí na x≈288.
     ('img-7214', [(120, 334), (270, 328), (270, 372), (120, 378)]),
-    # 7215 je z celé čtveřice nejvíc natočený a panel je tu vidět kratší.
-    # Logo proto sedí o 10 px výš (jinak zbýval nad ním velký prázdný modrý pruh,
-    # zatímco u ostatních snímků je zhruba v 60 % výšky panelu) a má o něco větší
-    # náklon, aby drželo úběžník boku vozu – 11 px na 148 px šířky.
-    ('img-7215', [(120, 322), (268, 311), (268, 355), (120, 366)]),
+    # img-7215 se z galerie vyřadil (18. 8. 2026) – panel je na něm vidět
+    # nejkratší a logo tam nesedělo ani po dvou úpravách výšky a náklonu.
+    # Nahradil ho záběr zezadu, na který se logo nekreslí; viz curate-galleries.mjs.
     # Čistý bok – prakticky bez perspektivy, panel má rezervu až k x≈345.
     ('img-7212', [(180, 336), (330, 335), (330, 379), (180, 380)]),
 ]

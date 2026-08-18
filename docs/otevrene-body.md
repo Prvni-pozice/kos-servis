@@ -122,6 +122,10 @@ server   mobil      80–86  100    78   100   | 3,6 s   2,7 s
 Měřeno lokálním Lighthouse (veřejné PSI API mělo vyčerpanou kvótu), produkční
 build na obou stranách, mobil ze tří běhů. „server" = `npx serve` na portu 4332.
 
+**Na 4332 už neměř.** Ten port dnes drží palc-web; `npx serve` se na obsazený
+port nenaváže, tiše skončí a měření pak čte cizí web. Před testem si ověř,
+že port je volný (`ss -ltn | grep :<port>`), a zkontroluj `<title>` odpovědi.
+
 - **Best practices 78 na serveru** je jen chybějící HTTPS na testovacím portu,
   ne rozdíl v kódu.
 - **Mobilní LCP ~3,7 s je vlastní váha stránky, ne hosting** — čísla jsou na obou

@@ -57,8 +57,13 @@ const galerie = {
   /* Servisní dodávky na /kontakt/. Klient je připomněl 18. 8. 2026 – fotky
    * z návštěvy ležely v importu nepoužité, protože se braly jako „interiéry
    * dodávky". Venkovní záběry ale přesně dokládají, že jezdíme za zákazníkem.
-   * Logo je do fotek dokreslené, vozy zatím polepené nejsou – scripts/brand-vans.py. */
-  'servisni-dodavky': [polep(66), polep(64), polep(65), polep(62)],
+   * Logo je do fotek dokreslené, vozy zatím polepené nejsou – scripts/brand-vans.py.
+   *
+   * Poslední snímek je pohled zezadu do vybaveného vozu a logo na něm **není**:
+   * obě křídla zadních dveří jsou otevřená, takže žádná plocha, kde by polep
+   * ve skutečnosti byl, není v záběru. Dokreslovat ho na hranu dveří by bylo
+   * vidět na první pohled. Sada tím zároveň neukazuje třikrát totéž. */
+  'servisni-dodavky': [polep(66), polep(64), polep(62), V(69)],
 
   /* Úvod rozcestníku služeb, blok „Od opravy k výrobě". Klient chtěl fotky
    * s logickou návazností na téma – proto sedřený díl vedle nového, pak
