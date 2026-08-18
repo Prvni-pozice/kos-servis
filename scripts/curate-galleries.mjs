@@ -87,7 +87,7 @@ const galerie = {
   'sl-opravy-hydraulickych-valcu': [
     P(2), V(18), V(19), V(21), V(73), V(1), V(12), V(2), V(6),
   ],
-  'sl-opravy-lesnicke-techniky': [
+  'sl-opravy-zemedelske-a-stavebni-techniky': [
     N(2), N(5), N(0), N(3), N(4), V(29), P(25), P(27), P(30), P(22), P(23), V(28),
   ],
   'sl-opravy-zdvihacich-zarizeni': [
@@ -110,6 +110,11 @@ const galerie = {
   ],
 };
 
+/* Osiřelé klíče po přejmenované službě by v manifestu zůstaly navždy –
+ * sekce `sl-*` proto skládáme od nuly, ne přepisem po jedné. */
+for (const key of Object.keys(manifest)) {
+  if (key.startsWith('sl-') && !(key in galerie)) delete manifest[key];
+}
 for (const [key, list] of Object.entries(galerie)) manifest[key] = list;
 writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + '\n');
 

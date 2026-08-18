@@ -1711,80 +1711,6 @@
       "from": "gdrive:10q87T272H4MKuvzTsKtk4LJ3qBY2zBqH"
     }
   ],
-  "sl-opravy-lesnicke-techniky": [
-    {
-      "src": "/img/stroje-zakazniku/manipulatory-merlo.webp",
-      "width": 1000,
-      "height": 750,
-      "from": "20260813_100245_resized.jpg"
-    },
-    {
-      "src": "/img/stroje-zakazniku/manipulator-zluty.webp",
-      "width": 1000,
-      "height": 750,
-      "from": "20260813_100250_resized.jpg"
-    },
-    {
-      "src": "/img/stroje-zakazniku/freza-wirtgen-w210.webp",
-      "width": 1000,
-      "height": 750,
-      "from": "20260813_103529_resized.jpg"
-    },
-    {
-      "src": "/img/stroje-zakazniku/frezy-dve-zezadu.webp",
-      "width": 1000,
-      "height": 750,
-      "from": "20260813_103513_resized.jpg"
-    },
-    {
-      "src": "/img/stroje-zakazniku/freza-wirtgen-detail.webp",
-      "width": 1000,
-      "height": 750,
-      "from": "20260813_100307_resized.jpg"
-    },
-    {
-      "src": "/img/firma/vyroba/img-7166.webp",
-      "width": 1800,
-      "height": 1350,
-      "from": "gdrive:1Y8e_kvDZUaP_PnnvRk4eKlTVCk1O9WOZ"
-    },
-    {
-      "src": "/img/firma/pruchod/img-4237.webp",
-      "width": 1350,
-      "height": 1800,
-      "from": "gdrive:1hQ6iosj6ID20fBEgTrm2CnqUIXnww8ap"
-    },
-    {
-      "src": "/img/firma/pruchod/img-4239.webp",
-      "width": 1350,
-      "height": 1800,
-      "from": "gdrive:1zxiDj3AU-cE88_X6oP7FLflqpaBzGwdy"
-    },
-    {
-      "src": "/img/firma/pruchod/img-4244.webp",
-      "width": 1350,
-      "height": 1800,
-      "from": "gdrive:1P-N9wxIVIVifPaIh2PI0b8hz5uRwFU2p"
-    },
-    {
-      "src": "/img/firma/pruchod/img-4234.webp",
-      "width": 1350,
-      "height": 1800,
-      "from": "gdrive:1ySFLteTDPZLLEJ0HUJqoDPO3BlIL6Jqi"
-    },
-    {
-      "src": "/img/firma/pruchod/img-4235.webp",
-      "width": 1350,
-      "height": 1800,
-      "from": "gdrive:1wepL6OVnKxygY64rEJbmVnCYZ0NKE0uw"
-    },
-    {
-      "src": "/img/firma/vyroba/img-7165.webp",
-      "width": 1800,
-      "height": 1350,
-      "from": "gdrive:1nkRIDQxnohlhlCj8X5SrasXL2F5TkPCL"
-    }
-  ],
   "sl-opravy-zdvihacich-zarizeni": [
     {
       "src": "/img/firma/vyroba/img-7196.webp",
@@ -2248,6 +2174,80 @@
       "width": 1800,
       "height": 1350,
       "from": "gdrive:1X6qg1v6n-pAiFVJwWaF-0YGif_vbSc5H"
+    }
+  ],
+  "sl-opravy-zemedelske-a-stavebni-techniky": [
+    {
+      "src": "/img/stroje-zakazniku/manipulatory-merlo.webp",
+      "width": 1000,
+      "height": 750,
+      "from": "20260813_100245_resized.jpg"
+    },
+    {
+      "src": "/img/stroje-zakazniku/manipulator-zluty.webp",
+      "width": 1000,
+      "height": 750,
+      "from": "20260813_100250_resized.jpg"
+    },
+    {
+      "src": "/img/stroje-zakazniku/freza-wirtgen-w210.webp",
+      "width": 1000,
+      "height": 750,
+      "from": "20260813_103529_resized.jpg"
+    },
+    {
+      "src": "/img/stroje-zakazniku/frezy-dve-zezadu.webp",
+      "width": 1000,
+      "height": 750,
+      "from": "20260813_103513_resized.jpg"
+    },
+    {
+      "src": "/img/stroje-zakazniku/freza-wirtgen-detail.webp",
+      "width": 1000,
+      "height": 750,
+      "from": "20260813_100307_resized.jpg"
+    },
+    {
+      "src": "/img/firma/vyroba/img-7166.webp",
+      "width": 1800,
+      "height": 1350,
+      "from": "gdrive:1Y8e_kvDZUaP_PnnvRk4eKlTVCk1O9WOZ"
+    },
+    {
+      "src": "/img/firma/pruchod/img-4237.webp",
+      "width": 1350,
+      "height": 1800,
+      "from": "gdrive:1hQ6iosj6ID20fBEgTrm2CnqUIXnww8ap"
+    },
+    {
+      "src": "/img/firma/pruchod/img-4239.webp",
+      "width": 1350,
+      "height": 1800,
+      "from": "gdrive:1zxiDj3AU-cE88_X6oP7FLflqpaBzGwdy"
+    },
+    {
+      "src": "/img/firma/pruchod/img-4244.webp",
+      "width": 1350,
+      "height": 1800,
+      "from": "gdrive:1P-N9wxIVIVifPaIh2PI0b8hz5uRwFU2p"
+    },
+    {
+      "src": "/img/firma/pruchod/img-4234.webp",
+      "width": 1350,
+      "height": 1800,
+      "from": "gdrive:1ySFLteTDPZLLEJ0HUJqoDPO3BlIL6Jqi"
+    },
+    {
+      "src": "/img/firma/pruchod/img-4235.webp",
+      "width": 1350,
+      "height": 1800,
+      "from": "gdrive:1wepL6OVnKxygY64rEJbmVnCYZ0NKE0uw"
+    },
+    {
+      "src": "/img/firma/vyroba/img-7165.webp",
+      "width": 1800,
+      "height": 1350,
+      "from": "gdrive:1nkRIDQxnohlhlCj8X5SrasXL2F5TkPCL"
     }
   ]
 }

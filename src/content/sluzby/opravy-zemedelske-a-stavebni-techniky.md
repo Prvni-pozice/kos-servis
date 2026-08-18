@@ -23,7 +23,7 @@ scope:
   - Opravy drtičů štěpky
   - Generální opravy hydraulických ruk a kleští
   - Svařování, strojní opravy a výroba svařenců ramen a výsuvů
-gallery: sl-opravy-lesnicke-techniky
+gallery: sl-opravy-zemedelske-a-stavebni-techniky
 related: [opravy-hydraulickych-valcu, oteruvzdorne-materialy-a-navarovani, svarovani-a-renovace]
 inquirySubject: Oprava
 ---

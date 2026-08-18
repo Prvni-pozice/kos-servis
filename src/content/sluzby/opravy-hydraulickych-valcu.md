@@ -30,7 +30,7 @@ specs:
       - label: Maximální tlak
         value: 300 barů
 gallery: sl-opravy-hydraulickych-valcu
-related: [opravy-strojnich-zarizeni, strojni-obrabeni, opravy-lesnicke-a-zemedelske-techniky]
+related: [opravy-strojnich-zarizeni, strojni-obrabeni, opravy-zemedelske-a-stavebni-techniky]
 inquirySubject: Oprava
 ---
 

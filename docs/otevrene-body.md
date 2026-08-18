@@ -17,10 +17,12 @@ které čekají na podklad od klienta nebo na rozhodnutí.
 - **Loga na servisních dodávkách.** Fotky dodávek jsou nově na `/kontakt/`, ale
   vozy na nich zatím logo firmy nemají. Domalovat ho do fotky by znamenalo
   ukazovat něco, co neexistuje — až budou vozy polepené, stačí nafotit znovu.
-- **URL služby „opravy lesnické a zemědělské techniky".** Nadpis je nově
-  `Opravy zemědělské, stavební a lesnické techniky`, ale adresa zůstala
-  `/sluzby/opravy-lesnicke-a-zemedelske-techniky/`. Přejmenovat jde (web ještě
-  neběží na ostré doméně), chce to jen redirect ze staré adresy.
+- ~~**URL služby „opravy lesnické a zemědělské techniky".**~~ **Vyřešeno
+  18. 8. 2026:** adresa je nově `/sluzby/opravy-zemedelske-a-stavebni-techniky/`.
+  Redirect ze staré adresy se **záměrně nedělal** — web ještě neběží na ostré
+  doméně, takže na starou adresu nic neodkazuje. Přesměrování ze skutečného
+  starého webu (`/opravy-pro-drevozpracujici-prumysl-...`) je přepsané na nový
+  cíl, to platí dál.
 - **Tloušťka pálení sjednocena na 200 mm** podle klienta — autogen 3–200 mm,
   plazma doporučený rozsah 2–50 mm, řádek „dělicí řez 120 mm" ze stránek pryč.
   Rozpor s dřívějšími 300 mm tím zmizel.

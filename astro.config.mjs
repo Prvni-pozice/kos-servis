@@ -17,7 +17,7 @@ const staryWeb = {
   '/opravy-hydraulickych-valcu': '/sluzby/opravy-hydraulickych-valcu/',
   '/opravy-vyhrazenych-zdvihacich-zarizeni': '/sluzby/opravy-zdvihacich-zarizeni/',
   '/opravy-pro-drevozpracujici-prumysl-vcetne-harvestorovych-technologii':
-    '/sluzby/opravy-lesnicke-a-zemedelske-techniky/',
+    '/sluzby/opravy-zemedelske-a-stavebni-techniky/',
   '/paleni-3d-plazmou': '/sluzby/paleni-3d-plazmou/',
   '/oderu-vzdorne-materialy-technologie-zarovych-nastriku':
     '/sluzby/oteruvzdorne-materialy-a-navarovani/',
