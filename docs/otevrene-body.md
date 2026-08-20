@@ -36,7 +36,9 @@ které čekají na podklad od klienta nebo na rozhodnutí.
   Rozpor s dřívějšími 300 mm tím zmizel.
 - **MAIL_TO na Vercelu.** Kód posílá poptávky na `info@kos-servis.cz` i bez
   nastavené proměnné (fallback je `company.email`). Pokud je na Vercelu
-  `MAIL_TO` nastavené na něco jiného, přebije to.
+  `MAIL_TO` nastavené na něco jiného, přebije to. **Před předáním klientovi
+  zkontrolovat, že tam nezůstala testovací adresa** — poptávky by pak chodily
+  nám a ne do firmy, a formulář by přitom hlásil úspěch.
 - **Opraveno 18. 8. 2026: proměnné se nečetly vůbec.** Route brala konfiguraci
   z `import.meta.env`, který Vite zapeče do bundlu při buildu — cokoliv
   nastaveného v dashboardu Vercelu by se ignorovalo a formulář by vracel 500
@@ -48,7 +50,7 @@ které čekají na podklad od klienta nebo na rozhodnutí.
 | Co | Kdo | Poznámka |
 |---|---|---|
 | **Ostré logo z design systému** | PP | `public/img/brand/logo-kos.png` je zatím výřez z „návrhy loga.png“ na Drivu — nižší rozlišení a **starší kresba**. Ostré logo je v design projektu (`assets/logo-kos.png`, 1187×443), ale přes DesignSync ho stáhnout nelze: `get_file` ořezává na 256 KiB a soubor je větší (ověřeno, `truncated: true`, dekódovalo se 33 % řádků). Nutno stáhnout ručně z webového rozhraní, nebo hodit do Drive složky `1_fRNGCbs5VKTJoZRQJ75QwJB_zMJppCt`. Ideálně SVG. |
-| **SMTP přístupy** | PP | Bez nich `/api/poptavka/` vrací 500. Viz `.env.example`, na Vercelu jako env proměnné. |
+| ~~**Odesílání pošty**~~ | — | **Vyřešeno 20. 8. 2026.** Doména `send.kos-servis.cz` je v Resendu ověřená, proměnné jsou na Vercelu, testovací poptávka prošla až do schránky (`delivered` v logu Resendu). |
 | **Kontakt na Ing. Viktora Knoppa** | klient | Obchod je jediná osoba bez telefonu a e-mailu — na webu je vidět s poznámkou „Telefon a e-mail doplní klient“. |
 
 ## Čeká na klienta
