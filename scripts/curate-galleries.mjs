@@ -24,6 +24,9 @@ const pick = (source) => (n, caption) => {
 };
 const V = pick('firma-vyroba');
 const P = pick('firma-pruchod');
+/** F(44) = 44. z profesionálního focení 13. 7. 2026 (sada „firma-profi").
+ *  Čísla jsou totožná s názvy souborů od fotografa (Kos-servis-44.jpg). */
+const F = pick('firma-profi');
 /** Stroje zákazníků, které klient poslal 18. 8. 2026 – viz import-review-photos.mjs. */
 const N = (i) => ({ ...manifest['stroje-zakazniku'][i] });
 
@@ -43,15 +46,15 @@ const galerie = {
    * jsou tu proto, že bez nich galerie požadavek nesplní: devět šedých strojů
    * vedle sebe nikomu neřekne, který je který. */
   'strojovy-park-galerie': [
-    P(16, 'Plazmové pálicí centrum Messer OmniMat L 5600'),
-    P(20, 'Pálicí portál s 3D úkosovou a vrtací hlavou'),
+    F(44, 'Plazmové pálicí centrum Messer OmniMat L 5600'),
     V(55, 'CNC ohraňovací lis Rico PRCB 35500'),
-    V(31, 'Rovnání dílu na hydraulickém lisu'),
-    V(15, 'Horizontální vyvrtávačka'),
-    V(6, 'Hrotový soustruh'),
-    V(22, 'Pásová pila na dělení materiálu'),
-    P(4, 'Obrobna'),
-    P(8, 'Svařovna'),
+    F(42, 'Rovnací lis MAQ HD180, kapacita 180 t'),
+    F(33, 'Povolovací lavice pro demontáž hydraulických válců'),
+    F(21, 'Horizontální vyvrtávačka'),
+    F(19, 'Hrotový soustruh'),
+    F(36, 'Pásová pila na dělení materiálu'),
+    F(30, 'Obrobna'),
+    F(38, 'Svařovna'),
   ],
 
   /* Servisní dodávky na /kontakt/. Klient je připomněl 18. 8. 2026 – fotky
@@ -70,59 +73,63 @@ const galerie = {
    * výpalky, ohyby a hotový svařenec, tedy přesně ten sled operací. */
   'sluzby-vyroba': [
     V(49, 'Sedřený díl a nový z otěruvzdorného plechu'),
-    V(42, 'Výpalky připravené k dalšímu zpracování'),
-    V(41, 'Ohnuté díly z ohraňovacího lisu'),
-    V(52, 'Hotový svařenec ramene'),
+    F(45, 'Výpalky připravené k dalšímu zpracování'),
+    F(46, 'Ohnuté díly z ohraňovacího lisu'),
+    F(28, 'Renovované rameno nakladače s novými čepy'),
   ],
 
   /* Reference – klient: „uveřejnil bych už pouze hotové výrobky nebo opravené
    * díly, zde nemusí být strojní vybavení". Žádný náš stroj tu proto není. */
   'reference-galerie': [
+    F(28), F(29), F(32), F(16), F(17), F(47), F(46), F(48), F(49),
     N(0), N(2), N(3),
     V(86), V(83), V(78), V(81),
     V(44), V(13), V(10), V(12),
-    V(1), V(4), V(73), V(19), V(21),
     V(52), V(51), V(49), V(47),
     V(42), V(40), V(37),
-    P(22), P(23), P(25), P(30),
   ],
 
   /* O firmě, „Areál a dílny" – klient chtěl fotky přímo firmy zvenku i zevnitř,
-   * ne další výběr z výroby. Vede exteriér, za ním jednotlivé haly. */
+   * ne další výběr z výroby. Vede exteriér, za ním jednotlivé haly.
+   * Od 4. 9. 2026 exteriéry z dronu (profesionální focení) – areál je z nich
+   * čitelný celý, což ze země nešlo. */
   'o-firme-galerie': [
-    P(14), P(13), P(11), P(15), P(12),
-    V(45), V(46), P(17), P(4), P(6), P(19), P(8),
+    F(4), F(3), F(5), F(9), F(10), F(2),
+    F(30), F(38), F(44), F(36), F(43), F(19),
   ],
 
   /* Služby: devět až dvanáct tematických fotek místo dřívějších 12–28.
    * Překryv mezi sekcemi je držený na minimu – proto např. pálicí centrum
    * vidíte buď na strojovém parku, nebo na detailu pálení, ne na obou. */
   'sl-opravy-strojnich-zarizeni': [
-    V(28), V(29), N(1), N(3), V(31), V(19), V(10), V(12), V(4),
+    F(39), F(28), F(29), F(42), F(32), N(1), N(3), V(28), V(10),
   ],
   'sl-opravy-hydraulickych-valcu': [
-    P(2), V(18), V(19), V(21), V(73), V(1), V(12), V(2), V(6),
+    F(33), F(32), F(34), F(35), F(16), F(17), F(12), F(18), F(13),
   ],
   'sl-opravy-zemedelske-a-stavebni-techniky': [
-    N(2), N(5), N(0), N(3), N(4), V(29), P(25), P(27), P(30), P(22), P(23), V(28),
+    N(2), N(5), N(0), N(3), N(4), F(28), F(29), P(25), P(27), P(30), V(29), V(28),
   ],
   'sl-opravy-zdvihacich-zarizeni': [
     V(51), V(52), V(13), V(44), P(30), V(10), V(45), V(46), V(53),
   ],
   'sl-svarovani-a-renovace': [
-    V(57), V(58), V(59), P(7), P(8), P(9), V(26), V(27), V(47),
+    F(38), F(40), F(50), V(57), V(58), V(59), P(7), P(9), V(47),
   ],
   'sl-oteruvzdorne-materialy': [
     V(49), V(47), V(50), V(60), V(61), V(86), V(83), V(78), V(81),
   ],
+  /* Detail pálení ukazuje práci, ne stroj: sám pálicí portál je na strojovém
+   * parku a v prohlídce areálu, sem patří výpalky. Tím se drží pravidlo
+   * „stejná fotka ne na třech stránkách po sobě". */
   'sl-paleni-3d-plazmou': [
-    P(19), P(21), V(34), V(35), V(39), V(37), V(38), V(42), V(43),
+    F(45), F(47), V(34), V(35), V(39), V(37), V(38), V(42), V(43),
   ],
   'sl-ohybani-a-zpracovani-plechu': [
-    V(54), V(56), V(41), V(33), V(36), V(32), V(44), V(38), V(60),
+    F(46), F(48), F(49), V(54), V(56), V(41), V(33), V(36), V(60),
   ],
   'sl-strojni-obrabeni': [
-    V(3), V(5), V(7), V(8), V(9), V(14), V(16), V(12), V(4),
+    F(19), F(12), F(13), F(15), F(18), F(21), F(24), F(26), F(31),
   ],
 };
 

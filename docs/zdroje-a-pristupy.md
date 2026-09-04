@@ -51,7 +51,25 @@ konektor „claude.ai Google Drive" (`/mcp`).
                                     ← header-kos-servis.mp4 (hero), kontakt-video.mp4
 1pa1wWQIsqCLaq1FY4xy5ZyZYETZLPzYY   Fotky z výroby (87 HEIC)
 1GsUNSGMOoiG-aEiy3bWyKTl5oPy095DH   Jarní průchod firmou (31 HEIC + ~40 videí, ~1 GB)
+
+1oYyGnlFamY-BfEuMcpnTEBSJJlFHrq0P   2026-07-13_foto-video-kos-servis-chysna
+                                    ← profesionální focení, sdílel fotograf
+                                      (jakubminka@gmail.com), podsložky:
+  1dVMd-FLk4bHZn8nyQVoKO9NOERR-HpZ1   Foto – 50 JPEG, Kos-servis-01…50
+  1TCSLorSO6yVTLyAPC1qh_Sb0--VU0mqp   Video – nezpracované, zatím nepoužité
+  1rFmkGQrpb_5ouWhnZwFmkGFPZeMZau2Q   Výběrka – fotograf užší výběr neudělal
 ```
+
+**Ta sada se nepřekrývá s ničím starším** – ověřeno perceptuálním porovnáním
+(dHash + aHash) všech 50 snímků proti 204 fotkám na webu: nejbližší shoda byla
+168 z 512 bitů, zatímco táž fotka převedená přes JPEG vyjde na 1. Ani uvnitř
+sady nejsou duplicity.
+
+Drive API na téhle složce **nedává výpis obsahu** – `search_files` s
+`parentId` vrátí prázdno (sdílená složka cizího účtu se neindexuje). Zafungovalo
+až vytažení `data-id` z HTML stránky složky přes `curl`; u téhle sady byl výpis
+kompletní (1–50 bez mezer), ale spolehnout se na to nejde – vždy zkontrolovat,
+že čísla tvoří souvislou řadu.
 
 ### Jak z Drivu stahovat
 

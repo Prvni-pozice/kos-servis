@@ -1,19 +1,33 @@
 # Otevřené body
 
-Stav k 18. 8. 2026. Web je funkční a kompletní ve struktuře — tohle jsou věci,
+Stav k 4. 9. 2026. Web je funkční a kompletní ve struktuře — tohle jsou věci,
 které čekají na podklad od klienta nebo na rozhodnutí.
 
-## Po 6. kole připomínek (18. 8. 2026) — co zůstalo otevřené
+## Profesionální focení (4. 9. 2026)
 
-- **Fotky strojů z e-mailu ze 3. 6. 2026.** Klient na ně odkazuje („posílal jsem
-  je i s popisem"), ale v repu ani na Drivu nejsou. Galerie strojového parku je
-  zatím poskládaná z toho, co máme — ke každému stroji z přehledu jedna fotka
-  s popiskem. Chybí **povolovací lavice na hydraulické válce**, tu na žádném
-  snímku nepoznáme.
-- **Popisky u tří strojů jsou naše domněnka.** Messer OmniMat a ohraňovací lis
-  Rico jdou přečíst přímo ze štítku na fotce; „rovnání dílu na hydraulickém lisu",
-  „horizontální vyvrtávačka" a „hrotový soustruh" jsme přiřadili podle vzhledu.
-  Klient by je měl potvrdit.
+Dorazila sada 50 snímků z focení **13. 7. 2026** (Drive složka „Foto", detaily
+v `zdroje-a-pristupy.md`), naimportovaná jako `firma-profi`. Je to jiná liga než
+dosavadní podklady: dron nad areálem, čisté světlo, lidé při práci. Galerie jsou
+přeskládané, profi fotky vedou všude, kde na dané téma existují.
+
+Co se tím zavřelo:
+
+- ~~**Fotky strojů z e-mailu ze 3. 6. 2026.**~~ Sada pokrývá **pět ze šesti**
+  strojů z přehledu v `site.ts` — chybí jen ohraňovací lis Rico, ten zůstává
+  z klientské sady (`V(55)`).
+- ~~**Povolovací lavice na hydraulické válce.**~~ Je to **Kos-servis-33**:
+  blok s upínacím sklíčidlem na modrém stojanu, oranžová svěrka drží válec
+  a lože pokračuje doprava — sedí na parametry ze `site.ts` (délka do 4 000 mm).
+- **Dva popisky už nejsou domněnka.** Na `Kos-servis-42` je čitelný štítek
+  **MAQFORT 180 TON** (= rovnací lis MAQ HD180 z přehledu) a na `Kos-servis-44`
+  **MESSER OmniMat**. Na `Kos-servis-19` je štítek soustruhu **SU 50A**.
+  „Horizontální vyvrtávačka" zůstává přiřazená podle vzhledu — potvrdit klientem.
+
+Otevřené k té sadě:
+
+- **Video z téhož focení jsme nesahali** (podsložka „Video", nezpracované).
+  Až bude čas nebo přání klienta, projít a případně střihnout.
+- **Výběrka od fotografa je prázdná** — kurátorský výběr je celý náš.
 - **Loga na servisních dodávkách — dokreslená, vozy polepené nejsou.**
   Na výslovné přání klienta je logo na fotkách v `/kontakt/` domalované
   (`scripts/brand-vans.py`): převedené na čistou bílou a perspektivně posazené
@@ -80,8 +94,12 @@ které čekají na podklad od klienta nebo na rozhodnutí.
 
 ## Kurátorství fotek
 
-Import je automatický a nekurátorovaný, 190 fotek. Doporučení: projít galerie
+Import je automatický a nekurátorovaný, 240 fotek. Doporučení: projít galerie
 a vyřadit slabší snímky. Detaily v `docs/rozhodnuti.md`.
+
+Z profi sady je po přeskládání 4. 9. 2026 v galeriích **37 z 50** snímků.
+Venku zůstaly krajinné letecké záběry, kde je firma malá tečka
+(01, 06, 07, 08, 11), a varianty téhož motivu (14, 20, 22, 23, 25, 27, 37, 41).
 
 ## Média — poznámky
 
@@ -194,8 +212,10 @@ odpovědného zástupce (Libor Kos) — než to půjde ven, musí se to začerni
 zveřejnit jen čísla oprávnění bez skenů. Texty na `/certifikaty/` už podle
 dokumentů opravené jsou.
 
-**Chybějící fotky strojů.** Klient odkazuje na snímky „ohrlis", „rovnacilis",
-„Lavice" a „Horizontka" a na video ohraňovacího lisu. Nic z toho zatím nedorazilo.
+**Chybějící fotky strojů.** ~~Klient odkazuje na snímky „ohrlis", „rovnacilis",
+„Lavice" a „Horizontka".~~ **Vyřešeno 4. 9. 2026 profi sadou** — rovnací lis,
+povolovací lavice i horizontka na ní jsou. Nedorazilo jen **video ohraňovacího
+lisu**, samotný lis je dál jen z klientské sady.
 
 **Miloš Petrů** (svářecí technolog) není v klientově výčtu kontaktů. Necháváme ho
 tam — klient psal „mj." — ale stojí za potvrzení.

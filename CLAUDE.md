@@ -83,6 +83,7 @@ Fotky a videa nejsou v gitu generované — importují se skripty:
 node scripts/import-old-photos.mjs <cesta-k-mirroru-www.kos-servis.cz>
 
 # 118 klientských fotek z Google Drive (HEIC → WebP)
+# + 50 fotek z profesionálního focení 13. 7. 2026 (sekce „profi", JPEG → WebP)
 node scripts/import-client-photos.mjs
 
 # hero a kontaktní video z Drive: Full HD 20 Mbps → 720p bez zvuku + poster
@@ -108,8 +109,11 @@ aby `<img>` měl `width`/`height` a stránka při načítání neposkakovala.
 
 **Skladbu galerií nikdy needituj v manifestu ručně** – jediný zdroj pravdy je
 `scripts/curate-galleries.mjs`. Fotky se v něm adresují pořadovým číslem ve
-zdrojové sadě (`V(42)` = 42. z `firma-vyroba`), což jsou přesně čísla
-z kontaktních archů, podle kterých se vybírá:
+zdrojové sadě (`V(42)` = 42. z `firma-vyroba`, `F(44)` = 44. z `firma-profi`),
+což jsou přesně čísla z kontaktních archů, podle kterých se vybírá. U sady
+`firma-profi` jsou navíc totožná s názvy souborů od fotografa – proto se
+soubory pojmenovaly `Kos-servis-01`…`50` s nulou; bez ní by `kos-servis-10`
+předběhlo `kos-servis-2` a číslo v manifestu by přestalo sedět na arch.
 
 ```bash
 node scripts/curate-galleries.mjs   # přepíše sekce sl-*, reference-galerie, …
