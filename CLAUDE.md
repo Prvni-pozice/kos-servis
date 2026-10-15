@@ -3,6 +3,10 @@
 Astro web pro **KOS servis s.r.o.** (Chyšná u Pacova, Vysočina) — strojní opravy,
 zakázková kovovýroba a 3D pálení plazmou. Nahrazuje starý web na kos-servis.cz.
 
+**V ostrém provozu od 15. 10. 2026 na https://www.kos-servis.cz** (prohlédnuto
+se zákazníkem, `kos-servis.cz` → 308 na `www`). Každý push do `main` jde rovnou
+k zákazníkům – detaily nasazení a DNS pošty v `docs/otevrene-body.md`.
+
 ## Spuštění
 
 ```bash

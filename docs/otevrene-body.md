@@ -113,21 +113,27 @@ Venku zůstaly krajinné letecké záběry, kde je firma malá tečka
 
 ## Nasazení
 
-Běží na **https://kos-servis.vercel.app** — auto-deploy z větve `main`,
-naběhne za 60–90 s. Repo: `github.com/Prvni-pozice/kos-servis`.
+**Ostrý provoz od 15. 10. 2026** na **https://www.kos-servis.cz** — web
+prošel se zákazníkem a přepnul se na vlastní doménu. `kos-servis.cz` dělá 308
+na `www`, canonical, sitemapa i `robots.txt` míří na `www.kos-servis.cz`.
+Původní adresa https://kos-servis.vercel.app běží dál (stejný deploy).
+Auto-deploy z větve `main`, naběhne za 60–90 s.
+Repo: `github.com/Prvni-pozice/kos-servis`.
 
-Zbývá:
+Pošta se při přepnutí neměnila: MX Avatech, SPF hlavní domény, DMARC
+`p=reject`, Resend (`send.kos-servis.cz` + DKIM `resend._domainkey`) — vše
+ověřeno 15. 10. 2026. **Při jakékoli změně DNS tyhle záznamy nesmí zmizet.**
 
 **Předávací kontrola proběhla 2. 8. 2026** — výsledky a otázky pro klienta
 jsou v `review/REVIEW_REPORT.md`, jednotlivé nálezy v `review/FINDINGS.md`.
 Opraveno 29 nálezů, 16 jich čeká na klienta.
 
-- [ ] Doplnit ostré logo
-- [ ] Nastavit SMTP env proměnné na Vercelu (bez nich formulář vrací 500)
-- [ ] Otestovat odeslání poptávky včetně přílohy
+- [x] ~~Doplnit ostré logo~~ — majitel si 6. 8. 2026 nechal stávající
+- [x] ~~Nastavit env proměnné na Vercelu~~ — Resend, 20. 8. 2026
+- [x] ~~Otestovat odeslání poptávky~~ — `delivered` v logu Resendu, 20. 8. 2026
 - [x] ~~Zkontrolovat redirecty ze starých URL~~ — ověřeno živě, 301 fungují
-- [ ] Zvážit kurátorství fotek
-- [ ] Připojit vlastní doménu a přesměrovat starý web
+- [x] ~~Zvážit kurátorství fotek~~ — `scripts/curate-galleries.mjs`
+- [x] ~~Připojit vlastní doménu a přesměrovat starý web~~ — 15. 10. 2026
 
 ## Výkon (Lighthouse, 2. 8. 2026)
 
