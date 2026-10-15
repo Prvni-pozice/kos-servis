@@ -50,9 +50,10 @@ Otevřené k té sadě:
   Rozpor s dřívějšími 300 mm tím zmizel.
 - **MAIL_TO na Vercelu.** Kód posílá poptávky na `info@kos-servis.cz` i bez
   nastavené proměnné (fallback je `company.email`). Pokud je na Vercelu
-  `MAIL_TO` nastavené na něco jiného, přebije to. **Před předáním klientovi
-  zkontrolovat, že tam nezůstala testovací adresa** — poptávky by pak chodily
-  nám a ne do firmy, a formulář by přitom hlásil úspěch.
+  `MAIL_TO` nastavené na něco jiného, přebije to. Že tam nezůstala testovací
+  adresa, je **ověřené před spuštěním** (potvrzeno 15. 10. 2026). Kdyby se
+  `MAIL_TO` někdy měnilo: testovací adresa by posílala poptávky nám a ne do
+  firmy, a formulář by přitom hlásil úspěch.
 - **Opraveno 18. 8. 2026: proměnné se nečetly vůbec.** Route brala konfiguraci
   z `import.meta.env`, který Vite zapeče do bundlu při buildu — cokoliv
   nastaveného v dashboardu Vercelu by se ignorovalo a formulář by vracel 500
