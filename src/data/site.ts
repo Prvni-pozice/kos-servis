@@ -103,13 +103,6 @@ export const people: Person[] = [
     solves: 'Svařování hliníku, litiny, bronzu a nerezu, navařování a renovace.',
   },
   {
-    role: 'Obchodní oddělení · prodej a nákup',
-    name: 'Ing. Viktor Knopp',
-    phone: '+420 605 837 605',
-    email: 'viktor.knopp@kos-servis.cz',
-    solves: 'Nabídky, termíny a obchodní podmínky zakázek.',
-  },
-  {
     role: 'Jednatel',
     name: 'Libor Kos',
     // Mobilní čísla jednatelů doplnil klient 18. 8. 2026 – dřív tu byla

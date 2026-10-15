@@ -65,7 +65,7 @@ Otevřené k té sadě:
 |---|---|---|
 | **Ostré logo z design systému** | PP | `public/img/brand/logo-kos.png` je zatím výřez z „návrhy loga.png“ na Drivu — nižší rozlišení a **starší kresba**. Ostré logo je v design projektu (`assets/logo-kos.png`, 1187×443), ale přes DesignSync ho stáhnout nelze: `get_file` ořezává na 256 KiB a soubor je větší (ověřeno, `truncated: true`, dekódovalo se 33 % řádků). Nutno stáhnout ručně z webového rozhraní, nebo hodit do Drive složky `1_fRNGCbs5VKTJoZRQJ75QwJB_zMJppCt`. Ideálně SVG. |
 | ~~**Odesílání pošty**~~ | — | **Vyřešeno 20. 8. 2026.** Doména `send.kos-servis.cz` je v Resendu ověřená, proměnné jsou na Vercelu, testovací poptávka prošla až do schránky (`delivered` v logu Resendu). |
-| **Kontakt na Ing. Viktora Knoppa** | klient | Obchod je jediná osoba bez telefonu a e-mailu — na webu je vidět s poznámkou „Telefon a e-mail doplní klient“. |
+| ~~**Kontakt na Ing. Viktora Knoppa**~~ | — | **Vyřešeno 15. 10. 2026:** obchodní oddělení (Ing. Knopp) klient z webu zrušil, karta z `/kontakt/` odstraněna. |
 
 ## Čeká na klienta
 
