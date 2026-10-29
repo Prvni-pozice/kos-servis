@@ -98,7 +98,15 @@ node scripts/import-review-photos.mjs
 
 # logo dokreslené na servisní dodávky pro /kontakt/ (vozy zatím polepené nejsou)
 python3 scripts/brand-vans.py
+
+# jemný vodoznak s logem KOS do skenů na /certifikaty/ (docs/*.pdf → public/dokumenty/)
+python3 scripts/watermark-pdfs.py
 ```
+
+Skeny certifikátů v `public/dokumenty/` jsou **vygenerované** – originály bez
+vodoznaku jsou v `docs/`. Nový nebo obnovený certifikát se přidává do `docs/`
+a do mapy `DOCS` ve skriptu, ne rovnou do `public/`. Po přegenerování zkontroluj
+velikosti PDF uvedené na `/certifikaty/`.
 
 **`brand-vans.py` maluje do fotek něco, co ve skutečnosti není** — logo na bok
 dodávky. Je to na výslovné přání klienta a v `docs/otevrene-body.md` je to vedené
