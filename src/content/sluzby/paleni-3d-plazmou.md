@@ -30,7 +30,7 @@ equipment:
   - name: Autogenní hořák ALFA
     role: Kolmé řezy silných plechů až do tloušťky 200 mm.
   - name: CNC vrtací jednotka
-    role: Vrtání otvorů, zahloubení pro šrouby i závity (ověřeno do M40×1,5) bez přepínání na jiný stroj.
+    role: Vrtání otvorů, zahloubení pro šrouby i závity bez přepínání na jiný stroj.
 specs:
   - title: Pálicí stůl Messer OmniMat L 5600
     rows:
