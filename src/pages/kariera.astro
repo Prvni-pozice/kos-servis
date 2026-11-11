@@ -3,7 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SectionHead from '../components/SectionHead.astro';
 import InquiryForm from '../components/InquiryForm.astro';
-import { company, intake } from '../data/site';
+import { company } from '../data/site';
+
+/* Tlačítka u pozic mají vlastní číslo, ne příjem oprav (zadání 11. 11. 2026). */
+const telKariera = { phone: '+420 603 112 255', href: '+420603112255' };
 
 /* Znění pozic dodal klient. Náplň je běžný text, požadavky sází design systém
  * v mono jako specifikaci – proto jsou krátké, ne celé věty. */
@@ -78,7 +81,7 @@ const pozice = [
             <p style="margin-top: 22px; font-size: 15px; color: #37475b">
               <strong>Máte zájem?</strong> Zavolejte nám nebo pošlete krátký životopis.
             </p>
-            <a class="btn btn-accent" href={`tel:${intake.phoneHref}`}>{intake.phone}</a>
+            <a class="btn btn-accent" href={`tel:${telKariera.href}`}>{telKariera.phone}</a>
           </div>
         ))}
       </div>
