@@ -125,8 +125,10 @@ const galerie = {
   'sl-paleni-3d-plazmou': [
     F(45), F(47), V(34), V(35), V(39), V(37), V(38), V(42), V(43),
   ],
+  /* F(46) jsou výpalky, ne ohyby (klient 11. 11. 2026) – na prvním místě je
+   * místo nich samotný ohraňovací lis. */
   'sl-ohybani-a-zpracovani-plechu': [
-    F(46), F(48), F(49), V(54), V(56), V(41), V(33), V(36), V(60),
+    V(55), F(48), F(49), V(54), V(56), V(41), V(33), V(36), V(60),
   ],
   'sl-strojni-obrabeni': [
     F(19), F(12), F(13), F(15), F(18), F(21), F(24), F(26), F(31),
