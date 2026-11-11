@@ -29,9 +29,11 @@ specs:
         value: 3 500 mm
       - label: Lisovací síla
         value: 500 t
-      - label: Konstrukční plechy
+      - label: Konstrukční plechy – S355
         value: do 20 mm
-      - label: Otěruvzdorné a vysokopevnostní plechy
+      - label: Otěruvzdorné – 450 HB
+        value: do 15 mm
+      - label: Vysokopevnostní plechy – S460
         value: do 15 mm
   - title: Rovnací lis MAQ HD180
     rows:

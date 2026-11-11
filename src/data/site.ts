@@ -157,8 +157,9 @@ export const machines: Machine[] = [
     specs: [
       { label: 'Délka', value: '3 500 mm' },
       { label: 'Síla', value: '500 t' },
-      { label: 'Konstr. plech', value: 'do 20 mm' },
-      { label: 'Otěruvzdorný', value: 'do 15 mm' },
+      { label: 'Konstr. plech S355', value: 'do 20 mm' },
+      { label: 'Otěruvzdorný 450 HB', value: 'do 15 mm' },
+      { label: 'Vysokopevnostní S460', value: 'do 15 mm' },
     ],
   },
   {
