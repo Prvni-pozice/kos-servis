@@ -155,7 +155,7 @@ export const machines: Machine[] = [
     group: 'Ohraňování',
     name: 'CNC ohraňovací lis Rico PRCB 35500',
     specs: [
-      { label: 'Délka', value: '3 600 mm' },
+      { label: 'Délka', value: '3 500 mm' },
       { label: 'Síla', value: '500 t' },
       { label: 'Konstr. plech', value: 'do 20 mm' },
       { label: 'Otěruvzdorný', value: 'do 15 mm' },

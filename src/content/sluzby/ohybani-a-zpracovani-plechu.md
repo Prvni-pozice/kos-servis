@@ -4,9 +4,9 @@ order: 8
 eyebrow: Zpracování plechů
 excerpt: CNC ohraňovací lis 500 t, rovnací lis 180 t. Konstrukční i otěruvzdorné plechy.
 metaDescription: >-
-  Ohýbáme konstrukční plechy do 20 mm a otěruvzdorné do 15 mm. CNC ohraňovací lis 3 600 mm a 500 tun, rovnací lis 180 tun srovná, co se zkroutilo.
+  Ohýbáme konstrukční plechy do 20 mm a otěruvzdorné do 15 mm. CNC ohraňovací lis 3 500 mm a 500 tun, rovnací lis 180 tun srovná, co se zkroutilo.
 intro: >-
-  CNC ohraňovací lis Rico PRCB 35500 s pracovní délkou 3 600 mm a lisovací silou
+  CNC ohraňovací lis Rico PRCB 35500 s pracovní délkou 3 500 mm a lisovací silou
   500 tun ohýbá konstrukční plechy do 20 mm a otěruvzdorné a vysokopevnostní plechy
   do 15 mm. Rovnací lis MAQ HD180 s kapacitou 180 tun srovná, co se zkroutilo.
 seoTitle: Ohýbání plechů na CNC ohraňovacím lise 500 t · rovnání
@@ -19,14 +19,14 @@ scope:
   - Návaznost na pálení plazmou a svařování
 equipment:
   - name: CNC ohraňovací lis Rico PRCB 35500
-    role: Ohýbání plechů podle výkresu, pracovní délka 3 600 mm, lisovací síla 500 t.
+    role: Ohýbání plechů podle výkresu, pracovní délka 3 500 mm, lisovací síla 500 t.
   - name: Rovnací lis MAQ HD180
     role: Rovnání zkroucených dílů, nosníků a konstrukcí, kapacita 180 t.
 specs:
   - title: CNC ohraňovací lis Rico PRCB 35500
     rows:
       - label: Pracovní délka
-        value: 3 600 mm
+        value: 3 500 mm
       - label: Lisovací síla
         value: 500 t
       - label: Konstrukční plechy
