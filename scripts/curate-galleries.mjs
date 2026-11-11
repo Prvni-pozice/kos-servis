@@ -74,7 +74,7 @@ const galerie = {
   'sluzby-vyroba': [
     V(49, 'Sedřený díl a nový z otěruvzdorného plechu'),
     F(45, 'Výpalky připravené k dalšímu zpracování'),
-    F(46, 'Ohnuté díly z ohraňovacího lisu'),
+    F(48, 'Ohnuté díly z ohraňovacího lisu'), // F(46) jsou výpalky (11. 11. 2026)
     F(28, 'Renovované rameno nakladače s novými čepy'),
   ],
 
